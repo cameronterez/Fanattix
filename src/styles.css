@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.primary-color{
+    background: #563D7C !important;
+}
+.text-primary-color{
+    color: #563D7C !important;
+}
+.shadow{
+    box-shadow: 3px 3px 32px #563D7C;
+}

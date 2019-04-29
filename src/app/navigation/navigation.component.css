@@ -1,0 +1,7 @@
+.account-menu{
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 400;
+    padding: 20px;
+}

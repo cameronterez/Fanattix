@@ -1,0 +1,33 @@
+
+<div class="container-fluid">
+  <div class="row" style="height: 480px;background: url(../assets/imgs/sitback.jpeg);background-size: cover;background-position:center;">
+    <div class="col-md-12">
+      <!--<img src="../assets/imgs/sitback.jpeg" alt="banner">-->
+      <h1 style="color: white;font-weight: 700;margin-top:100px;font-size: 600%;">Sunday Brunch & Lunch</h1>
+      <p style="color: white;font-weight: 700;">Sunday September 31, 2019</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="margin-top: 60px;margin-bottom: 20px;display: flex;">
+        <h1>Upcoming Events</h1>
+        <button type="button" class="btn btn-primary btn-sm">Date</button>
+        <button type="button" class="btn btn-secondary btn-sm">Categories</button>
+        <button type="button" class="btn btn-primary btn-sm">Free</button>
+        <button type="button" class="btn btn-secondary btn-sm" >Create Event</button>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3" *ngFor="let event of events" (click)="goToEventDetail(event.id)">
+        <div class="card">
+            <img src="{{event.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h3>{{event.name}}</h3>
+              <small>{{event.description}}</small><br/>
+              <small>{{event.date}} {{event.time}}</small>
+            </div>
+          </div>
+    </div>
+  </div>
+
+</div>

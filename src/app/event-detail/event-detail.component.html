@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>{{event.name}}</h1>
+      <p>{{event.location}}</p>
+      <p>Event Type - {{event.type}}</p>
+      <p>Category - {{event.category}}</p>
+      <small>{{event.description}}</small>
+    </div>
+
+    <div class="col-md-6">
+      <div class="col-md-8 mt-3" *ngFor="let option of event.ticket_options">
+        <h4>{{option.name}}</h4>
+        <p>{{option.description}}</p>
+        <p>$ {{option.price}}</p>
+        <p>{{option.number_total}} tickets left.</p>
+        <button class="btn btn-success">$ {{option.price}} Purchase</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
