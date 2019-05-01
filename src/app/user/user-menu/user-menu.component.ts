@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { BehaviorSubject } from 'rxjs';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-menu',
@@ -9,14 +10,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserMenuComponent implements OnInit {
   loggedIn: boolean
+  user: User
 
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.loggedIn.subscribe(
-      val => this.loggedIn = val,
+    this.auth._loggedIn.subscribe(
+      val => {
+        this.loggedIn = val
+        this.user = this.auth.user
+      },
       err => console.log(err)
     )
+  }
+
+  logUser(){
+    console.log(this.user)
   }
 
 }

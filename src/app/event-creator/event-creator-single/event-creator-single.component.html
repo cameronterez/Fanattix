@@ -43,7 +43,7 @@
           <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
         </div>
         <div class="input-group mt-4">
-            <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
+            <input #imageInput type="file" (change)="processFile(imageInput)"> <!--accept="image/*"-->
         </div>
           
 

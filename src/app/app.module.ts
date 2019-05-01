@@ -19,7 +19,9 @@ import { UserMenuComponent } from './user/user-menu/user-menu.component';
 import { LoginComponent } from './user/login/login.component';
 import { TicketOptionsComponent } from './event-creator/ticket-options/ticket-options.component';
 import { BasicAlertComponent } from './shared/basic-alert/basic-alert.component';
-import { EventDetailComponent } from './event-detail/event-detail.component'
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { EditEventComponent } from './event-creator/edit-event/edit-event.component';
+import { MyEventsComponent } from './event-creator/my-events/my-events.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,6 +30,8 @@ const routes: Routes = [
     children: [
       {path: '', component: EventCreatorHomeComponent},
       {path: 'single', component: EventCreatorSingleComponent},
+      {path: 'my-events', component: MyEventsComponent},
+      {path: 'edit-event/:id', component: EditEventComponent},
       {path: 'double', component: EventCreatorSingleComponent},
     ]
   },
@@ -47,7 +51,9 @@ const routes: Routes = [
     LoginComponent,
     TicketOptionsComponent,
     BasicAlertComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    EditEventComponent,
+    MyEventsComponent
   ],
   imports: [
     BrowserModule,

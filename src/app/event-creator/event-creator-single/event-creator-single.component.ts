@@ -12,6 +12,7 @@ import { FxEvent } from '../../models/event';
 export class EventCreatorSingleComponent implements OnInit {
 
   selectedFile: ImageSnippet
+  selectedFileSource: String
   eventForm: FormGroup
   createdEventId: Number
 
@@ -28,6 +29,7 @@ export class EventCreatorSingleComponent implements OnInit {
     reader.addEventListener('load', (event: any) => {
 
       this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFileSource = this.selectedFile.src
 
       /*this.imageService.uploadImage(this.selectedFile.file).subscribe(
         (res) => {
@@ -35,7 +37,7 @@ export class EventCreatorSingleComponent implements OnInit {
         },
         (err) => {
         
-        })*/
+      })*/
     });
 
     reader.readAsDataURL(file);
@@ -51,6 +53,7 @@ export class EventCreatorSingleComponent implements OnInit {
       location: '1111 Lower Fayetteville Road, Newnan, Ga 30265',
       venue: 'Publix',
       creator: 1,
+      image: this.selectedFileSource,
       date: new Date('December 17, 1995 03:24:00')
     })
   }
@@ -64,14 +67,15 @@ export class EventCreatorSingleComponent implements OnInit {
       location: this.eventForm.get('location').value,
       venue : this.eventForm.get('venue').value,
       creator: this.eventForm.get('creator').value,
+      image: this.selectedFileSource
     }
 
     this.eventService.createEvent(data).subscribe(
       res => {
         this.messageService.displayMessage(`Event ${data.name} Created! Now, add some Tickets.`)
-        //console.log(res)
-        this.createdEventId = res['event']['id']
-        console.log(this.createdEventId)
+        console.log(res)
+        //this.createdEventId = res['event']['id']
+        //console.log(this.createdEventId)
       },
       err => console.log(err)
     )

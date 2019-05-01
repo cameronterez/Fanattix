@@ -31,7 +31,11 @@ export class LoginComponent implements OnInit {
     this.auth.get_auth_token(credentials).subscribe(
       res => {
         console.log(res)
-        this.auth.loggedIn.next(true)
+        this.auth.auth_token = res['token']
+        this.auth._userId.next(res['id'])
+        this.auth.get_user()
+        this.auth._loggedIn.next(true)
+        this.auth.store_user(res['token'], res['id'])
       },
       err => console.log(err)
     )

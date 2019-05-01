@@ -10,7 +10,7 @@ export class AuthGuardService implements CanActivate {
   constructor(private auth: AuthService) { }
 
   canActivate(): boolean{
-    if(this.auth.loggedIn.value == true){
+    if(this.auth._loggedIn.value == true){
       return true
     }else{
       return false

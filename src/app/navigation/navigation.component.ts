@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  accountMenu = false
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleAccountMenu(){
+    this.accountMenu = this.accountMenu == true ? false : true
+  }
 }
