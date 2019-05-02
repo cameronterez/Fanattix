@@ -84,6 +84,6 @@ export class EventCreatorSingleComponent implements OnInit {
 
 }
 
-class ImageSnippet {
+export class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }

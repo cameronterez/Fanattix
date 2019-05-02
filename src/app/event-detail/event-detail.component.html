@@ -16,9 +16,9 @@
       <div class="col-md-8 mt-3" *ngFor="let option of event.ticket_options">
         <h4>{{option.name}}</h4>
         <p>{{option.description}}</p>
-        <p>$ {{option.price}}</p>
+        <p>${{option.price}}</p>
         <p>{{option.number_total}} tickets left.</p>
-        <button class="btn btn-success">$ {{option.price}} Purchase</button>
+        <button (click)="purchaseTicket(option.id)" class="btn btn-success">$ {{option.price}} Purchase</button>
       </div>
     </div>
 

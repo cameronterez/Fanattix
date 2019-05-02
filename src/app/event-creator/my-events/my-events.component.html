@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
       <div *ngFor="let event of events">
-        <img class="w-100" *ngIf="event.event_detail.image" [src]="IMAGE_URL + event.event_detail.image" alt="event image">
-        <h3 (click)="goToEdit(event.event_detail.id)">{{event.event_detail.name}}</h3>
-        <p>{{event.event_detail.description}}</p>
-        <button (click)="goToDetail(event.event_detail.id)" class="btn btn-primary">View</button>
-        <button (click)="goToEdit(event.event_detail.id)" class="btn btn-primary">Edit</button>
+        <img class="w-100" *ngIf="event.image" [src]="IMAGE_URL + event.image" alt="event image">
+        <h3 (click)="goToEdit(event.id)">{{event.name}}</h3>
+        <p>{{event.description}}</p>
+        <button (click)="goToDetail(event.id)" class="btn btn-primary">View</button>
+        <button (click)="goToEdit(event.id)" class="btn btn-primary">Edit</button>
       </div>
     </div>
   </div>

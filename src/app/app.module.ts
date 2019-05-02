@@ -21,11 +21,13 @@ import { TicketOptionsComponent } from './event-creator/ticket-options/ticket-op
 import { BasicAlertComponent } from './shared/basic-alert/basic-alert.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EditEventComponent } from './event-creator/edit-event/edit-event.component';
-import { MyEventsComponent } from './event-creator/my-events/my-events.component'
+import { MyEventsComponent } from './event-creator/my-events/my-events.component';
+import { PurchasedTicketsComponent } from './tickets/purchased-tickets/purchased-tickets.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'event/:id', component: EventDetailComponent},
+  {path: 'my-tickets', component: PurchasedTicketsComponent},
   {path: 'creator', component: CreatorComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
@@ -53,7 +55,8 @@ const routes: Routes = [
     BasicAlertComponent,
     EventDetailComponent,
     EditEventComponent,
-    MyEventsComponent
+    MyEventsComponent,
+    PurchasedTicketsComponent
   ],
   imports: [
     BrowserModule,

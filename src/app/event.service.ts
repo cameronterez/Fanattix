@@ -4,6 +4,7 @@ import { FxEvent } from './models/event'
 import { API_URL } from '../environments/environment';
 import { TicketOption } from './models/ticket-option';
 import { AuthService } from './auth.service';
+import { Ticket } from './models/ticket';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,16 @@ export class EventService {
 
   editEvent(eventId, eventData){
     return this.http.put(API_URL + '/events/' + eventId + "/", eventData)
+  }
+
+  //Tickets
+  purchaseTicket(ticketOptionId, userId=this.authService._userId.value){
+    let content = { ticket_option_id : ticketOptionId, user_id : userId }
+    return this.http.post(API_URL + '/purchase-ticket/', content)
+  }
+
+  get_purchased_tickets(userId=this.authService._userId.value){
+    return this.http.get<Ticket[]>(API_URL + '/get-purchased-tickets/' + userId + '/' )
   }
 
 }

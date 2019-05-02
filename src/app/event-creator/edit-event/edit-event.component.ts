@@ -5,6 +5,8 @@ import { AuthService } from '../../auth.service';
 import { EventService } from '../../event.service';
 import { FxEvent } from '../../models/event';
 import { isNullOrUndefined } from 'util';
+import { ImageSnippet } from '../event-creator-single/event-creator-single.component';
+
 
 
 @Component({
@@ -16,6 +18,8 @@ export class EditEventComponent implements OnInit {
   eventId: String
   event: FxEvent
   editForm: FormGroup
+  selectedFile: ImageSnippet
+  selectedFileSource: String
 
   constructor(
     private route: ActivatedRoute,
@@ -66,13 +70,35 @@ export class EditEventComponent implements OnInit {
       location: this.editForm.get('location').value,
       venue : this.editForm.get('venue').value,
       creator: this.editForm.get('creator').value,
-      image: null
+      image: this.selectedFileSource,
+      date: new Date('December 17, 1995 03:24:00')
     }
 
     this.eventService.editEvent(eventId, eventData).subscribe(
       res => console.log(res),
       err => console.log(err)
     )
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFileSource = this.selectedFile.src
+
+      /*this.imageService.uploadImage(this.selectedFile.file).subscribe(
+        (res) => {
+        
+        },
+        (err) => {
+        
+      })*/
+    });
+
+    reader.readAsDataURL(file);
   }
 
 }
