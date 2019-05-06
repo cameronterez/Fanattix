@@ -37,7 +37,7 @@ export class EditEventComponent implements OnInit {
     this.eventService.getEvent(this.eventId).subscribe(
       res => {
         console.log(res)
-        this.event = res 
+        this.event = res  
         this.initEditForm()       
       },
       err => console.log(err)
@@ -88,14 +88,6 @@ export class EditEventComponent implements OnInit {
 
       this.selectedFile = new ImageSnippet(event.target.result, file);
       this.selectedFileSource = this.selectedFile.src
-
-      /*this.imageService.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
-        
-        },
-        (err) => {
-        
-      })*/
     });
 
     reader.readAsDataURL(file);

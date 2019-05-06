@@ -1,0 +1,13 @@
+<form class="form-inline my-2 my-lg-0 w-100">
+  <input class="form-control mr-sm-2 w-25" type="search" placeholder="Category" aria-label="Search">
+  <input class="form-control mr-sm-2 w-25" type="search" placeholder="Location" aria-label="Search">
+  <input class="form-control mr-sm-2 w-25" type="search" placeholder="Date" aria-label="Search">
+  <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<h4 class="text-center my-5">Or</h4>
+
+<form class="form-inline my-2 my-lg-0 w-100" (submit)="valueChanged($event, eventName.value)">
+    <input class="form-control mr-sm-2 w-25" type="search" #eventName placeholder="Search By Title" aria-label="Search">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+</form>

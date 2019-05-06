@@ -31,12 +31,25 @@ export class EventService {
     return this.http.post(API_URL + '/events/', data)
   }
 
+  createEventOccurrence(data){
+    return this.http.post(API_URL + '/event-occurrences/', data)
+  }
+
   createTicketOption(ticketOption: TicketOption){
     return this.http.post(API_URL + '/ticket-options/', ticketOption)
   }
 
   editEvent(eventId, eventData){
     return this.http.put(API_URL + '/events/' + eventId + "/", eventData)
+  }
+
+  ////////Search////////
+  searchEventsByName(search){
+    return this.http.get<FxEvent[]>(API_URL + `/search-events-by-name/?name=${search}` )
+  }
+
+  searchEvents(search){
+    return this.http.get<FxEvent>(API_URL + `/search-events-by-location?date=${search.date}&location=${search.location}&date=${search.category}/` )
   }
 
   //Tickets

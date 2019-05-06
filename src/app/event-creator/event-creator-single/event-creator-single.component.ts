@@ -74,8 +74,8 @@ export class EventCreatorSingleComponent implements OnInit {
       res => {
         this.messageService.displayMessage(`Event ${data.name} Created! Now, add some Tickets.`)
         console.log(res)
-        //this.createdEventId = res['event']['id']
-        //console.log(this.createdEventId)
+        this.createdEventId = res['event']['id']
+        console.log(this.createdEventId)
       },
       err => console.log(err)
     )

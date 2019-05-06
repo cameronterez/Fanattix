@@ -22,12 +22,17 @@ import { BasicAlertComponent } from './shared/basic-alert/basic-alert.component'
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EditEventComponent } from './event-creator/edit-event/edit-event.component';
 import { MyEventsComponent } from './event-creator/my-events/my-events.component';
-import { PurchasedTicketsComponent } from './tickets/purchased-tickets/purchased-tickets.component'
+import { PurchasedTicketsComponent } from './tickets/purchased-tickets/purchased-tickets.component';
+import { OccurrenceCreateComponent } from './event-creator/occurrence-create/occurrence-create.component';
+import { EditOccurrenceComponent } from './event-creator/edit-occurrence/edit-occurrence.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchComponent } from './search/search.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'event/:id', component: EventDetailComponent},
   {path: 'my-tickets', component: PurchasedTicketsComponent},
+  {path: 'search', component: SearchComponent},
   {path: 'creator', component: CreatorComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
@@ -56,7 +61,11 @@ const routes: Routes = [
     EventDetailComponent,
     EditEventComponent,
     MyEventsComponent,
-    PurchasedTicketsComponent
+    PurchasedTicketsComponent,
+    OccurrenceCreateComponent,
+    EditOccurrenceComponent,
+    SearchBarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

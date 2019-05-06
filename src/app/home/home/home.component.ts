@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
 
   goToEventDetail(id){
     this.router.navigate(['event', id])
-    console.log('detail')
   }
 
 }
