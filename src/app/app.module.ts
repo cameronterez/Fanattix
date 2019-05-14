@@ -5,6 +5,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 
@@ -26,12 +28,21 @@ import { PurchasedTicketsComponent } from './tickets/purchased-tickets/purchased
 import { OccurrenceCreateComponent } from './event-creator/occurrence-create/occurrence-create.component';
 import { EditOccurrenceComponent } from './event-creator/edit-occurrence/edit-occurrence.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { SearchComponent } from './search/search.component'
+import { SearchComponent } from './search/search.component';
+import { TicketPurchaseComponent } from './tickets/ticket-purchase/ticket-purchase.component';
+import { PostPurchaseComponent } from './tickets/post-purchase/post-purchase.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { AccountComponent } from './account/account.component';
+import { OccurrenceEditComponent } from './event-creator/occurrence-edit/occurrence-edit.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'event/:id', component: EventDetailComponent},
+  {path: 'purchase-ticket/:id', component: TicketPurchaseComponent},
   {path: 'my-tickets', component: PurchasedTicketsComponent},
+  {path: 'purchase-complete', component: PostPurchaseComponent},
+  {path: 'account', component: AccountComponent},
+  {path: 'sign-up', component: SignUpComponent},
   {path: 'search', component: SearchComponent},
   {path: 'creator', component: CreatorComponent,
     children: [
@@ -65,8 +76,15 @@ const routes: Routes = [
     OccurrenceCreateComponent,
     EditOccurrenceComponent,
     SearchBarComponent,
-    SearchComponent
+    SearchComponent,
+    TicketPurchaseComponent,
+    PostPurchaseComponent,
+    SignUpComponent,
+    AccountComponent,
+    OccurrenceEditComponent
   ],
+  // Google Places API Key 
+
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
@@ -74,6 +92,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgbAlertModule,
+    GooglePlaceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

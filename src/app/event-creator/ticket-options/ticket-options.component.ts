@@ -9,17 +9,23 @@ import { MessageService } from '../../message.service';
   styleUrls: ['./ticket-options.component.css']
 })
 export class TicketOptionsComponent implements OnInit {
-  @Input() eventId
+  @Input() event
+  createdTicketOptions: TicketOption[]
   ticketOptions: TicketOption[] = []
 
   constructor(private eventService: EventService, private messageService: MessageService) { }
 
   ngOnInit(){
+    try{
+      this.createdTicketOptions = this.event.ticket_options
+    }catch{
+      console.log('no ticket options')
+    }
   }
 
   addTicketOption(){
     let ticket_option = new TicketOption()
-    ticket_option.event = this.eventId
+    ticket_option.event = this.event['id']
     this.ticketOptions.push(ticket_option)
     console.log(this.ticketOptions)
   }
@@ -29,13 +35,33 @@ export class TicketOptionsComponent implements OnInit {
   }
 
   saveTicketOption(ticketOption: TicketOption){
-    this.eventService.createTicketOption(ticketOption).subscribe(
-      res => {
-        console.log(res)
-        this.messageService.displayMessage('Ticket created!')
-      },
-      err => console.log(err),
-    )
+    if(this.event['id']){
+      this.eventService.createTicketOption(ticketOption).subscribe(
+        res => {
+          console.log(res)
+          this.messageService.displayMessage('Ticket created!')
+        },
+        err => console.log(err),
+      )
+    }else{
+      this.messageService.displayMessage('You Must Save Event Detail Before Saving Tickets')
+    }
+  }
+
+  editTicketOption(ticketOption: TicketOption){
+    if(this.event['id']){
+      ticketOption['url'] = new URL("http://www.fanattix.com")
+      console.log(ticketOption)
+      this.eventService.editTicketOption(ticketOption).subscribe(
+        res => {
+          console.log(res)
+          this.messageService.displayMessage('Ticket Edited!')
+        },
+        err => console.log(err),
+      )
+    }else{
+      this.messageService.displayMessage('You Must Save Event Detail Before Saving Tickets')
+    }
   }
 
   

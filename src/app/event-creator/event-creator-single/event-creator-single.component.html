@@ -8,25 +8,57 @@
           <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Your Event">
           <small id="emailHelp" class="form-text text-muted">Maximum length 70 Characters</small>
         </div>
+
         <div class="form-group">
-          <label for="exampleInputPassword1">Date</label>
-          <input formControlName="date" type="text" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+          <label for="exampleInputPassword1">Location</label>
+          <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"
+          formControlName="location" type="text" class="form-control" aria-describedby="location" placeholder="Where is your event?"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Venue</label>
+          <input formControlName="venue" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Venue">
+        </div>
+
+        <!--<div class="input-group mb-3">
+            <label for="exampleInputPassword1">Category</label>
+            <select class="custom-select" id="inputGroupSelect01" formControlName="category">
+              <option selected>Choose...</option>
+              <option value="Auto/Boat/Air">Auto/Boat/Air</option>
+              <option value="Business/Professional">Business/Professional</option>
+              <option value="Charity/Cause">Charity/Cause</option>
+            </select>
+        </div>-->
+
+        <div class="input-group mb-3">
+          <label for="exampleInputPassword1">Event Type</label>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="type_obj" >
+            <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+          </select>
         </div>
 
         <div class="input-group mb-3">
-            <label for="exampleInputPassword1">Event Type</label>
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+          <label for="exampleInputPassword1">Category</label>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="category_obj">
+            <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+          </select>
         </div>
+
+        <!--<div class="input-group mb-3">
+          <label for="exampleInputPassword1">Category</label>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="type">
+            <option selected>Choose...</option>
+            <option value="Seminar">Seminar</option>
+            <option value="Networking">Networking</option>
+            <option value="Tradeshow/Expo">Tradeshow/Expo</option>
+          </select>
+        </div>-->
 
         <div class="form-group">
             <label for="exampleInputPassword1">Organizers</label>
-            <input type="text" class="form-control">
-          </div>
+            <input type="text" formControlName="organizers" class="form-control">
+        </div>
 
         <h3 class="mt-5 mb-4">Describe Your Event</h3>
           
@@ -52,11 +84,11 @@
     </div>
 
     <div class="col-md-8 offset-md-2 mt-5">
-      <app-occurrence-create [eventId]="createdEventId"></app-occurrence-create>
+      <app-occurrence-create [event]="createdEvent"></app-occurrence-create>
     </div>
 
     <div class="col-md-8 offset-md-2 mt-5">
-      <app-ticket-options [eventId]="createdEventId"></app-ticket-options>
+      <app-ticket-options [event]="createdEvent"></app-ticket-options>
     </div>
   </div>
 </div>

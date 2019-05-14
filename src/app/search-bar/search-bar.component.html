@@ -1,7 +1,12 @@
-<form class="form-inline my-2 my-lg-0 w-100">
-  <input class="form-control mr-sm-2 w-25" type="search" placeholder="Category" aria-label="Search">
-  <input class="form-control mr-sm-2 w-25" type="search" placeholder="Location" aria-label="Search">
-  <input class="form-control mr-sm-2 w-25" type="search" placeholder="Date" aria-label="Search">
+<form class="form-inline my-2 my-lg-0 w-100" *ngIf="searchForm" [formGroup]="searchForm" (submit)="searchCLD()">
+    <label for="exampleInputPassword1">Category</label>
+    <select class="form-control mr-sm-2 w-25" id="inputGroupSelect01" formControlName="category">
+        <option *ngFor="let category of categories" placeholder="Category" value="{{category.id}}">{{category.name}}</option>
+    </select>
+  <!--<input class="form-control mr-sm-2 w-25" type="search" formControlName="category" placeholder="Category" aria-label="Search">-->
+  <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" 
+    class="form-control mr-sm-2 w-25" type="search" formControlName="location" placeholder="Location" aria-label="Search">
+  <input class="form-control mr-sm-2 w-25" type="search" formControlName="date" placeholder="Date" aria-label="Search">
   <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
 </form>
 

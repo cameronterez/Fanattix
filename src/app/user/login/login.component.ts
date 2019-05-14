@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     let credentials = {
-      email: this.loginForm.get('email').value,
+      username: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     }
     this.auth.get_auth_token(credentials).subscribe(

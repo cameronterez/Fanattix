@@ -6,8 +6,8 @@
       </div>
       <h1>{{event.name}}</h1>
       <p>{{event.location}}</p>
-      <p>Event Type - {{event.type}}</p>
-      <p>Category - {{event.category}}</p>
+      <p>Event Type - {{event.type_detail.name}}</p>
+      <p>Category - {{event.category_detail.name}}</p>
       <small>{{event.description}}</small>
     </div>
 
@@ -18,7 +18,7 @@
         <p>{{option.description}}</p>
         <p>${{option.price}}</p>
         <p>{{option.number_total}} tickets left.</p>
-        <button (click)="purchaseTicket(option.id)" class="btn btn-success">$ {{option.price}} Purchase</button>
+        <button (click)="goToPurchase(option.id)" class="btn btn-success">$ {{option.price}} Purchase</button>
       </div>
     </div>
 

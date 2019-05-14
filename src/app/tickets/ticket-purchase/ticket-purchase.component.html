@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h6>Purchase Tickets</h6>
+      <h4>{{option.event_detail.name}}</h4>
+      <p>{{option.event_detail.location}}</p>
+      <p>{{option.event_detail.occurrences[0].date | date: 'medium'}}</p>
+      <p> You Are Purchasing</p>
+      <p>{{option.name}}</p>
+      <div>Quantity <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity" min="1" max="{{option.number_total}}"></div>
+      
+      <small>{{option.number_total}} tickets left.</small>
+      <h1 class="text-muted">${{option.price}}</h1>
+
+      <button class="btn btn-primary" (click)="purchaseTicket(option.id)">Purchase</button>
+    </div>
+  </div>
+</div>
+
+

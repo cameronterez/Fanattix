@@ -1,35 +1,67 @@
 <h4>Tickets</h4>
-<p>This Event has {{ticketOptions.length}} Ticket(s) available</p>
-<div *ngFor="let ticket of ticketOptions;index as i">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Ticket Name</label>
-    <input [(ngModel)]="ticketOptions[i].name" type="text" (change)="logTicket(ticket)" class="form-control" aria-describedby="emailHelp" placeholder="Name Your ticket">
-    <small class="form-text text-muted">Max Length 60 characters</small>
-  </div>
+<p *ngIf="createdTicketOptions">This Event has {{ticketOptions.length + createdTicketOptions.length}} Ticket(s) available</p>
+<div *ngIf="createdTicketOptions">
+  <div *ngFor="let ticket of createdTicketOptions;index as i">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ticket Name</label>
+      <input [(ngModel)]="createdTicketOptions[i].name" type="text" (change)="logTicket(ticket)" class="form-control" aria-describedby="emailHelp" placeholder="Name Your ticket">
+      <small class="form-text text-muted">Max Length 60 characters</small>
+    </div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Ticket Description</label>
-    <input [(ngModel)]="ticketOptions[i].description" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Describe your ticket">
-    <small class="form-text text-muted">Be Sure to include a thorough description of your ticket Do your patrons know which ticket option to choose.</small>
-  </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ticket Description</label>
+      <input [(ngModel)]="createdTicketOptions[i].description" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Describe your ticket">
+      <small class="form-text text-muted">Be Sure to include a thorough description of your ticket Do your patrons know which ticket option to choose.</small>
+    </div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Price</label>
-    <input [(ngModel)]="ticketOptions[i].price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="0.00">
-    <small class="form-text text-muted">Enter Price in USD</small>
-  </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Price</label>
+      <input [(ngModel)]="createdTicketOptions[i].price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="0.00">
+      <small class="form-text text-muted">Enter Price in USD</small>
+    </div>
 
-  <div class="form-group">
-      <label for="exampleInputEmail1">Number Available</label>
-      <input [(ngModel)]="ticketOptions[i].number_total" type="text" class="form-control" aria-describedby="emailHelp">
-      <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
-  </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Number Available</label>
+        <input [(ngModel)]="createdTicketOptions[i].number_total" type="text" class="form-control" aria-describedby="emailHelp">
+        <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
+    </div>
 
-  <button class="btn btn-danger">Delete</button>
-  <button class="btn btn-success ml-1" (click)="saveTicketOption(ticket)">Save</button>
-  <hr/>
+    <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-success ml-1" (click)="editTicketOption(ticket)">Save</button>
+    <hr/>
+  </div>
 </div>
 
+<div>
+  <div *ngFor="let ticket of ticketOptions;index as i">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ticket Name</label>
+      <input [(ngModel)]="ticketOptions[i].name" type="text" (change)="logTicket(ticket)" class="form-control" aria-describedby="emailHelp" placeholder="Name Your ticket">
+      <small class="form-text text-muted">Max Length 60 characters</small>
+    </div>
 
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ticket Description</label>
+      <input [(ngModel)]="ticketOptions[i].description" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Describe your ticket">
+      <small class="form-text text-muted">Be Sure to include a thorough description of your ticket Do your patrons know which ticket option to choose.</small>
+    </div>
 
-<button class="btn btn-primary" (click)="addTicketOption()">Add Ticket</button>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Price</label>
+      <input [(ngModel)]="ticketOptions[i].price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="0.00">
+      <small class="form-text text-muted">Enter Price in USD</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Number Available</label>
+        <input [(ngModel)]="ticketOptions[i].number_total" type="text" class="form-control" aria-describedby="emailHelp">
+        <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
+    </div>
+
+    <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-success ml-1" (click)="saveTicketOption(ticket)">Save</button>
+    <hr/>
+  </div>
+
+  <button class="btn btn-primary" (click)="addTicketOption()">Add Ticket</button>
+</div>

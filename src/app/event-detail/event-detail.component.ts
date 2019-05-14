@@ -17,7 +17,7 @@ export class EventDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
   ) { }
 
   ngOnInit() {
@@ -32,11 +32,15 @@ export class EventDetailComponent implements OnInit {
     )
   }
 
-  purchaseTicket(ticketOptionId){
+  goToPurchase(ticketOptionId){
+    this.router.navigate(['purchase-ticket', ticketOptionId])
+  }  
+
+  /*purchaseTicket(ticketOptionId){
     this.eventService.purchaseTicket(ticketOptionId).subscribe(
       res => console.log(res),
       err => console.log(err)
     )
-  }
+  }*/
 
 }

@@ -12,16 +12,19 @@ export class AuthService{
   _userId = new BehaviorSubject('')
   user = new User
   _loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  location: Position //stores user location for search
 
   constructor(private http: HttpClient) { 
     this.checkStorageForCredentials()
   }
 
   get_auth_token(credentials){
+    console.log(credentials)
+
     // Login From login.component if no user in storage
-    return this.http.post(API_URL + '/api-token-auth/', {username: credentials.email, password: credentials.password})
+    return this.http.post(API_URL + '/api-token-auth/', {username: credentials.username, password: credentials.password})
  
-   }
+  }
 
   get_user(user_id=this._userId.value){
     let request = this.http.get<User>(API_URL + '/users/' + user_id)
@@ -63,5 +66,9 @@ export class AuthService{
   }
 
   postLogin(){
+  }
+
+  signUp(content){
+    return this.http.post<User>(API_URL + '/users/', content)
   }
 }
