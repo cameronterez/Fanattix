@@ -1,18 +1,30 @@
-<form class="form-inline my-2 my-lg-0 w-100" *ngIf="searchForm" [formGroup]="searchForm" (submit)="searchCLD()">
-    <label for="exampleInputPassword1">Category</label>
-    <select class="form-control mr-sm-2 w-25" id="inputGroupSelect01" formControlName="category">
-        <option *ngFor="let category of categories" placeholder="Category" value="{{category.id}}">{{category.name}}</option>
-    </select>
-  <!--<input class="form-control mr-sm-2 w-25" type="search" formControlName="category" placeholder="Category" aria-label="Search">-->
-  <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" 
-    class="form-control mr-sm-2 w-25" type="search" formControlName="location" placeholder="Location" aria-label="Search">
-  <input class="form-control mr-sm-2 w-25" type="search" formControlName="date" placeholder="Date" aria-label="Search">
-  <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-</form>
 
-<h4 class="text-center my-5">Or</h4>
+      <form class="form-inline my-2 my-lg-0 w-100" *ngIf="searchForm" [formGroup]="searchForm" (submit)="searchCLD()">
+          <label for="exampleInputPassword1">Category</label>
+          <select class="form-control mr-sm-2 w-25" id="inputGroupSelect01" formControlName="category">
+              <option value="" selected>Any Category</option>
+              <option *ngFor="let category of categories" placeholder="Category" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        <!--<input class="form-control mr-sm-2 w-25" type="search" formControlName="category" placeholder="Category" aria-label="Search">-->
+        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" 
+          class="form-control mr-sm-2 w-25" type="search" formControlName="location" placeholder="Location" aria-label="Search">
+        <!-- class="form-control mr-sm-2 w-25" type="date" formControlName="date" placeholder="Date" aria-label="Search">-->
+        <div class="form-group w-25">
+          <label for="exampleFormControlSelect1">Date</label>
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="date"> <!--(change)="setDate($event.target.value)"-->
+            <option selected value="">Any Date</option>
+            <option *ngFor="let date of dates" value="{{date.value}}">{{date.name}}</option>
+            <!--<option value="tomorrow">Tomorrow</option>
+            <option value="thisWeek">This Week</option>
+            <option value="thisMonth">This Month</option>  -->    
+          </select>
+        </div>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
 
-<form class="form-inline my-2 my-lg-0 w-100" (submit)="valueChanged($event, eventName.value)">
-    <input class="form-control mr-sm-2 w-25" type="search" #eventName placeholder="Search By Title" aria-label="Search">
-    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-</form>
+      <div class="">
+          <div *ngFor="let result of results">
+            <h1>{{result.name}}</h1>
+          </div>
+      </div>
+    

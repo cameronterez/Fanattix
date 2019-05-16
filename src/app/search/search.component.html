@@ -1,5 +1,16 @@
-<app-search-bar (valueChange)="searchName($event)"></app-search-bar>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn-primary btn" (click)="changeSearch('title')">Seach Title</button>
+            <button class="btn-primary btn" (click)="changeSearch('cld')">Seach Nearby & Times</button>
+        </div>
+        <div class="col-md-12">
+            <app-search-bar *ngIf="search == 'cld'"></app-search-bar>
+            <app-search-title *ngIf="search == 'title'"></app-search-title>
+        </div>
+    </div>
+</div>
+<!--<div class="container-fluid">
   <div class="row">
       <div class="col-md-3" *ngFor="let event of results" (click)="goToEventDetail(event.id)">
           <div class="card">
@@ -9,9 +20,9 @@
                 <small>{{event.description}}</small><br/>
                 <small>{{event.date}} {{event.time}}</small>
               </div>
-            </div>
+          </div>
       </div>
   </div>
-</div>
+</div>-->
 
 

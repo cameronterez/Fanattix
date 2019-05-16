@@ -15,10 +15,13 @@ export class SearchBarComponent implements OnInit {
   @Output() cldvalue = new EventEmitter()
   searchForm: FormGroup
   categories: CategoryObject[]
+  results: FxEvent[]
+  dates: any
 
   constructor(private eventService: EventService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.setDates()
     this.initSearchForm()
     this.getCategories()
   }
@@ -29,32 +32,13 @@ export class SearchBarComponent implements OnInit {
       err => console.log(err)
     )
   }
-
-  valueChanged($event, name){
-    $event.preventDefault()
-    console.log('name')    
-    this.valueChange.emit(name)
-  }
-
-  searchEvents($event, location, category, date){
-    $event.preventDefault()
-    console.log('the search')
-    let search = {
-      location: location,
-      category: category,
-      date: date
-    }
-    
-    this.cldvalue.emit(search)
-  }
-
   initSearchForm(){
     this.searchForm = this.fb.group({
       category: '',
       location: '',
       lat: '',
       lng: '',
-      date: ''
+      date: 'any'
     })
   }
 
@@ -64,10 +48,70 @@ export class SearchBarComponent implements OnInit {
     this.searchForm.get('lng').setValue(address.geometry.location.lng()) 
   }
 
-  searchCLD(){
+  setDate(selection){
+    console.log('select')
+    var dateObj = new Date()
+    let date = new Date()
+    switch(selection){
+      case 'any':
+        date = null
+        break
+      case 'today': 
+        date = dateObj // leave date as is, which represents today 
+        console.log(date)
+        break
+      case 'tomorrow':
+        date.setDate(dateObj.getDate()+1); //add 1 to .getDate() makes tomorrow
+        console.log(date)
+        break
+      case 'thisWeek':
+        //var curr = new Date; // get current date
+        var first = dateObj.getDate() - dateObj.getDay(); // First day is the day of the month - the day of the week
+        var last = first + 6; // last day is the first day + 6
+        
+        //var firstday = new Date(curr.setDate(first)).toUTCString();
+        date = new Date(dateObj.setDate(last));
+        console.log(date)
+        break
+      case 'thisMonth':
+        date = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        console.log(date)
+        break
+    }
+
+    //this.searchForm.setValue(date)
+    
+  }
+
+  setDates(){
+    let dateObj = new Date()
+    this.dates = [
+      {
+        name: 'today',
+        value: dateObj.toISOString(),
+      },
+      {
+        name: 'tomorrow',
+        value: new Date(dateObj.setDate(dateObj.getDate()+1)).toISOString(),
+      },
+      {
+        name: 'thisMonth',
+        value: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).toISOString()
+      }
+    ]
+
+    console.log(this.dates)
+  }
+
+  searchCLD($event){
     let data = this.searchForm.value
+    console.log(data)
+    //this.cldvalue.emit(data)
     this.eventService.searchEvents(data).subscribe(
-      res => console.log(res),
+      res => {
+        console.log(res)
+        this.results = res
+      },
       err => console.log(err)
     )
   }

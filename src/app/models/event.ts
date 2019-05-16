@@ -1,6 +1,7 @@
 import { Time } from "@angular/common";
 import { CategoryObject } from "./category-object";
 import { TypeObject } from "./type-object";
+import { TicketOption } from "./ticket-option";
 
 export interface FxEvent{
     id: number,
@@ -13,6 +14,9 @@ export interface FxEvent{
     organizers: String
     category_obj: CategoryObject,
     type_obj: TypeObject,
+    ticket_options: TicketOption[]
     lat: number,
     long: number,
+    type_detail: any,
+    category_detail: any,
 }

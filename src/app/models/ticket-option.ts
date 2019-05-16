@@ -7,4 +7,5 @@ export class TicketOption{
     price: Number
     number_total: Number
     event: Number
+    event_detail: any
 }

@@ -12,7 +12,8 @@
       <small>{{option.number_total}} tickets left.</small>
       <h1 class="text-muted">${{option.price}}</h1>
 
-      <button class="btn btn-primary" (click)="purchaseTicket(option.id)">Purchase</button>
+      <!--<button class="btn btn-primary" (click)="purchaseTicket(option.id)">Purchase</button>-->
+      <app-stripe-ticket-purchase [ticketPrice]="option.price" [creatorId]="option.event_detail.creator"></app-stripe-ticket-purchase>
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ import { API_URL, IMAGE_URL } from '../../environments/environment';
 export class SearchComponent implements OnInit {
   results: FxEvent[]
   IMAGE_URL = IMAGE_URL
+  search = 'cld'
 
   constructor(private http: HttpClient, private eventService: EventService, private router: Router) { }
 
@@ -21,7 +22,11 @@ export class SearchComponent implements OnInit {
 
   searchName(search){
     console.log(search)
-    this.searchEventsByName(search)
+    if(search['category'] == undefined){       
+      this.searchEventsByName(search) //if category is undefined, this is a name search
+    }else{
+    this.searchCLD(search) 
+    } //if there is any category, this is a CLD search
   }
 
   searchEventsByName(eventName){
@@ -37,6 +42,19 @@ export class SearchComponent implements OnInit {
   goToEventDetail(id){
     this.router.navigate(['event', id])
     console.log('detail')
+  }
+
+  changeSearch(val){
+    this.search = val
+  }
+
+  searchCLD(searchObj){
+    let data = searchObj
+    console.log(data)
+    this.eventService.searchEvents(data).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
 
 }

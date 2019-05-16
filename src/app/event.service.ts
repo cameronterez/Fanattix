@@ -69,7 +69,7 @@ export class EventService {
   }
 
   searchEvents(search){
-    return this.http.post<FxEvent>(API_URL + `/search-events-by-cld/`, search )
+    return this.http.post<FxEvent[]>(API_URL + `/search-events-by-cld/`, search )
   }
 
   //Tickets

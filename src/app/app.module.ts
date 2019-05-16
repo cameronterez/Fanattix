@@ -7,6 +7,8 @@ import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
+import { NgxStripeModule } from 'ngx-stripe';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 
@@ -33,7 +35,14 @@ import { TicketPurchaseComponent } from './tickets/ticket-purchase/ticket-purcha
 import { PostPurchaseComponent } from './tickets/post-purchase/post-purchase.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
-import { OccurrenceEditComponent } from './event-creator/occurrence-edit/occurrence-edit.component'
+import { OccurrenceEditComponent } from './event-creator/occurrence-edit/occurrence-edit.component';
+import { SearchFilterComponent } from './search-filter/search-filter.component';
+import { SearchTitleComponent } from './search-title/search-title.component';
+import { StripeOAuthComponent } from './stripe/stripe-oauth/stripe-oauth.component';
+import { AccountSettingsComponent } from './user/account-settings/account-settings.component';
+import { PostConnectComponent } from './stripe/post-connect/post-connect.component';
+import { StripeTicketPurchaseComponent } from './stripe/stripe-ticket-purchase/stripe-ticket-purchase.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -42,6 +51,7 @@ const routes: Routes = [
   {path: 'my-tickets', component: PurchasedTicketsComponent},
   {path: 'purchase-complete', component: PostPurchaseComponent},
   {path: 'account', component: AccountComponent},
+  {path: 'account-settings', component: AccountSettingsComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'search', component: SearchComponent},
   {path: 'creator', component: CreatorComponent,
@@ -53,6 +63,8 @@ const routes: Routes = [
       {path: 'double', component: EventCreatorSingleComponent},
     ]
   },
+  {path: 'stripe-connect', component: PostConnectComponent},
+
 ]
 
 @NgModule({
@@ -81,7 +93,13 @@ const routes: Routes = [
     PostPurchaseComponent,
     SignUpComponent,
     AccountComponent,
-    OccurrenceEditComponent
+    OccurrenceEditComponent,
+    SearchFilterComponent,
+    SearchTitleComponent,
+    StripeOAuthComponent,
+    AccountSettingsComponent,
+    PostConnectComponent,
+    StripeTicketPurchaseComponent,
   ],
   // Google Places API Key 
 
@@ -92,7 +110,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgbAlertModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    NgxStripeModule.forRoot('pk_test_71wHm2ZqOU05JBFNmGVNXXBd')
   ],
   providers: [],
   bootstrap: [AppComponent]
