@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { MessageService } from './message.service';
+import { Router, NavigationEnd } from '@angular/router';
+
+declare let ga: Function
 
 @Component({
   selector: 'app-root',
@@ -12,8 +15,21 @@ export class AppComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private messageService: MessageService
-  ){}
+    private messageService: MessageService,
+    private router: Router
+  ){
+
+    // subscribe to router events and send page views to Google Analytics
+    this.router.events.subscribe(event => {
+
+    if (event instanceof NavigationEnd) {
+      ga('set', 'page', event.urlAfterRedirects);
+      ga('send', 'pageview');
+
+    }
+
+  });
+  }
 
   ngOnInit(){
     navigator.geolocation.getCurrentPosition(
@@ -26,4 +42,5 @@ export class AppComponent implements OnInit{
       }
     )
   }
+  
 }

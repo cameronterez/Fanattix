@@ -15,26 +15,21 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12" style="margin-top: 60px;margin-bottom: 20px;display: flex;">
+    <div class="col-md-12" #eventList style="margin-top: 60px;margin-bottom: 20px;display: flex;">
         <h1>Upcoming Events</h1>
-        <button type="button" class="btn btn-primary btn-sm">Date</button>
-        <button type="button" class="btn btn-secondary btn-sm">Categories</button>
-        <button type="button" class="btn btn-primary btn-sm">Free</button>
-        <button type="button" class="btn btn-secondary btn-sm" >Create Event</button>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-3" *ngFor="let event of events" (click)="goToEventDetail(event.id)">
-        <div class="card">
-            <img src="{{event.image}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h3>{{event.name}}</h3>
-              <small>{{event.description}}</small><br/>
-              <small>{{event.date}} {{event.time}}</small>
-            </div>
-          </div>
+        <button type="button" class="btn btn-primary btn-sm">Popular</button>
+        <button type="button" (click)="getEvents(eventList)" class="btn btn-secondary btn-sm">All Events</button>
+        <button type="button" (click)="getFreeEvents(eventList)" class="btn btn-primary btn-sm">Free</button>
+        <button type="button" (click)="goToEventCreator()" class="btn btn-secondary btn-sm" >Create Event</button>
     </div>
   </div>
 
+  <div>
+    <app-event-list [events]="events"></app-event-list>
+  </div>
+
+  <div>
+    <app-category-scroll></app-category-scroll>
+  </div>
+  
 </div>

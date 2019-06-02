@@ -23,8 +23,6 @@
       </form>
 
       <div class="">
-          <div *ngFor="let result of results">
-            <h1>{{result.name}}</h1>
-          </div>
+        <app-event-list [events]="results"></app-event-list>
       </div>
     

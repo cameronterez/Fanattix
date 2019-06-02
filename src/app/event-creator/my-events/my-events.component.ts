@@ -37,5 +37,8 @@ export class MyEventsComponent implements OnInit {
     this.router.navigate(['creator/edit-event', id])
   }
 
+  goToActions(id){
+    this.router.navigate(['creator/actions', id])
+  }
 
 }

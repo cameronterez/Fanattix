@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-3" *ngFor="let event of events" (click)="goToEventDetail(event.id)">
+      <div class="card">
+          <img src="{{event.image}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3>{{event.name}}</h3>
+            <small>{{event.location}}</small><br/>
+            <small>{{event.occurrences[0]?.start | date: 'medium'}}</small>
+          </div>
+        </div>
+  </div>
+</div>

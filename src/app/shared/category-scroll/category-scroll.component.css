@@ -1,0 +1,10 @@
+.scroll-container{
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+.box{
+    flex: 0 0 auto;
+    width: 300px;
+    border: 1px solid whitesmoke;
+}

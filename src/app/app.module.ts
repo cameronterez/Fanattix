@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
@@ -42,6 +42,17 @@ import { StripeOAuthComponent } from './stripe/stripe-oauth/stripe-oauth.compone
 import { AccountSettingsComponent } from './user/account-settings/account-settings.component';
 import { PostConnectComponent } from './stripe/post-connect/post-connect.component';
 import { StripeTicketPurchaseComponent } from './stripe/stripe-ticket-purchase/stripe-ticket-purchase.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { EventAlertsComponent } from './event-creator/event-alerts/event-alerts.component';
+import { AnalyticsComponent } from './event-creator/analytics/analytics.component';
+import { StripeSaveCardComponent } from './stripe/stripe-save-card/stripe-save-card.component';
+import { EventDeleteModalComponent } from './event-creator/modals/event-delete-modal/event-delete-modal.component';
+import { ErrorDisplayComponent } from './shared/error-display/error-display.component';
+import { EventsPopularComponent } from './events-popular/events-popular.component';
+import { EventsInCategoryComponent } from './events-in-category/events-in-category.component';
+import { HorizontalScrollComponent } from './shared/horizontal-scroll/horizontal-scroll.component';
+import { CategoryScrollComponent } from './shared/category-scroll/category-scroll.component';
+import { TypeScrollComponent } from './shared/type-scroll/type-scroll.component';
 
 
 const routes: Routes = [
@@ -61,6 +72,7 @@ const routes: Routes = [
       {path: 'my-events', component: MyEventsComponent},
       {path: 'edit-event/:id', component: EditEventComponent},
       {path: 'double', component: EventCreatorSingleComponent},
+      {path: 'actions/:id', component: AnalyticsComponent}
     ]
   },
   {path: 'stripe-connect', component: PostConnectComponent},
@@ -100,6 +112,17 @@ const routes: Routes = [
     AccountSettingsComponent,
     PostConnectComponent,
     StripeTicketPurchaseComponent,
+    EventListComponent,
+    EventAlertsComponent,
+    AnalyticsComponent,
+    StripeSaveCardComponent,
+    EventDeleteModalComponent,
+    ErrorDisplayComponent,
+    EventsPopularComponent,
+    EventsInCategoryComponent,
+    HorizontalScrollComponent,
+    CategoryScrollComponent,
+    TypeScrollComponent,
   ],
   // Google Places API Key 
 
@@ -111,7 +134,11 @@ const routes: Routes = [
     HttpClientModule,
     NgbAlertModule,
     GooglePlaceModule,
-    NgxStripeModule.forRoot('pk_test_71wHm2ZqOU05JBFNmGVNXXBd')
+    NgxStripeModule.forRoot('pk_test_71wHm2ZqOU05JBFNmGVNXXBd'),
+    NgbModule.forRoot()
+  ],
+  entryComponents: [
+    EventDeleteModalComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

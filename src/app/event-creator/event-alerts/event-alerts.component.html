@@ -1,0 +1,14 @@
+<div>
+  <form [formGroup]="messageForm" *ngIf="messageForm" (submit)="sendEmailToPatrons()">
+    <div class="form-group">
+      <label><small>Subject</small></label>
+      <input class="form-control" type="type" placeholder="Enter message" formControlName="subject">
+    </div>
+    <div class="form-group">
+      <label><small>Type Your Message</small></label>
+      <textarea class="form-control" placeholder="Enter message" formControlName="message"></textarea>
+    </div>
+    <input type="submit" class="btn btn-sm btn-primary" value="Send">
+    <p class="text-warning">Warning! This Message will be emailed to all patrons for this event. Please be courteous and professional.</p>
+  </form>
+</div>

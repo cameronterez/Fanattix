@@ -63,6 +63,10 @@ export class EventService {
     return this.http.put<FxEvent>(API_URL + '/events/' + eventId + "/", eventData)
   }
 
+  deleteEvent(eventId){
+    return this.http.delete(API_URL + `/events/${eventId}/`)
+  }
+
   ////////Search////////
   searchEventsByName(search){
     return this.http.get<FxEvent[]>(API_URL + `/search-events-by-name/?name=${search}` )
@@ -70,6 +74,10 @@ export class EventService {
 
   searchEvents(search){
     return this.http.post<FxEvent[]>(API_URL + `/search-events-by-cld/`, search )
+  }
+
+  getFreeEvents(){
+    return this.http.get<FxEvent[]>(API_URL + '/get-free-events/')
   }
 
   //Tickets
@@ -88,6 +96,12 @@ export class EventService {
 
   getTicketOptionDetail(id){
     return this.http.get<TicketOption>(API_URL + `/ticket-option-detail/${id}`)
+  }
+
+  //////Email///////
+  sendEmailToPatrons(content){
+    content['sender_id'] = this.authService._userId.value
+    return this.http.post(API_URL + `/email-patrons/`, content)
   }
 
 }

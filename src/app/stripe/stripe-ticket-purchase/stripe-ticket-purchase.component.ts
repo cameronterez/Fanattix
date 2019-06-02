@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
  
 import { StripeService as NgxStripeService, StripeCardComponent, ElementOptions, ElementsOptions } from "ngx-stripe";
 import { StripeService } from '../../stripe.service';
+import { AuthGuardService } from '../../auth-guard.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-stripe-ticket-purchase',
@@ -12,6 +14,8 @@ import { StripeService } from '../../stripe.service';
 export class StripeTicketPurchaseComponent implements OnInit {
   @Input() ticketPrice: number
   @Input() creatorId: number
+  @Input() ticketOptionId: number
+  @Input() quantity: number
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
  
   cardOptions: ElementOptions = {
@@ -39,7 +43,8 @@ export class StripeTicketPurchaseComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ngxstripeService: NgxStripeService,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private authService: AuthService
   ) {}
  
   ngOnInit() {
@@ -60,11 +65,16 @@ export class StripeTicketPurchaseComponent implements OnInit {
           let data = {
             source_token : result.token.id,
             amount : this.ticketPrice, //convert ticket price to cents for Stripe
-            creatorId : this.creatorId
+            creatorId : this.creatorId,
+            ticket_option_id: this.ticketOptionId,
+            quantity: this.quantity,
+            user_id: this.authService._userId.value
           }
           console.log(data)
           this.stripeService.sendToken(data).subscribe(
-            res => console.log(res),
+            res => {
+              console.log(res)
+            },
             err => console.log(err)
           )
         } else if (result.error) {

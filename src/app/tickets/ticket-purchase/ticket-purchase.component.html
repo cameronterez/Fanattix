@@ -13,7 +13,12 @@
       <h1 class="text-muted">${{option.price}}</h1>
 
       <!--<button class="btn btn-primary" (click)="purchaseTicket(option.id)">Purchase</button>-->
-      <app-stripe-ticket-purchase [ticketPrice]="option.price" [creatorId]="option.event_detail.creator"></app-stripe-ticket-purchase>
+      <app-stripe-ticket-purchase 
+        [ticketPrice]="option.price" 
+        [ticketOptionId]="option.id"
+        [creatorId]="option.event_detail.creator"
+        [quantity]="quantity"
+        ></app-stripe-ticket-purchase>
     </div>
   </div>
 </div>

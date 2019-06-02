@@ -71,4 +71,8 @@ export class AuthService{
   signUp(content){
     return this.http.post<User>(API_URL + '/users/', content)
   }
+
+  saveProfile(content){
+    return this.http.patch<User>(API_URL  + `/users/${this._userId.value}/`, content)
+  }
 }

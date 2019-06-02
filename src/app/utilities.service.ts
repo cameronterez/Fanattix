@@ -14,4 +14,13 @@ export class UtilitiesService {
     date = new Date(date + " " + time)
     return date
   }
+
+  scrollToElement(element) { //This function scrolls to specified element
+    console.log(element)
+    if(element != null && element != undefined){
+      //window.scrollTo(element.yPosition)
+      element.scrollIntoView({behavior: 'smooth'})
+      console.log(element.yPosition)
+    }
+  }
 }

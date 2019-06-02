@@ -8,6 +8,9 @@ import { AuthService } from '../../auth.service';
 import { ViewChild } from '@angular/core';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EventDeleteModalComponent } from '../modals/event-delete-modal/event-delete-modal.component';
 
 @Component({
   selector: 'app-event-creator-single',
@@ -24,12 +27,15 @@ export class EventCreatorSingleComponent implements OnInit {
   createdEvent: FxEvent
   categories: any[]
   types: any[]
+  formErrors = []
 
   constructor(
     private fb: FormBuilder, 
     private eventService: EventService, 
     private messageService: MessageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    private modal: NgbModal
   ) { }
 
   ngOnInit() {
@@ -39,14 +45,12 @@ export class EventCreatorSingleComponent implements OnInit {
 
     this.eventService.getCategories().subscribe(
       res => {
-        console.log(res)
         this.categories = res},
       err => console.log(err)
     )
 
     this.eventService.getTypes().subscribe(
       res => {
-        console.log(res)
         this.types = res},
       err => console.log(err)
     )
@@ -88,6 +92,7 @@ export class EventCreatorSingleComponent implements OnInit {
       image: this.selectedFileSource,
       lat : this.createdEvent.lat,
       lng : this.createdEvent.long,
+      is_active : this.createdEvent.is_inactive
     })
   }
 
@@ -114,7 +119,8 @@ export class EventCreatorSingleComponent implements OnInit {
       venue: '',
       image: '',
       lat : '',
-      lng: ''
+      lng: '',
+      is_inactive: false
     })
   }
 
@@ -140,10 +146,16 @@ export class EventCreatorSingleComponent implements OnInit {
     if(!this.createdEvent){
       this.eventService.createEvent(data).subscribe(
         res => {
-          this.messageService.displayMessage(`Event ${data.name} Saved!`)
-          console.log(res)
-          this.createdEvent = res['event']
-          console.log(this.createdEvent)
+          if(res.hasOwnProperty('errors')){
+            this.formErrors = res['errors']
+            console.log(res)
+            console.log(this.formErrors)
+          }else{
+            this.messageService.displayMessage(`Event ${data.name} Saved!`)
+            console.log(res)
+            this.createdEvent = res['event']
+            console.log(this.createdEvent)
+          }
         },
         err => console.log(err)
       )
@@ -158,6 +170,21 @@ export class EventCreatorSingleComponent implements OnInit {
         err => console.log(err)
       )
     }
+  }
+
+  deleteEvent(){
+    this.eventService.deleteEvent(this.createdEvent['id']).subscribe(
+      res => {
+        console.log(res)
+        this.messageService.displayMessage('Event Deleted')
+        this.router.navigate(['creator/my-events'])
+      }
+    )
+
+  }
+
+  confirmDelete(){
+    this.modal.open(EventDeleteModalComponent)
   }
 
 

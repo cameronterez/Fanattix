@@ -36,11 +36,4 @@ export class EventDetailComponent implements OnInit {
     this.router.navigate(['purchase-ticket', ticketOptionId])
   }  
 
-  /*purchaseTicket(ticketOptionId){
-    this.eventService.purchaseTicket(ticketOptionId).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
-  }*/
-
 }

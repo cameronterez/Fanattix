@@ -13,7 +13,6 @@ export class StripeService {
 
   getConnectUserInfo(auth_code){
     let content = {
-      /*client_secret : STRIPE_CLIENT_SECRET,*/
       user_id : this.authService._userId.value,
       code : auth_code,
       grant_type: 'authorization_code'
@@ -26,5 +25,9 @@ export class StripeService {
 
   sendToken(data){
     return this.http.post(API_URL + `/charge/`, data)
+  }
+
+  saveCard(data){
+    return this.http.post(API_URL + '/save-card/', data)
   }
 }

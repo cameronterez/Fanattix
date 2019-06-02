@@ -11,20 +11,30 @@ import { StripeService } from '../../stripe.service';
 export class PostConnectComponent implements OnInit {
   authorization_code: any
   stripeUserInfo: any
+  userMessage = ''
 
   constructor(
     private route: ActivatedRoute, 
     private messageService: MessageService,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(
       params => {
-        console.log(params)
+        if(params['params']['error'] != undefined || params['params']['error'] != null){
+          //If there was an error, handle it here
+          console.log(params['params']['error'])
+          console.log(params['params']['error_description'])
+          this.userMessage = params['error']['error_description']
+        }else{
+          console.log(params)
           this.authorization_code = params['params']['code']
           console.log(this.authorization_code)
-          this.getConnectUserInfo(this.authorization_code)      
+          this.getConnectUserInfo(this.authorization_code)
+          this.userMessage = 'You Have successfully Connected Your Account!'  
+        }    
       }      
         ,
       err => console.log(err)
@@ -39,6 +49,10 @@ export class PostConnectComponent implements OnInit {
       },
       err => console.log(err)
     )
+  }
+
+  goToAccountSettings(){
+    this.router.navigate(['account-settings'])
   }
 
 }
