@@ -10,6 +10,7 @@ import { FxEventOccurrence } from './models/event-occurrence';
 @Injectable({
   providedIn: 'root'
 })
+
 export class EventService {
 
   events: FxEvent[]
@@ -102,6 +103,11 @@ export class EventService {
   sendEmailToPatrons(content){
     content['sender_id'] = this.authService._userId.value
     return this.http.post(API_URL + `/email-patrons/`, content)
+  }
+
+  /////Categories//////
+  getEventsByCategory(categoryId: number){
+    return this.http.get(API_URL + `/events-by-category/?categoryId=${categoryId}`)
   }
 
 }

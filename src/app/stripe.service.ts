@@ -30,4 +30,12 @@ export class StripeService {
   saveCard(data){
     return this.http.post(API_URL + '/save-card/', data)
   }
+
+  getPaymentMethods(user_id=this.authService._userId.value){
+    return this.http.get(API_URL + `/payment-methods/${user_id}/`)
+  }
+
+  getStripeConnectedAccount(user_id=this.authService._userId.value){
+    return this.http.get(API_URL + `/connected-accounts/${user_id}/`)
+  }
 }

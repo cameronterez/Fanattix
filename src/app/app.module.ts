@@ -12,6 +12,10 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 
+// the scanner!
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
 import { EventCreatorHomeComponent } from './event-creator/event-creator-home/event-creator-home.component';
@@ -53,9 +57,17 @@ import { EventsInCategoryComponent } from './events-in-category/events-in-catego
 import { HorizontalScrollComponent } from './shared/horizontal-scroll/horizontal-scroll.component';
 import { CategoryScrollComponent } from './shared/category-scroll/category-scroll.component';
 import { TypeScrollComponent } from './shared/type-scroll/type-scroll.component';
+import { SplashPageComponent } from './splash-page/splash-page.component';
+import { CategoryEventsComponent } from './shared/category-events/category-events.component';
+import { UnderwayEventComponent } from './event-util/underway-event/underway-event.component';
+import { TicketScannerComponent } from './event-util/ticket-scanner/ticket-scanner.component';
+import { EventUtilitiesComponent } from './event-util/event-utilities/event-utilities.component';
+import { SavedPaymentMethodsComponent } from './user/saved-payment-methods/saved-payment-methods.component';
+
 
 
 const routes: Routes = [
+  //{path: '', component: SplashPageComponent},
   {path: '', component: HomeComponent},
   {path: 'event/:id', component: EventDetailComponent},
   {path: 'purchase-ticket/:id', component: TicketPurchaseComponent},
@@ -65,6 +77,7 @@ const routes: Routes = [
   {path: 'account-settings', component: AccountSettingsComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'category-events/:id', component: CategoryEventsComponent},
   {path: 'creator', component: CreatorComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
@@ -76,7 +89,8 @@ const routes: Routes = [
     ]
   },
   {path: 'stripe-connect', component: PostConnectComponent},
-
+  {path: 'event-utilities', component: EventUtilitiesComponent},
+  {path: 'ticket-scanner', component: TicketScannerComponent},
 ]
 
 @NgModule({
@@ -123,6 +137,12 @@ const routes: Routes = [
     HorizontalScrollComponent,
     CategoryScrollComponent,
     TypeScrollComponent,
+    SplashPageComponent,
+    CategoryEventsComponent,
+    UnderwayEventComponent,
+    TicketScannerComponent,
+    EventUtilitiesComponent,
+    SavedPaymentMethodsComponent,
   ],
   // Google Places API Key 
 
@@ -135,7 +155,8 @@ const routes: Routes = [
     NgbAlertModule,
     GooglePlaceModule,
     NgxStripeModule.forRoot('pk_test_71wHm2ZqOU05JBFNmGVNXXBd'),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ZXingScannerModule,
   ],
   entryComponents: [
     EventDeleteModalComponent,

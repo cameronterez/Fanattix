@@ -53,7 +53,7 @@ export class StripeSaveCardComponent implements OnInit {
     });
   }
  
-  buy() {
+  saveCard() {
     const name = this.stripeTest.get('name').value;
     this.ngxstripeService.stripe
       .createToken(this.card.getCard(), { name })

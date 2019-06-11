@@ -3,7 +3,7 @@
     <div class="col-md-8 offset-md-2 mt-3">
       <h5>Actions & Insights</h5>
       <h3 class="text-gray">{{event?.name}}</h3> 
-      <button class="btn btn-primary btn-sm" (click)="goToEdit()">Edit</button>
+      <button class="btn btn-primary btn-sm" (click)="goToEdit(event?.id)">Edit</button>
       
       <div>
         <p>Total Tickets Sold {{event?.total_tickets_sold}}</p>

@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-3" *ngFor="let event of events" (click)="goToEventDetail(event.id)">
       <div class="card">
-          <img src="{{event.image}}" class="card-img-top" alt="...">
+          <img src="{{event.image}}" class="card-img-top" alt="..." *ngIf="event.image">
+          <img src="../assets/imgs/event-noimage.png" class="card-img-top w-25 mx-auto" alt="..." *ngIf="event.image==null || event.image==undefined">
           <div class="card-body">
             <h3>{{event.name}}</h3>
             <small>{{event.location}}</small><br/>

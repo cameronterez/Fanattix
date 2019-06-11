@@ -14,6 +14,7 @@ export class NavigationComponent implements OnInit {
   }
 
   toggleAccountMenu(){
+    console.log(this.accountMenu)
     this.accountMenu = this.accountMenu == true ? false : true
   }
 }

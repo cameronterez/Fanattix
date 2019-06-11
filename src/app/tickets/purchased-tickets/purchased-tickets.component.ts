@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../event.service';
 import { Ticket } from '../../models/ticket';
+import { API_URL } from '../../../environments/environment';
 
 @Component({
   selector: 'app-purchased-tickets',
@@ -9,6 +10,7 @@ import { Ticket } from '../../models/ticket';
 })
 export class PurchasedTicketsComponent implements OnInit {
   tickets: Ticket[]
+  API_URL = API_URL
 
   constructor(private eventService: EventService) { }
 

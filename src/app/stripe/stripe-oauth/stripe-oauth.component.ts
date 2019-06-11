@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StripeService } from '../../stripe.service';
 
 @Component({
   selector: 'app-stripe-oauth',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stripe-oauth.component.css']
 })
 export class StripeOAuthComponent implements OnInit {
+  connectedAccount: any
 
-  constructor() { }
+  constructor(private stripeService: StripeService) { }
 
   ngOnInit() {
+    this.getStripeConnectedAccount()
+  }
+
+  getStripeConnectedAccount(){
+    this.stripeService.getStripeConnectedAccount().subscribe(
+      res => {
+        console.log(res)
+        this.connectedAccount = res['connected_account']
+      },
+      err => console.log(err)
+    )
   }
 
 }

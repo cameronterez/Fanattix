@@ -20,5 +20,6 @@ export interface FxEvent{
     type_detail: any,
     category_detail: any,
     is_inactive: boolean,
-    occurrences: any[]
+    occurrences: any[],
+    total_tickets_sold: any,
 }
