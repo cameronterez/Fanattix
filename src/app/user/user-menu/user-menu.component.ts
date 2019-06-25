@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../../models/user';
@@ -9,6 +9,7 @@ import { User } from '../../models/user';
   styleUrls: ['./user-menu.component.css']
 })
 export class UserMenuComponent implements OnInit {
+  @Output() toggleMenu = new EventEmitter()
   loggedIn: boolean
   user: User
 
@@ -30,6 +31,10 @@ export class UserMenuComponent implements OnInit {
 
   logout(){
     this.auth.logout()
+  }
+
+  menuItemClicked(){
+    this.toggleMenu.emit()
   }
 
 }

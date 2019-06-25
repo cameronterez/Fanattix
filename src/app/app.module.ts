@@ -32,7 +32,6 @@ import { EditEventComponent } from './event-creator/edit-event/edit-event.compon
 import { MyEventsComponent } from './event-creator/my-events/my-events.component';
 import { PurchasedTicketsComponent } from './tickets/purchased-tickets/purchased-tickets.component';
 import { OccurrenceCreateComponent } from './event-creator/occurrence-create/occurrence-create.component';
-import { EditOccurrenceComponent } from './event-creator/edit-occurrence/edit-occurrence.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchComponent } from './search/search.component';
 import { TicketPurchaseComponent } from './tickets/ticket-purchase/ticket-purchase.component';
@@ -63,12 +62,15 @@ import { UnderwayEventComponent } from './event-util/underway-event/underway-eve
 import { TicketScannerComponent } from './event-util/ticket-scanner/ticket-scanner.component';
 import { EventUtilitiesComponent } from './event-util/event-utilities/event-utilities.component';
 import { SavedPaymentMethodsComponent } from './user/saved-payment-methods/saved-payment-methods.component';
+import { CreateEventComponent } from './event-creator/create-event/create-event.component';
+import { EditTicketOptionComponent } from './event-creator/edit-ticket-option/edit-ticket-option.component';
+import { CamSplashComponent } from './cam-splash/cam-splash.component';
 
 
 
 const routes: Routes = [
-  //{path: '', component: SplashPageComponent},
-  {path: '', component: HomeComponent},
+  {path: '', component: CamSplashComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'event/:id', component: EventDetailComponent},
   {path: 'purchase-ticket/:id', component: TicketPurchaseComponent},
   {path: 'my-tickets', component: PurchasedTicketsComponent},
@@ -112,7 +114,6 @@ const routes: Routes = [
     MyEventsComponent,
     PurchasedTicketsComponent,
     OccurrenceCreateComponent,
-    EditOccurrenceComponent,
     SearchBarComponent,
     SearchComponent,
     TicketPurchaseComponent,
@@ -143,6 +144,9 @@ const routes: Routes = [
     TicketScannerComponent,
     EventUtilitiesComponent,
     SavedPaymentMethodsComponent,
+    CreateEventComponent,
+    EditTicketOptionComponent,
+    CamSplashComponent,
   ],
   // Google Places API Key 
 

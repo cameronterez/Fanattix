@@ -21,6 +21,7 @@ export class AccountSettingsComponent implements OnInit {
       val => {
         this.user = this.authService.user
         this.initForm()
+        console.log(this.user)
       },
       err => this.messageService.displayMessage('Could not Check Login')
     )
@@ -34,7 +35,9 @@ export class AccountSettingsComponent implements OnInit {
       first_name : [this.user.first_name, Validators.required],
       last_name: [this.user.last_name, Validators.required],
       email : [this.user.email, Validators.required],
-      recievesNotifications : [this.user.profile_img]
+      receives_emails : [this.user.receives_emails],
+      receives_emails_from_organizers: [this.user.receives_emails_from_organizers],
+      profile_img: [this.user.profile_img]
     })
 
     console.log(this.profileForm.value)

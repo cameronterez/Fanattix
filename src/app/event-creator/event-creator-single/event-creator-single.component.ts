@@ -28,6 +28,7 @@ export class EventCreatorSingleComponent implements OnInit {
   categories: any[]
   types: any[]
   formErrors = []
+  errors = []
 
   constructor(
     private fb: FormBuilder, 
@@ -97,12 +98,12 @@ export class EventCreatorSingleComponent implements OnInit {
   }
 
   public handleAddressChange(address: Address) {
-    console.log(address)
+    //console.log(address)
     this.eventForm.get('location').setValue(address.formatted_address)
     this.eventForm.get('lat').setValue(address.geometry.location.lat())
     this.eventForm.get('lng').setValue(address.geometry.location.lng())
-    console.log(address.geometry.location.lat())
-    console.log(address.geometry.location.lng())
+    //console.log(address.geometry.location.lat())
+    //console.log(address.geometry.location.lng())
   }
 
   initBlankForm(){

@@ -37,11 +37,13 @@
         <li class="nav-item" (click)="toggleAccountMenu()">
          <i style="cursor: pointer;" class="material-icons">person</i>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" href="#">Register</a>
-        </li>
+        </li>-->
       </ul>
 
-      <div class="account-menu" *ngIf="accountMenu==true"><app-user-menu></app-user-menu></div>
+      <div class="account-menu" *ngIf="accountMenu==true">
+        <app-user-menu (toggleMenu)="toggleAccountMenu()"></app-user-menu>
+      </div>
     </div>
   </nav>

@@ -7,6 +7,9 @@
             <h3>{{event.name}}</h3>
             <small>{{event.location}}</small><br/>
             <small>{{event.occurrences[0]?.start | date: 'medium'}}</small>
+            <div class="d-flex">
+              <p *ngFor="let to of event.ticket_options" class="mr-1">${{to.price}}</p>
+            </div>
           </div>
         </div>
   </div>

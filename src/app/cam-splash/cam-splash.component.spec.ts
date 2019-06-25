@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditOccurrenceComponent } from './edit-occurrence.component';
+import { CamSplashComponent } from './cam-splash.component';
 
-describe('EditOccurrenceComponent', () => {
-  let component: EditOccurrenceComponent;
-  let fixture: ComponentFixture<EditOccurrenceComponent>;
+describe('CamSplashComponent', () => {
+  let component: CamSplashComponent;
+  let fixture: ComponentFixture<CamSplashComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditOccurrenceComponent ]
+      declarations: [ CamSplashComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditOccurrenceComponent);
+    fixture = TestBed.createComponent(CamSplashComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

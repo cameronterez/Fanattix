@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { API_URL } from '../environments/environment';
 import { User } from './models/user';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService{
   _loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false)
   location: Position //stores user location for search
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router) { 
     this.checkStorageForCredentials()
   }
 
@@ -55,9 +56,10 @@ export class AuthService{
   logout(){
     //clear user from memory and localstorage
     this.auth_token = null
-    this.user = new User //What the hell?????????????????????????????? Trying to set user to nothing on logout
+    this.user = null //What the hell?????????????????????????????? Trying to set user to nothing on logout
     this._userId.next('')
     this.clear_user()
+    this.router.navigate([''])
   }
 
   clear_user(){

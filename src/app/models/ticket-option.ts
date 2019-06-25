@@ -6,6 +6,7 @@ export class TicketOption{
     url: Url
     price: Number
     number_total: Number
+    description: string
     event: Number
     event_detail: any
 }

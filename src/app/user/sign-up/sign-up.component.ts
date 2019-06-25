@@ -10,6 +10,8 @@ import { MessageService } from '../../message.service';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup
+  errors = []
+  validationErrors = {}
 
   constructor(private fb: FormBuilder, private auth: AuthService, private msgService: MessageService) { }
 
@@ -28,6 +30,8 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp(){
+    this.clearErrors() //clear all previous errors
+
     if(this.signUpForm.get('password').value == this.signUpForm.get('password_2').value){
       let content = {
         username : this.signUpForm.get('email').value,
@@ -53,14 +57,30 @@ export class SignUpComponent implements OnInit {
               this.auth._loggedIn.next(true)
               console.log('Done')
             },
-            err => console.log(err)
+            err => {
+              console.log(err)
+              if(err['error']){ 
+                console.log(err['error']['username'])
+                if(err['error']['username']){
+                  this.errors = err['error']
+                  console.log(this.errors['username'])
+                }            
+                 
+              }              
+            }
           )
         },
         err => console.log(err)
       )
     }else{
       this.msgService.displayMessage('Passwords Do Not Match')
+      this.validationErrors = {'passwordMatch': 'Passwords do not match'}
     }
+  }
+
+  clearErrors(){
+    this.validationErrors = {}
+    this.errors = []
   }
 
 }

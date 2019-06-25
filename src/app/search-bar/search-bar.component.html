@@ -12,7 +12,7 @@
         <div class="form-group w-25">
           <label for="exampleFormControlSelect1">Date</label>
           <select class="form-control" id="exampleFormControlSelect1" formControlName="date"> <!--(change)="setDate($event.target.value)"-->
-            <option selected value="">Any Date</option>
+            <option value="" selected>Any Date</option>
             <option *ngFor="let date of dates" value="{{date.value}}">{{date.name}}</option>
             <!--<option value="tomorrow">Tomorrow</option>
             <option value="thisWeek">This Week</option>

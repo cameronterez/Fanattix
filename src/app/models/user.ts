@@ -9,4 +9,6 @@ export class User{
     is_staff: Boolean
     is_active: Boolean
     profile_img: Url
+    receives_emails: boolean
+    receives_emails_from_organizers: boolean
 }

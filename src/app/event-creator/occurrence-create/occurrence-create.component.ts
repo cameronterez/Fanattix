@@ -31,12 +31,18 @@ export class OccurrenceCreateComponent implements OnInit {
   }
 
   ngOnChanges(){
+    //this.getOccurrence(this.eventOccurrenceId)
     this.initForm()
+    console.log('this.createdOccurrence')
+    console.log(this.createdOccurrence)
+    console.log('this.createdOccurrence DONE')
   }
 
   initForm(){
     if(this.event){
       if(this.event.occurrences.length > 1){ //If occurence is set, this is an edit
+        console.log(this.event.occurrences)
+
         this.occurrenceForm = this.fb.group({
           creator: this.auth._userId.value,
           event: this.event['id'],
@@ -96,6 +102,13 @@ export class OccurrenceCreateComponent implements OnInit {
     }else{
       this.messageService.displayMessage('You Must Save Event Details Before Saving Time/Date')
     }
+  }
+
+  getOccurrence(id){
+    this.eventService.getOccurrence(id).subscribe(
+      res => this.createdOccurrence = res['occurrence'],
+      err => console.log(err)
+    )
   }
 
 }

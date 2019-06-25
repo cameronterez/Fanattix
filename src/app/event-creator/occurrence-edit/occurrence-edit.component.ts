@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Input } from '@angular/core';
 import { EventService } from '../../event.service';
 import { MessageService } from '../../message.service';
@@ -12,7 +12,7 @@ import { UtilitiesService } from '../../utilities.service';
   styleUrls: ['./occurrence-edit.component.css']
 })
 export class OccurrenceEditComponent implements OnInit {
-  @Input() eventId
+  @Input() event
   occurrenceForm: FormGroup
 
   constructor(
@@ -24,34 +24,47 @@ export class OccurrenceEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.event)
+    this.initForm()    
   }
 
   initForm(){
-    this.occurrenceForm = this.fb.group({
-      creator: this.auth._userId.value,
-      event: this.eventId,
-      startDate: ['', Validators.required],
-      startTime: ['', Validators.required],
-      endDate: ['', Validators.required],
-      endTime: ['', Validators.required]
-    })
+      let startDate = this.util.DateTimeToDateAndTime(this.event.occurrences[0].start)
+      let endDate = this.util.DateTimeToDateAndTime(this.event.occurrences[0].end)
+
+      console.log(startDate)
+      console.log(endDate)
+
+      this.occurrenceForm = this.fb.group({
+        creator: this.auth._userId.value,
+        event: this.event.id,
+        startDate: [ startDate[0], Validators.required],
+        startTime: [ startDate[1], Validators.required],
+        endDate: [ endDate[0], Validators.required],
+        endTime: [ endDate[1], Validators.required]
+      })
+    
+    console.log(this.event)
   }
 
 
   submitForm(){
 
-    if(this.eventId){
+    if(this.event.id){
       let start = this.util.DateAndTimeToDateTime(this.occurrenceForm.get('startDate').value, this.occurrenceForm.get('startTime').value)
       let end = this.util.DateAndTimeToDateTime(this.occurrenceForm.get('endDate').value, this.occurrenceForm.get('endTime').value)
-    
+      
+      console.log(start)
+      console.log(end)
 
       let occurrenceData = {
+        id: this.event.occurrences[0]['id'],
         creator: this.occurrenceForm.get('creator').value,
-        event: this.eventId,
+        event: this.event.id,
         start: start,
         end: end,
       }
-      console.log(this.eventId)
+      console.log(this.event.id)
       console.log(occurrenceData)
       console.log(occurrenceData.start)
       console.log(occurrenceData.event)

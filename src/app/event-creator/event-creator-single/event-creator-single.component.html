@@ -64,13 +64,15 @@
         <h3 class="mt-5">Image</h3>
         <app-error-display [errorMessage]="formErrors['image']" *ngIf="formErrors['image']"></app-error-display>
         <p>Upload An Image to use as your event Thumbnail</p>
+        <p *ngIf="errors.hasOwnProperty('image')" class="text-danger">{{errors.image[0]}}</p>
         <small class="mb-4 text-secondary">Tip: Use a High Quality Image.</small>
 
         <div class="image-container">
           <img class="w-50 ml-auto mr-auto" src="../assets/svg/picture.svg" *ngIf="selectedFile == undefined" alt="#">
           <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
         </div>
-        <div class="input-group mt-4">
+
+        <div class="input-group mt-4" *ngIf="selectedFile">
             <input #imageInput type="file" (change)="processFile(imageInput)"> <!--accept="image/*"-->
         </div>
           
@@ -83,8 +85,13 @@
       <app-occurrence-create [event]="createdEvent"></app-occurrence-create>
     </div>
 
+    <!--<div class="col-md-8 offset-md-2 mt-5" *ngFor="let ticket of createdEvent.ticket_options">
+      {{ticket.name}}
+    </div>-->
+
     <div class="col-md-8 offset-md-2 mt-5">
-      <app-ticket-options [event]="createdEvent"></app-ticket-options>
+        <p>Ticket Options</p>
+        <app-ticket-options [event]="createdEvent"></app-ticket-options>
     </div> 
     
   </div>

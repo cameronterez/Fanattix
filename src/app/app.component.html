@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-navigation></app-navigation>
+<app-navigation *ngIf="currentUrl != '/'"></app-navigation>
 <div class="w-100" style="position: fixed; bottom: 0vh;z-index: 900;display: flex;justify-content: center;">
     <app-basic-alert></app-basic-alert>
 </div>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-footer *ngIf="currentUrl != '/'"></app-footer>
 

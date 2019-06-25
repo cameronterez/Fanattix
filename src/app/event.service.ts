@@ -39,7 +39,11 @@ export class EventService {
   }
 
   createEvent(data){
-    return this.http.post(API_URL + '/events/', data)
+    return this.http.post(API_URL + '/events/', data, {
+      headers: {
+        'Content-Type': 'Application/json'
+      }      
+    })
   }
 
   createEventOccurrence(data){
@@ -47,7 +51,11 @@ export class EventService {
   }
 
   editEventOccurrence(data){
-    return this.http.put<FxEventOccurrence>(API_URL + `/events/${data.id}/`, data)
+    return this.http.put<FxEventOccurrence>(API_URL + `/event-occurrences/${data.id}/`, data)
+  }
+
+  getOccurrence(id){
+    return this.http.get(API_URL + `/occurrences/${id}/`)
   }
 
   createTicketOption(ticketOption: TicketOption){
@@ -81,7 +89,7 @@ export class EventService {
     return this.http.get<FxEvent[]>(API_URL + '/get-free-events/')
   }
 
-  //Tickets
+  //Tickets//////////
   purchaseTicket(ticketOptionId, quantity, userId=this.authService._userId.value){
     let content = { 
       ticket_option_id : ticketOptionId, 

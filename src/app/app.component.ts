@@ -12,6 +12,7 @@ declare let ga: Function
 })
 export class AppComponent implements OnInit{
   title = 'fanattix';
+  currentUrl: any
 
   constructor(
     private authService: AuthService,
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
+    this.currentUrl = this.router.url
     navigator.geolocation.getCurrentPosition(
       loc => {
         this.authService.location = loc
