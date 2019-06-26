@@ -1,4 +1,10 @@
-  <div class="row my-4">
+<div id="categories">
+  <div class="frame">
+    <div class="bit-1">
+      <h2>Categories</h2>
+    </div>
+
+  <!--<div class="row my-4">
     <div class="col-md-12">
       <h4>Categories</h4>
       <div class="scroll-container">
@@ -7,4 +13,19 @@
         </div>
       </div>
     </div>
+  </div>-->
+    <div class="bit-5" *ngFor="let category of categories">
+        <a class="category-button" href="">
+          <!--<div class="category-circle">
+            <img class="object-fit" src="https://pbs.twimg.com/profile_images/1138588446270861322/i1bM9u8y_400x400.jpg">
+          </div>
+          <h3>Category Name</h3>-->
+          <div class="category-text">
+            <h3>{{category.name}}</h3>
+            <h4>205 Events</h4>
+          </div>
+          <i class="fas fa-car-crash"></i>
+        </a>
+      </div>
   </div>
+</div>

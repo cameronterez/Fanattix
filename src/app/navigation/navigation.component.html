@@ -1,3 +1,19 @@
+<div id="header">
+    <div class="frame">
+      <div class="bit-1">
+        <ul id="navigation-left">
+          <a href="/"><h5>Fanattix</h5></a>
+        </ul>
+        <ul id="navigation-right">
+          <li><a href="/">Home</a></li>
+          <li><a class="create-event" routerLink="creator">Event Creator</a></li>
+          <li (click)="toggleAccountMenu()"><i class="fas fa-user-circle"></i></li>
+          <div class="account-menu" *ngIf="accountMenu==true"><app-user-menu></app-user-menu></div>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!--
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="/">Fanattix</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,3 +61,4 @@
       <div class="account-menu" *ngIf="accountMenu==true"><app-user-menu></app-user-menu></div>
     </div>
   </nav>
+  -->

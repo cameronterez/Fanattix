@@ -1,4 +1,34 @@
-<div class="container-fluid">
+<div id="search-home">
+    <div class="frame">
+      <div class="bit-5">
+        <h5>Event Search</h5>
+      </div>
+      <form class="form-inline my-2 my-lg-0 w-100" *ngIf="searchForm" [formGroup]="searchForm" (submit)="searchCLD()">
+      <div class="bit-15">
+        <input placeholder="Category">
+          <select class="form-control mr-sm-2 w-25" id="inputGroupSelect01" formControlName="category">
+              <option value="" selected>Any Category</option>
+              <option *ngFor="let category of categories" placeholder="Category" value="{{category.id}}">{{category.name}}</option>
+          </select>
+      </div>
+      <div class="bit-30">
+        <input placeholder="Location">
+      </div>
+      <div class="bit-15">
+        <input placeholder="Date">
+      </div>
+      <div class="bit-5">
+        <button class="b2" name="search" value="search">Search</button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="">
+    <app-event-list [events]="results"></app-event-list>
+  </div>
+
+<!--<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <button class="btn-primary btn" (click)="changeSearch('title')">Seach Title</button>
@@ -10,7 +40,7 @@
         </div>
     </div>
 </div>
-<!--<div class="container-fluid">
+<div class="container-fluid">
   <div class="row">
       <div class="col-md-3" *ngFor="let event of results" (click)="goToEventDetail(event.id)">
           <div class="card">
