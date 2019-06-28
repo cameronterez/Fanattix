@@ -107,6 +107,10 @@ export class EventService {
     return this.http.get<TicketOption>(API_URL + `/ticket-option-detail/${id}`)
   }
 
+  checkTicket(ticket_id){
+    return this.http.get(API_URL + `/check-ticket/${ticket_id}/`)
+  }
+
   //////Email///////
   sendEmailToPatrons(content){
     content['sender_id'] = this.authService._userId.value

@@ -1,13 +1,22 @@
 <div>
   <h3 class="text-white bg-dark">Scan Tickets</h3>
+  <p *ngIf="resultString">{{resultString}}</p>
+  <div *ngIf="errors.length > 0">
+    <div *ngFor="let error of errors">
+      <p>{{error}}</p>      
+    </div>
+  </div>
+
+  <div *ngIf="responseData">
+    <p>{{responseData['accepted']}}</p>
+  </div>
   <zxing-scanner #scanner
     start="true" 
     [device]="selectedDevice"
     (camerasFound)="camerasFoundHandler($event)"
     (scanSuccess)="scanSuccessHandler($event)"
     (scanError)="scanErrorHandler($event)"
-    (scanFailure)="scanFailureHandler($event)"
   ></zxing-scanner>
-
+  <!--(scanFailure)="scanFailureHandler($event)"-->
 </div>
 

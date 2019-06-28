@@ -34,6 +34,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.currentUrl = this.router.url
+    console.log(this.currentUrl)
     navigator.geolocation.getCurrentPosition(
       loc => {
         this.authService.location = loc
@@ -41,6 +42,19 @@ export class AppComponent implements OnInit{
       },
       err => {
         this.messageService.displayMessage("Could not get Your Location")
+      }
+    )
+
+    this.getUrl()
+  }
+
+  getUrl(){
+    this.router.events.subscribe(
+      event => {
+        if(event instanceof NavigationEnd){
+          console.log(this.router.url)
+          this.currentUrl = this.router.url
+        }
       }
     )
   }

@@ -1,4 +1,4 @@
-<div class="row">
+<!--<div class="row">
   <div class="col-md-3" *ngFor="let event of events" (click)="goToEventDetail(event.id)">
       <div class="card">
           <img src="{{event.image}}" class="card-img-top" alt="..." *ngIf="event.image">
@@ -13,4 +13,24 @@
           </div>
         </div>
   </div>
-</div>
+</div>-->
+
+<div class="bit-3" *ngFor="let event of events" (click)="goToEventDetail(event.id)">
+        <div class="event-card">
+          <a class="event-card-image">
+            <img class="object-fit" src="{{event.image}}"/>
+            <div class="event-card-category">Business</div>
+          </a>
+          <div class="event-card-text">
+            <div class="event-card-date">
+              <h4>Jan</h4>
+              <h3>28</h3>
+            </div>
+            <a href=""><h3>{{event.name}}</h3></a>
+            <h4><i class="fas fa-map-marker-alt"></i>&nbsp;{{event.location}}</h4>
+            <h4><i class="fas fa-clock"></i>&nbsp;8:15 PM&emsp;<i class="fas fa-ticket-alt"></i>&nbsp;Free</h4>
+            <!--<hr>
+            <p>Lorem ipsum dolor sit amet, voluptua iracundia an pri, his utinam principes dignissim ad. Ne nec dolore oblique nusquam, cu luptatum volutpat delicatissimi has.</p>-->
+          </div>
+        </div>
+      </div>
