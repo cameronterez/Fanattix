@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
   signUp(){
     this.clearErrors() //clear all previous errors
 
-    if(this.signUpForm.get('password').value == this.signUpForm.get('password_2').value){
+    if(this.signUpForm.get('password').value == this.signUpForm.get('password_2').value && this.signUpForm.get('password').value != ''){
       let content = {
         username : this.signUpForm.get('email').value,
         email : this.signUpForm.get('email').value,

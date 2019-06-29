@@ -76,7 +76,7 @@ export class TicketScannerComponent implements OnInit {
     this.resultString = result
     this.messageService.displayMessage('$event')
     this.messageService.displayMessage('Success!')
-    this.playSuccessSound()
+    //this.playSuccessSound()
     this.checkTicket(result)
   }
 
@@ -92,6 +92,7 @@ export class TicketScannerComponent implements OnInit {
       res => {
         this.responseData = res
         console.log(res)
+        this.playSuccessSound()
       },
       err => console.log(err)
     )
