@@ -1,17 +1,51 @@
+<<<<<<< HEAD
+<div id="sign-up" class="body-padding">
+  <div class="frame">
+  <div class="bit-1">
+    <h2 style="text-align: center;">Create Account</h2>
+    <form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <div class="form-group">
+        <label for="exampleInputEmail1"><h4>Email address</h4></label>
+=======
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUp()">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
+>>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
         <p *ngIf="errors['username']" class="text-danger">{{errors['username'][0]}}</p>
         <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
+<<<<<<< HEAD
+        <label for="exampleInputPassword1"><h4>First Name</h4></label>
+        <input type="text" class="form-control"  formControlName="first_name" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1"><h4>Last Name</h4></label>
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="last_name" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1"><h4>Password</h4></label>
+=======
         <label for="exampleInputPassword1">Password</label>
+>>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
         <p *ngIf="errors['password']" class="text-danger">{{errors['password'][0]}}</p>
         <input type="password" class="form-control"  formControlName="password" placeholder="Password">
       </div>
       <div class="form-group">
+<<<<<<< HEAD
+        <label for="exampleInputPassword1"><h4>Verify Password</h4></label>
+        <p *ngIf="validationErrors['passwordMatch']" class="text-danger">{{validationErrors.passwordMatch}}</p>
+        <input type="password" class="form-control"  formControlName="password_2" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary"><h4>Sign Up</h4></button>
+      <h4><a routerLink="/"><small id="emailHelp" class="form-text text-muted">Login</small></a><br>
+      <small id="emailHelp" class="form-text text-muted">Forgot Password</small></h4>
+    </form>
+  </div>
+  </div>
+=======
         <label for="exampleInputPassword1">Verify Password</label>
         <p *ngIf="validationErrors['passwordMatch']" class="text-danger">{{validationErrors.passwordMatch}}</p>
         <input type="password" class="form-control"  formControlName="password_2" placeholder="Password">
@@ -29,4 +63,5 @@
       <small id="emailHelp" class="form-text text-muted">Forgot Password</small>
     </form>
   </div>
+>>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
 </div>

@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+<div id="search-home">
+    <div class="frame">
+      <div class="bit-5" style="position: relative;">
+        <h5>Event Search</h5>
+        <div class="search-filter-container">
+          <button class="search-filter sf-left btn-primary btn" (click)="changeSearch('title')">By Title</button>
+          <button class="search-filter sf-right btn-primary btn" (click)="changeSearch('cld')">By Nearby & Times</button>
+        </div>
+      </div>
+      <div class="bit-80">
+        <app-search-bar *ngIf="search == 'cld'"></app-search-bar>
+            <app-search-title *ngIf="search == 'title'"></app-search-title>
+      </div>
+    </div>
+  </div>
+=======
 <!--<div id="search-home">
     <div class="frame">
       <div class="bit-5">
@@ -23,12 +40,17 @@
       </form>
     </div>
   </div>-->
+>>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
 
   <div class="">
     <app-event-list [events]="results"></app-event-list>
   </div>
 
+<<<<<<< HEAD
+<!--<div class="container-fluid">
+=======
 <div class="container-fluid">
+>>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
     <div class="row">
         <div class="col-md-12">
             <button class="btn-primary btn" (click)="changeSearch('title')">Seach Title</button>
@@ -53,6 +75,10 @@
           </div>
       </div>
   </div>
+<<<<<<< HEAD
+</div>-->
+=======
 </div>
+>>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
 
 
