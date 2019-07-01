@@ -65,6 +65,7 @@ import { SavedPaymentMethodsComponent } from './user/saved-payment-methods/saved
 import { CreateEventComponent } from './event-creator/create-event/create-event.component';
 import { EditTicketOptionComponent } from './event-creator/edit-ticket-option/edit-ticket-option.component';
 import { CamSplashComponent } from './cam-splash/cam-splash.component';
+import { UserMessagingComponent } from './shared/user-messaging/user-messaging.component';
 
 
 
@@ -147,6 +148,7 @@ const routes: Routes = [
     CreateEventComponent,
     EditTicketOptionComponent,
     CamSplashComponent,
+    UserMessagingComponent,
   ],
   // Google Places API Key 
 

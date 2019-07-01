@@ -1,0 +1,5 @@
+<div class="user-messaging">
+  <div *ngFor="let message of messages">
+    <p [ngClass]="message.type" class="message-box">{{message.content}}</p>
+  </div>
+</div>

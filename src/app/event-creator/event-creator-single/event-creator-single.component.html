@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="p-1">
-        <button class="btn btn-primary inline mx-2">Hide This Event</button>
+        <!--<button class="btn btn-primary inline mx-2">Hide This Event</button>-->
         <button class="btn btn-danger inline mx-2" (click)="confirmDelete()">Delete This Event</button>
     </div>
     <div class="col-md-8 offset-md-2 mt-5">
@@ -72,7 +72,7 @@
           <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
         </div>
 
-        <div class="input-group mt-4" *ngIf="selectedFile">
+        <div class="input-group mt-4">
             <input #imageInput type="file" (change)="processFile(imageInput)"> <!--accept="image/*"-->
         </div>
           
