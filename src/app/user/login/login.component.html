@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<div id="user-menu" class="not-logged-in">
-=======
 <div class="row">
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
   <div class="col-md-12">
     <div *ngIf="errors"><p><small *ngFor="let error of errors">{{error}}</small></p></div>
     <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">

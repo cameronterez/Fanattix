@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div id="ticket-purchase" class="body-padding">
   <div class="frame">
     <div class="bit-1">
@@ -26,29 +25,6 @@
           [quantity]="quantity"
           ></app-stripe-ticket-purchase>
       </div>
-=======
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h6>Purchase Tickets</h6>
-      <h4>{{option.event_detail.name}}</h4>
-      <p>{{option.event_detail.location}}</p>
-      <p>{{option.event_detail.occurrences[0].date | date: 'medium'}}</p>
-      <p> You Are Purchasing</p>
-      <p>{{option.name}}</p>
-      <div>Quantity <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity" min="1" max="{{option.number_total}}"></div>
-      
-      <small>{{option.number_total}} tickets left.</small>
-      <h1 class="text-muted">${{option.price}}</h1>
-
-      <!--<button class="btn btn-primary" (click)="purchaseTicket(option.id)">Purchase</button>-->
-      <app-stripe-ticket-purchase 
-        [ticketPrice]="option.price" 
-        [ticketOptionId]="option.id"
-        [creatorId]="option.event_detail.creator"
-        [quantity]="quantity"
-        ></app-stripe-ticket-purchase>
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
     </div>
   </div>
 </div>

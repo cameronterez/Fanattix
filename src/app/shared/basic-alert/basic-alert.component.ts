@@ -18,10 +18,10 @@ export class BasicAlertComponent implements OnInit {
   staticAlertClosed = false;
   successMessage: string;*/
 
-  public successMessage: String
+  public successMessage
 
   ngOnInit(): void {
-    this.messageService._message.subscribe(
+   this.messageService._message.subscribe(
       val => this.successMessage = val,
       err => this.successMessage = err
     )

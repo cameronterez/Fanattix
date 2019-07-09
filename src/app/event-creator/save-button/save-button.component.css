@@ -1,0 +1,23 @@
+*{box-sizing: border-box;}
+.save-button{
+    color: white;
+    background: #563D7C;
+    padding: 12px 18px 12px 18px;
+    border: none;
+    font-size: 105%;
+    cursor: pointer;
+}
+.save-button:hover{
+    background: white;
+    color: #563D7C;
+    border: 2px solid #563D7C;
+}
+.save-button:disabled{
+    opacity: 0.5;
+}
+.container{
+    text-align: center;
+    background: rgba(254,254,254, .9);
+    padding: 16px;
+    width: 100%;
+}

@@ -21,6 +21,9 @@ export class TicketScannerComponent implements OnInit {
   responseData: any
   errors = []
 
+  displaySuccess = false
+  displayFailure = false
+
   constructor(private messageService: MessageService, private eventService: EventService) { }
 
   ngOnInit() {
@@ -78,21 +81,14 @@ export class TicketScannerComponent implements OnInit {
     this.messageService.displayMessage('Success!')
     //this.playSuccessSound()
     this.checkTicket(result)
-  }
-
-  playSuccessSound(){
-    let sound = new Audio()
-    sound.src = '../assets/audio/beep-07.mp3'
-    sound.load()
-    sound.play()
-  }
+  }  
 
   checkTicket(ticketId){
     this.eventService.checkTicket(ticketId).subscribe(
       res => {
         this.responseData = res
         console.log(res)
-        this.playSuccessSound()
+        
       },
       err => console.log(err)
     )
@@ -103,6 +99,24 @@ export class TicketScannerComponent implements OnInit {
     this.messageService.displayMessage('Error!')
     this.errors.push('Improperly Scanned or an Error Occurred During Scanning')
   }
+
+  ticketAccepted(){
+      this.displaySuccess = true
+      this.displayFailure = false
+  }
+
+  ticketRejected(){
+    this.displayFailure = true
+    this.displayFailure = false
+  }
+
+  /*
+  playSuccessSound(){
+    let sound = new Audio()
+    sound.src = '../assets/audio/beep-07.mp3'
+    sound.load()
+    sound.play()
+  }*/
 
   /*scanFailureHandler($event){
     this.messageService.displayMessage('$event')

@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessageService {
 
-  _message = new BehaviorSubject<String>('')
+  _message = new BehaviorSubject({})
 
   constructor() { }
 
-  displayMessage(msg: String){
+  displayMessage(msg){
     this._message.next(msg)
-    setTimeout(function(){ this._message.next('')}.bind(this), 5000)
+    //setTimeout(function(){ this._message.next('')}.bind(this), 5000)
   }
 }

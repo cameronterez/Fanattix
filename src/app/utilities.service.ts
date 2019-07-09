@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Time } from '@angular/common';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilitiesService {
+
+  currentUrl = new BehaviorSubject('/')
 
   constructor() { }
 

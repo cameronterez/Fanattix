@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UtilitiesService } from '../../utilities.service';
@@ -6,6 +6,7 @@ import { AuthService } from '../../auth.service';
 import { EventService } from '../../event.service';
 import { MessageService } from '../../message.service';
 import { FxEventOccurrence } from '../../models/event-occurrence';
+
 
 @Component({
   selector: 'app-occurrence-create',
@@ -17,6 +18,9 @@ export class OccurrenceCreateComponent implements OnInit {
   @Input() eventOccurrenceId
   createdOccurrence: FxEventOccurrence
   occurrenceForm: FormGroup
+  formErrors = []
+  errors = []
+  @Output() validEmitter = new EventEmitter()
 
   constructor(
     private fb: FormBuilder,
@@ -33,9 +37,7 @@ export class OccurrenceCreateComponent implements OnInit {
   ngOnChanges(){
     //this.getOccurrence(this.eventOccurrenceId)
     this.initForm()
-    console.log('this.createdOccurrence')
     console.log(this.createdOccurrence)
-    console.log('this.createdOccurrence DONE')
   }
 
   initForm(){
@@ -78,29 +80,49 @@ export class OccurrenceCreateComponent implements OnInit {
         start: start,
         end: end,
       }
-      console.log(this.event['id'])
+      /*console.log(this.event['id'])
       console.log(occurrenceData)
       console.log(occurrenceData.start)
-      console.log(occurrenceData.event)
+      console.log(occurrenceData.event)*/
 
       if(this.createdOccurrence){  //If this is an edit created occurrence will be set, so edit
         this.eventService.editEventOccurrence(occurrenceData).subscribe(
-          res => console.log(res),
+          res => {
+            console.log(res)
+            this.validEmitter.emit('true')
+          },
           err => console.log(err)
         )
       }else{ //If not set, then create new occurrence
         this.eventService.createEventOccurrence(occurrenceData).subscribe(
           res => {
-            console.log(res)
-            this.createdOccurrence = res
-            this.messageService.displayMessage('Date/Time Saved')
+            if(res.hasOwnProperty('errors')){
+              this.formErrors = res['errors']
+              console.log(res)
+              console.log(this.formErrors)
+              this.validEmitter.emit('false')
+            }else{
+              console.log(res)
+              this.createdOccurrence = res
+              this.messageService.displayMessage({content:'Date/Time Saved', type: 'success'})
+              this.validEmitter.emit('true')
+            }
           },
-          err => console.log(err)
+          err => {
+            console.log(err)
+            this.messageService.displayMessage({content:'Please Ensure All Fields Are Completed', type: 'error'})
+            if(err.hasOwnProperty('error')){
+              this.formErrors = err['error']
+              console.log(err)
+              console.log(this.formErrors)
+              this.validEmitter.emit('false')
+            }
+          }
         )
       }
 
     }else{
-      this.messageService.displayMessage('You Must Save Event Details Before Saving Time/Date')
+      this.messageService.displayMessage({content:'You Must Save Event Details Before Saving Time/Date', type: 'error'})
     }
   }
 

@@ -6,13 +6,21 @@
 }
 .message-box{
     /*border: 1px solid #999;*/
-    box-shadow: 3px 3px #777;
     border-radius: 3px;  
-
+    color: black;
+    margin-bottom: 4px;
 }
 .info{
     background: #add8e6;
-    color: #333;
+    border: 2px solid #00aced;
+}
+.error{
+    background: #cc0000;
+    border: 2px solid red;
+}
+.success{
+    background: #4BCA81;
+    border: 2px solid #4BFF99;
 }
 p{
     padding-bottom: 8px;

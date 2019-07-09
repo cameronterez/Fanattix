@@ -11,6 +11,7 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventDeleteModalComponent } from '../modals/event-delete-modal/event-delete-modal.component';
+import { UtilitiesService } from '../../utilities.service';
 
 @Component({
   selector: 'app-event-creator-single',
@@ -30,13 +31,17 @@ export class EventCreatorSingleComponent implements OnInit {
   formErrors = []
   errors = []
 
+  //Validation of Occurrence and Tickets
+  occurrenceValid = false
+
   constructor(
     private fb: FormBuilder, 
     private eventService: EventService, 
     private messageService: MessageService,
     private authService: AuthService,
     private router: Router,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private util: UtilitiesService
   ) { }
 
   ngOnInit() {
@@ -152,7 +157,7 @@ export class EventCreatorSingleComponent implements OnInit {
             console.log(res)
             console.log(this.formErrors)
           }else{
-            this.messageService.displayMessage(`Event ${data.name} Saved!`)
+            this.messageService.displayMessage({content:`Event ${data.name} Saved!`, type: 'success'})
             console.log(res)
             this.createdEvent = res['event']
             console.log(this.createdEvent)
@@ -163,7 +168,7 @@ export class EventCreatorSingleComponent implements OnInit {
     }else{
       this.eventService.editEvent(this.createdEvent['id'],data).subscribe(
         res => {
-          this.messageService.displayMessage(`Event ${data.name} Edited!`)
+          this.messageService.displayMessage({content:`Event ${data.name} Edited!`, type: 'success'})
           console.log(res)
           this.createdEvent = res
           console.log(this.createdEvent)
@@ -177,7 +182,7 @@ export class EventCreatorSingleComponent implements OnInit {
     this.eventService.deleteEvent(this.createdEvent['id']).subscribe(
       res => {
         console.log(res)
-        this.messageService.displayMessage('Event Deleted')
+        this.messageService.displayMessage({content:`Event Deleted`, type: 'success'})
         this.router.navigate(['creator/my-events'])
       }
     )
@@ -188,6 +193,15 @@ export class EventCreatorSingleComponent implements OnInit {
     this.modal.open(EventDeleteModalComponent)
   }
 
+  setOccurrenceValid(value){
+    let bool = (value == 'true') //converts string to boolean
+    this.occurrenceValid = bool
+    console.log(value)
+  }
+
+  scrollToElement(el){
+    this.util.scrollToElement(el)
+  }
 
 }
 

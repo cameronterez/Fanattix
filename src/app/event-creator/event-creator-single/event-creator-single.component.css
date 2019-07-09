@@ -1,0 +1,12 @@
+.save-button{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+#create-event-single{
+    position: relative !important;
+}
+.button-valid{
+    bottom: 0 !important;
+}

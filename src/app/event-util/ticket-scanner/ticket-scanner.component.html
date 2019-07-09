@@ -1,17 +1,21 @@
-<<<<<<< HEAD
-<div class="body-padding">
+<div class="body-padding" [ngClass]="{'rejected': displayFailure==true, 'accepted': displaySuccess==true}">
   <div class="frame">
     <div class="bit-1">
-      <h2 class="text-white bg-dark">Scan Tickets</h2>
-      <p *ngIf="resultString">{{resultString}}</p>
-      <div *ngIf="errors.length > 0">
-        <div *ngFor="let error of errors">
-          <p>{{error}}</p>      
+      <div class="scanner-overlay">
+        <p class="text-white bg-dark">
+          <i class="fas fa-lg fa-qrcode"></i>
+          Scan Tickets
+        </p>
+        <p *ngIf="resultString">{{resultString}}</p>
+        <div *ngIf="errors.length > 0">
+          <div *ngFor="let error of errors">
+            <p>{{error}}</p>      
+          </div>
         </div>
-      </div>
 
-      <div *ngIf="responseData">
-        <p>{{responseData['accepted']}}</p>
+        <div *ngIf="responseData">
+          <p>{{responseData['accepted']}}</p>
+        </div>
       </div>
       <zxing-scanner #scanner
         start="true" 
@@ -23,27 +27,5 @@
       <!--(scanFailure)="scanFailureHandler($event)"-->
     </div>
   </div>
-=======
-<div>
-  <h3 class="text-white bg-dark">Scan Tickets</h3>
-  <p *ngIf="resultString">{{resultString}}</p>
-  <div *ngIf="errors.length > 0">
-    <div *ngFor="let error of errors">
-      <p>{{error}}</p>      
-    </div>
-  </div>
-
-  <div *ngIf="responseData">
-    <p>{{responseData['accepted']}}</p>
-  </div>
-  <zxing-scanner #scanner
-    start="true" 
-    [device]="selectedDevice"
-    (camerasFound)="camerasFoundHandler($event)"
-    (scanSuccess)="scanSuccessHandler($event)"
-    (scanError)="scanErrorHandler($event)"
-  ></zxing-scanner>
-  <!--(scanFailure)="scanFailureHandler($event)"-->
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
 </div>
 

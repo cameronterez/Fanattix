@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TicketOption } from '../../models/ticket-option';
 import { EventService } from '../../event.service';
 import { MessageService } from '../../message.service';
@@ -12,6 +12,8 @@ export class TicketOptionsComponent implements OnInit {
   @Input() event
   createdTicketOptions: TicketOption[]
   ticketOptions: TicketOption[] = []
+  errors = []
+  formErrors = []
 
   constructor(private eventService: EventService, private messageService: MessageService) { }
 
@@ -39,33 +41,77 @@ export class TicketOptionsComponent implements OnInit {
   }
 
   saveTicketOption(ticketOption: TicketOption){
-    if(this.event['id']){
-      this.eventService.createTicketOption(ticketOption).subscribe(
-        res => {
-          console.log(res)
-          this.messageService.displayMessage('Ticket created!')
-        },
-        err => console.log(err),
-      )
-    }else{
-      this.messageService.displayMessage('You Must Save Event Detail Before Saving Tickets')
+    let valid = this.validateTicketOption(ticketOption)
+    console.log(valid)
+
+    if(valid){
+
+      if(this.event['id']){
+        this.eventService.createTicketOption(ticketOption).subscribe(
+          res => {
+            if(res.hasOwnProperty('errors')){
+              this.formErrors = res['errors']
+              console.log(res)
+              console.log(this.formErrors)
+            }else{
+              console.log(res)
+              this.messageService.displayMessage('Ticket created!')
+            }
+          },
+          err => {
+            console.log(err)
+            if(err.hasOwnProperty('error')){
+              this.formErrors = err['error']
+            }
+          },
+        )
+      }else{
+        this.messageService.displayMessage('You Must Save Event Detail Before Saving Tickets')
+      }
+
     }
   }
 
   editTicketOption(ticketOption: TicketOption){
-    if(this.event['id']){
-      ticketOption['url'] = new URL("http://www.fanattix.com")
-      console.log(ticketOption)
-      this.eventService.editTicketOption(ticketOption).subscribe(
-        res => {
-          console.log(res)
-          this.messageService.displayMessage('Ticket Edited!')
-        },
-        err => console.log(err),
-      )
-    }else{
-      this.messageService.displayMessage('You Must Save Event Detail Before Saving Tickets')
+    let valid = this.validateTicketOption(ticketOption)
+    console.log(valid)
+
+    if(valid){
+
+      if(this.event['id']){
+        ticketOption['url'] = new URL("http://www.fanattix.com")
+        console.log(ticketOption)
+        this.eventService.editTicketOption(ticketOption).subscribe(
+          res => {
+            console.log(res)
+            this.messageService.displayMessage('Ticket Edited!')
+          },
+          err => console.log(err),
+        )
+      }else{
+        this.messageService.displayMessage('You Must Save Event Detail Before Saving Tickets')
+      }
     }
+
+  }
+
+  validateTicketOption(ticketOption: TicketOption){
+    console.log('lego')
+    if(ticketOption.hasOwnProperty('event') && ticketOption.name != null && ticketOption.name != undefined && ticketOption.name != ''){      
+      console.log('first_ran')
+      if(ticketOption.hasOwnProperty('price') && ticketOption.price != null && ticketOption.price != undefined){        
+        return true
+      }else{
+        this.formErrors['price'] = 'You must enter a ticket price'
+        return false
+      }
+      
+    }else{
+      this.formErrors['name'] = 'You must enter a name'
+      return false
+    }
+
+    
   }
 
   

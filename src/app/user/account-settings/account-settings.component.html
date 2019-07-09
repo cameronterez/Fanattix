@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div id="account-settings" class="body-padding">
   <div class="frame">
     <div class="bit-1">
@@ -17,93 +16,41 @@
           </div>
           <div class="form-group w-100">
             <label class="mb-1"><h4>Email</h4></label>
-=======
-<div class="container-fluid">
-  <div class="row mt-3">
-    <div class="col-md-8 offset-md-2 mb-5">
-        <h5 class="mb-3">Account Settings</h5>
-        <p>{{user.first_name}} {{user.last_name}}</p>
-        <small>{{user.email}}</small>
-        
-        <form [formGroup]="profileForm" class="d-flex flex-wrap" *ngIf="profileForm" (submit)="saveProfile()">
-          <div class="form-group w-50">
-            <label class="mb-1"><small>First Name</small></label>
-            <input class="form-control" type="text" formControlName="first_name">
-          </div>
-          <div class="form-group w-50">
-            <label class="mb-1"><small>Last Name</small></label>
-            <input class="form-control" type="text" formControlName="last_name">
-          </div>
-          <div class="form-group w-100">
-            <label class="mb-1"><small>Email</small></label>
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
             <input class="form-control" type="text" formControlName="email">
           </div>
 
           <div class="form-check">
-<<<<<<< HEAD
               <label class="form-check-label" for="exampleCheck1"><h4>Recieve Notifications&nbsp;</h4></label>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="recieves_emails">
               <span class="checkmark"></span>
-=======
-              <input 
-                type="checkbox" 
-                class="form-check-input" 
-                id="exampleCheck1" 
-                formControlName="receives_emails">
-              <label class="form-check-label" for="exampleCheck1">Recieve Notifications&nbsp;</label>
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
               <p><small>We will send You email Updates on Your events and Actions You might need to take. Your Information is never given to a third party.</small></p>
           </div>
 
           <div class="form-check">
-<<<<<<< HEAD
               <label class="form-check-label" for="exampleCheck1"><h4>Recieve Notifications From Event Organizers&nbsp;</h4></label>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="receives_emails_from_organizers">
               <span class="checkmark"></span>
-=======
-              <input 
-                type="checkbox" 
-                class="form-check-input" 
-                id="exampleCheck1"
-                formControlName="receives_emails_from_organizers">
-              <label class="form-check-label" for="exampleCheck1">Recieve Notifications From Event Organizers&nbsp;</label>
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
               <p><small>Event Organizers may need to email patrons in case of changes or for further instructions.</small></p>
           </div>
 
           <div class="w-100">
-<<<<<<< HEAD
             <button class="b4 btn btn-primary btn-sm" style="margin-bottom: 30px">Save</button>
-=======
-            <button class="btn btn-primary btn-sm">Save</button>
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
           </div>
         </form>
 
         <div class="mt-4 mb-4"><app-stripe-oauth></app-stripe-oauth></div>
         
-<<<<<<< HEAD
-        <h3>Payment Methods</h3>  
+        <!--<h3>Payment Methods</h3>  
         <app-stripe-save-card></app-stripe-save-card>
+
+        <div class="mt-3">
+          <app-saved-payment-methods></app-saved-payment-methods>
+        </div>-->
   
 
         <a routerLink="/creator/my-events"><h4>Go To My Events</h4></a>
 
         <button class="b4 btn text-danger btn-sm">Log Out</button>
-=======
-        <h5 class="mt-5">Payment Methods</h5>  
-        <app-stripe-save-card></app-stripe-save-card>
-
-        <div class="mt-3">
-          <app-saved-payment-methods></app-saved-payment-methods>
-        </div>
-  
-
-        <a routerLink="/creator/my-events"><p>Go To My Events</p></a>
-
-        <button class="btn text-danger btn-sm">Log Out</button>
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
 
     </div>
   </div>

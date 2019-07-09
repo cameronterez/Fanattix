@@ -4,6 +4,7 @@
   <div *ngFor="let ticket of createdTicketOptions;index as i">
     <div class="form-group">
       <label for="exampleInputEmail1">Ticket Name</label>
+      <app-error-display [errorMessage]="formErrors['name']" *ngIf="formErrors['name']"></app-error-display>
       <input [(ngModel)]="createdTicketOptions[i].name" type="text" (change)="logTicket(ticket)" class="form-control" aria-describedby="emailHelp" placeholder="Name Your ticket">
       <small class="form-text text-muted">Max Length 60 characters</small>
     </div>
@@ -16,6 +17,7 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1">Price</label>
+      <app-error-display [errorMessage]="formErrors['price']" *ngIf="formErrors['price']"></app-error-display>
       <input [(ngModel)]="createdTicketOptions[i].price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="0.00">
       <small class="form-text text-muted">Enter Price in USD</small>
     </div>
@@ -36,6 +38,7 @@
   <div *ngFor="let ticket of ticketOptions;index as i">
     <div class="form-group">
       <label for="exampleInputEmail1">Ticket Name</label>
+      <app-error-display [errorMessage]="formErrors['name']" *ngIf="formErrors['name']"></app-error-display>
       <input [(ngModel)]="ticketOptions[i].name" type="text" (change)="logTicket(ticket)" class="form-control" aria-describedby="emailHelp" placeholder="Name Your ticket">
       <small class="form-text text-muted">Max Length 60 characters</small>
     </div>
@@ -48,6 +51,7 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1">Price</label>
+      <app-error-display [errorMessage]="formErrors['price']" *ngIf="formErrors['price']"></app-error-display>
       <input [(ngModel)]="ticketOptions[i].price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="0.00">
       <small class="form-text text-muted">Enter Price in USD</small>
     </div>

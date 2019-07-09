@@ -1,11 +1,11 @@
-<form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+<form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest" *ngIf="user">
   <input type="text" class="form-control" formControlName="name" placeholder="Name On Card">
   <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
-<<<<<<< HEAD
   <button type="submit" class="b4 btn btn-primary">
-=======
-  <button type="submit" class="btn btn-primary">
->>>>>>> d189dd742a7840097fe51088cfd3e9c97514ca18
     BUY
   </button>
 </form>
+
+<div *ngIf="!user">
+  <app-sign-up></app-sign-up>
+</div>

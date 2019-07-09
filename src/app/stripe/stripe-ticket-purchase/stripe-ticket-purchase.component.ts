@@ -5,6 +5,7 @@ import { StripeService as NgxStripeService, StripeCardComponent, ElementOptions,
 import { StripeService } from '../../stripe.service';
 import { AuthGuardService } from '../../auth-guard.service';
 import { AuthService } from '../../auth.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-stripe-ticket-purchase',
@@ -17,6 +18,8 @@ export class StripeTicketPurchaseComponent implements OnInit {
   @Input() ticketOptionId: number
   @Input() quantity: number
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
+
+  user: User
  
   cardOptions: ElementOptions = {
     style: {
@@ -51,6 +54,8 @@ export class StripeTicketPurchaseComponent implements OnInit {
     this.stripeTest = this.fb.group({
       name: ['', [Validators.required]]
     });
+
+    this.getUser()
   }
  
   buy() {
@@ -82,5 +87,10 @@ export class StripeTicketPurchaseComponent implements OnInit {
           console.log(result.error.message);
         }
       });
+  }
+
+  getUser(){
+    this.user = this.authService.user
+    console.log(this.user)
   }
 }

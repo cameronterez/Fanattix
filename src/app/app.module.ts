@@ -66,6 +66,8 @@ import { CreateEventComponent } from './event-creator/create-event/create-event.
 import { EditTicketOptionComponent } from './event-creator/edit-ticket-option/edit-ticket-option.component';
 import { CamSplashComponent } from './cam-splash/cam-splash.component';
 import { UserMessagingComponent } from './shared/user-messaging/user-messaging.component';
+import { PostCreateComponent } from './event-creator/post-create/post-create.component';
+import { SaveButtonComponent } from './event-creator/save-button/save-button.component';
 
 
 
@@ -81,7 +83,7 @@ const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'search', component: SearchComponent},
   {path: 'category-events/:id', component: CategoryEventsComponent},
-  {path: 'creator', component: CreatorComponent,
+  /*{path: 'creator', component: CreatorComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
       {path: 'single', component: EventCreatorSingleComponent},
@@ -89,6 +91,18 @@ const routes: Routes = [
       {path: 'edit-event/:id', component: EditEventComponent},
       {path: 'double', component: EventCreatorSingleComponent},
       {path: 'actions/:id', component: AnalyticsComponent}
+    ]
+  },*/
+  {path: 'creator', component: CreatorMenuComponent,
+    children: [
+      {path: '', component: EventCreatorHomeComponent},
+      {path: 'single', component: EventCreatorSingleComponent},
+      {path: 'my-events', component: MyEventsComponent},
+      {path: 'edit-event/:id', component: EditEventComponent},
+      {path: 'double', component: EventCreatorSingleComponent},
+      {path: 'actions/:id', component: AnalyticsComponent},
+      {path: 'event-created', component: PostCreateComponent},
+      {path: 'my-tickets', component: PurchasedTicketsComponent},
     ]
   },
   {path: 'stripe-connect', component: PostConnectComponent},
@@ -149,6 +163,8 @@ const routes: Routes = [
     EditTicketOptionComponent,
     CamSplashComponent,
     UserMessagingComponent,
+    PostCreateComponent,
+    SaveButtonComponent,
   ],
   // Google Places API Key 
 

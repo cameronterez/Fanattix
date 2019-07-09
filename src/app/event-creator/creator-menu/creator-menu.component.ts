@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { UtilitiesService } from '../../utilities.service';
+import { EventCreatorSingleComponent } from '../event-creator-single/event-creator-single.component';
 
 @Component({
   selector: 'app-creator-menu',
@@ -6,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creator-menu.component.css']
 })
 export class CreatorMenuComponent implements OnInit {
+  currentUrl: any
+  @ViewChild('creator') creator: EventCreatorSingleComponent
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private util: UtilitiesService
+  ) { }
 
   ngOnInit() {
+    this.currentUrl = this.router.url
+    this.getUrl()
   }
 
+  scrollToElement(el){
+    let element = document.getElementById(el)
+    this.util.scrollToElement(element)
+  }
+
+  goToMyEvents(){
+    this.router.navigate(['creator/my-events'])
+  }
+
+  getUrl(){
+    this.util.currentUrl.subscribe(
+      val => {
+        this.currentUrl = val
+        console.log(this.currentUrl)
+      },
+      err => console.log('Creator Menu could not get currentUrl')
+    )
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { MessageService } from './message.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { UtilitiesService } from './utilities.service';
 
 declare let ga: Function
 
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit{
   constructor(
     private authService: AuthService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private util: UtilitiesService
   ){
 
     // subscribe to router events and send page views to Google Analytics
@@ -54,6 +56,7 @@ export class AppComponent implements OnInit{
         if(event instanceof NavigationEnd){
           console.log(this.router.url)
           this.currentUrl = this.router.url
+          this.util.currentUrl.next(this.router.url)
         }
       }
     )
