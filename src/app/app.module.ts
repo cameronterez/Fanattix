@@ -68,6 +68,7 @@ import { CamSplashComponent } from './cam-splash/cam-splash.component';
 import { UserMessagingComponent } from './shared/user-messaging/user-messaging.component';
 import { PostCreateComponent } from './event-creator/post-create/post-create.component';
 import { SaveButtonComponent } from './event-creator/save-button/save-button.component';
+import { NearEventsComponent } from './near-events/near-events.component';
 
 
 
@@ -165,6 +166,7 @@ const routes: Routes = [
     UserMessagingComponent,
     PostCreateComponent,
     SaveButtonComponent,
+    NearEventsComponent,
   ],
   // Google Places API Key 
 

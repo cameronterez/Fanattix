@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-navigation *ngIf="currentUrl != '/'"></app-navigation>
+<app-navigation *ngIf="currentUrl != '/' || currentUrl != '/ticket-scanner' "></app-navigation>
 <div class="w-100" style="position: fixed; bottom: 0vh;z-index: 900;display: flex;width: 100%;margin: 8px;">
     <app-user-messaging></app-user-messaging>
 </div>
@@ -10,5 +10,5 @@
     <router-outlet></router-outlet>
 </div>
 
-<app-footer *ngIf="currentUrl != '/'"></app-footer>
+<app-footer *ngIf="currentUrl != '/' || currentUrl != '/ticket-scanner' "></app-footer>
 

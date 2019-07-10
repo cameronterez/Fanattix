@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { MessageService } from './message.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { UtilitiesService } from './utilities.service';
+import { EventService } from './event.service';
 
 declare let ga: Function
 
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit{
     private authService: AuthService,
     private messageService: MessageService,
     private router: Router,
-    private util: UtilitiesService
+    private util: UtilitiesService,
+    private eventService: EventService
   ){
 
     // subscribe to router events and send page views to Google Analytics
@@ -40,7 +42,14 @@ export class AppComponent implements OnInit{
     navigator.geolocation.getCurrentPosition(
       loc => {
         this.authService.location = loc
-        console.log(loc)
+        console.log(loc.coords)
+        this.eventService.getEventsNearby(loc.coords).subscribe(
+          res => {
+            console.log(res)
+            this.eventService.eventsNearBy.next(res['events'])
+          },
+          err => console.log(err)
+        )
       },
       err => {
         this.messageService.displayMessage("Could not get Your Location")

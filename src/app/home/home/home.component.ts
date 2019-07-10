@@ -4,6 +4,7 @@ import { FxEvent } from '../../models/event';
 import { Router } from '@angular/router';
 import { MessageService } from '../../message.service';
 import { UtilitiesService } from '../../utilities.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +14,19 @@ import { UtilitiesService } from '../../utilities.service';
 export class HomeComponent implements OnInit {
   events: FxEvent[]
   @ViewChild('eventResults') eventResults: ElementRef
+  eventsNearBy = this.eventService.eventsNearBy
 
   constructor(
     private eventService: EventService,
     private router: Router,
     private messageService: MessageService,
-    private util: UtilitiesService
+    private util: UtilitiesService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.getEvents()
+    this.getEventsNearby()
   }
 
   getEvents(element=null){
@@ -32,6 +36,14 @@ export class HomeComponent implements OnInit {
       res => this.events = res,
       err => console.log(err)
     )
+  }
+
+  getEventsNearby(){
+    this.eventService.eventsNearBy.subscribe(
+      val => this.eventsNearBy = val,
+      err => console.log(err)
+    )
+    console.log(this.eventsNearBy)
   }
 
   getFreeEvents(element){

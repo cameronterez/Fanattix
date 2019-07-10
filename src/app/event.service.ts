@@ -6,6 +6,7 @@ import { TicketOption } from './models/ticket-option';
 import { AuthService } from './auth.service';
 import { Ticket } from './models/ticket';
 import { FxEventOccurrence } from './models/event-occurrence';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { FxEventOccurrence } from './models/event-occurrence';
 export class EventService {
 
   events: FxEvent[]
-  categories: any[] 
+  categories: any[]
+  eventsNearBy = new BehaviorSubject<any>([]) 
 
   constructor(private http: HttpClient, private authService: AuthService) {  }
 
@@ -32,6 +34,11 @@ export class EventService {
 
   getEvent(eventId){
     return this.http.get<FxEvent>(API_URL + '/events/' + eventId + '/')
+  }
+
+  getEventsNearby(location){
+    let coords = { latitude: location.latitude, longitude: location.longitude }
+    return this.http.post(API_URL + `/events-near-location/`, {location : coords})
   }
 
   getMyEvents(user_id=this.authService._userId.value){

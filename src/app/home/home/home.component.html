@@ -1,4 +1,4 @@
-<div id="hero" style="text-align: left;">
+<!--<div id="hero" style="text-align: left;">
   <img class="object-fit" src="https://images.unsplash.com/photo-1458891216473-4f26bb4eb40e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"/>
     <div class="center">
       <div class="frame">
@@ -8,14 +8,14 @@
         <a class="b1" href="">Buy Tickets</a>
       </div>
     </div>
-</div>
+</div>-->
 
 <!--<app-search></app-search>-->
 
   <div id="events">
     <div class="frame">
       <div class="bit-1" #eventList>
-        <h2><span style="font-weight:400">Upcoming</span> Events</h2>
+        <h2 style="font-size: 32px;"><span style="font-weight:400;">Upcoming</span> Events</h2>
         <div class="event-buttons">
           <button type="button" class="b3 btn btn-primary btn-sm">Popular</button>
           <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>
@@ -24,6 +24,25 @@
         </div>
       </div>
       <app-event-list [events]="events"></app-event-list>
+      
+    </div>
+  </div>
+
+  
+
+  <div id="events">
+    <div class="frame">
+      <div class="bit-1" #eventList>
+        <h2 style="font-size: 32px;"><span style="font-weight:400;">Events Near</span>You</h2>
+        <div class="event-buttons">
+          <button type="button" class="b3 btn btn-primary btn-sm">Popular</button>
+          <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>
+          <button type="button" (click)="getFreeEvents(eventList)" class="b3 btn btn-primary btn-sm">Free</button>
+          <button type="button" (click)="goToEventCreator()" class="b3 btn btn-secondary btn-sm"><h2>+</h2>&#43;<span>Create Event</span></button>
+        </div>
+      </div>
+      <app-near-events [events]="eventsNearBy"></app-near-events>
+      
     </div>
   </div>
 
