@@ -1,0 +1,21 @@
+<div class="horizontal-scroll">
+    <div class="bit-3 " *ngFor="let event of events" (click)="goToEventDetail(event.id)">
+            <div class="event-card">
+              <div class="event-card-image">
+                <img class="object-fit" src="{{event.image}}"/>
+                <div class="event-card-category">{{event.category_detail.name}}</div>
+              </div>
+              <div class="event-card-text">
+                <div class="event-card-date">
+                  <h4>Jan</h4>
+                  <h3>28</h3>
+                </div>
+                <div><h3>{{event.name}}</h3></div>
+                <h4><i class="fas fa-map-marker-alt"></i>&nbsp;{{event.location}}</h4>
+                <h4><i class="fas fa-clock"></i>&nbsp;8:15 PM&emsp;<i class="fas fa-ticket-alt"></i><span *ngFor="let to of event.ticket_options">&nbsp;${{to.price}}</span></h4>
+                <!--<hr>
+                <p>Lorem ipsum dolor sit amet, voluptua iracundia an pri, his utinam principes dignissim ad. Ne nec dolore oblique nusquam, cu luptatum volutpat delicatissimi has.</p>-->
+              </div>
+            </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-/*.horizontal-scroll{
+.horizontal-scroll{
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: scroll;
@@ -10,5 +10,6 @@
     height: 380px;
     min-height: 380px;
     min-width: 380px;
-    
-}*/
+    /*display: inline-block !important;
+    float: none !important;*/
+}

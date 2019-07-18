@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { API_URL } from '../environments/environment';
 import { AuthService } from './auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StripeService {
   STRIPE_TOKEN_ENDPOINT = 'https://connect.stripe.com/oauth/token'
+  _stripeActivated: BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -37,5 +39,9 @@ export class StripeService {
 
   getStripeConnectedAccount(user_id=this.authService._userId.value){
     return this.http.get(API_URL + `/connected-accounts/${user_id}/`)
+  }
+
+  stripeActivated(){
+    return this._stripeActivated.value
   }
 }

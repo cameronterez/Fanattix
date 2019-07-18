@@ -69,6 +69,9 @@ import { UserMessagingComponent } from './shared/user-messaging/user-messaging.c
 import { PostCreateComponent } from './event-creator/post-create/post-create.component';
 import { SaveButtonComponent } from './event-creator/save-button/save-button.component';
 import { NearEventsComponent } from './near-events/near-events.component';
+import { EventHorizontalScrollComponent } from './event-horizontal-scroll/event-horizontal-scroll.component';
+import { StripeSignUpComponent } from './stripe/stripe-sign-up/stripe-sign-up.component';
+import { StripeGuardService } from './stripe-guard.service';
 
 
 
@@ -84,6 +87,7 @@ const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'search', component: SearchComponent},
   {path: 'category-events/:id', component: CategoryEventsComponent},
+  {path: 'activate-stripe-account', component: StripeSignUpComponent},
   /*{path: 'creator', component: CreatorComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
@@ -94,7 +98,7 @@ const routes: Routes = [
       {path: 'actions/:id', component: AnalyticsComponent}
     ]
   },*/
-  {path: 'creator', component: CreatorMenuComponent,
+  {path: 'creator', component: CreatorMenuComponent, canActivate: [StripeGuardService],
     children: [
       {path: '', component: EventCreatorHomeComponent},
       {path: 'single', component: EventCreatorSingleComponent},
@@ -167,6 +171,8 @@ const routes: Routes = [
     PostCreateComponent,
     SaveButtonComponent,
     NearEventsComponent,
+    EventHorizontalScrollComponent,
+    StripeSignUpComponent,
   ],
   // Google Places API Key 
 

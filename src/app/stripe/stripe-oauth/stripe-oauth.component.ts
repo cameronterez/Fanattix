@@ -20,6 +20,10 @@ export class StripeOAuthComponent implements OnInit {
       res => {
         console.log(res)
         this.connectedAccount = res['connected_account']
+        if(res.hasOwnProperty('connected_account')){
+          this.stripeService._stripeActivated.next(true)
+        }
+        
       },
       err => console.log(err)
     )
