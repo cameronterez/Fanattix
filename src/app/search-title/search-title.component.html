@@ -5,7 +5,7 @@
   </form>
 </div>
 <div class="filters">
-    <app-search-filter (filtersUpdated)="filter($event)"></app-search-filter>
+    <app-search-filter (filtersUpdated)="filter($event)" [selectedFilters]="initialParams"></app-search-filter>
 </div>
   
 <div class="">

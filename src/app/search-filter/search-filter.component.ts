@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { EventService } from '../event.service';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -14,11 +14,13 @@ import { FilterServiceService } from '../filter-service.service';
 export class SearchFilterComponent implements OnInit {
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
   @Output() filtersUpdated = new EventEmitter()
+  @Input() selectedFilters
   categories: any
   types: any
   location = {
     lat: null,
     lng: null,
+    locationString: null
   }
 
   //filter targets
@@ -36,12 +38,14 @@ export class SearchFilterComponent implements OnInit {
   ngOnInit() {
     this.getCategories()
     this.getTypes()
+    this.applySelectedFilters()
   }
 
   public handleAddressChange(address: Address) {
     this.location = {
       'lat': address.geometry.location.lat(),
-      'lng': address.geometry.location.lng()
+      'lng': address.geometry.location.lng(),
+      'locationString': address.formatted_address
     }
   }
 
@@ -59,13 +63,25 @@ export class SearchFilterComponent implements OnInit {
     )
   }
 
+  applySelectedFilters(){
+    //recieves previously filters from search-title component after refresh
+    this.selectedCategory = this.selectedFilters['category_name']
+    this.selectedType = this.selectedFilters['type_name']
+    this.selectedPrice = this.selectedFilters['price']
+    this.location.locationString = this.selectedFilters['locationString']
+    this.location.lat = this.selectedFilters['lat'],
+    this.location.lng = this.selectedFilters['lng']
+  }
+
   applyFilters(){
+    //applies new filters selected
     let qp = {
       lat : this.location.lat,
       lng : this.location.lng,
+      locationString : this.location.locationString,
       category_name : this.selectedCategory,
       type_name : this.selectedType,
-      price : this.selectedPrice
+      price : this.selectedPrice,
     }
 
     this.router.navigate([], {

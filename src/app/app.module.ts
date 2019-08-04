@@ -72,6 +72,10 @@ import { NearEventsComponent } from './near-events/near-events.component';
 import { EventHorizontalScrollComponent } from './event-horizontal-scroll/event-horizontal-scroll.component';
 import { StripeSignUpComponent } from './stripe/stripe-sign-up/stripe-sign-up.component';
 import { StripeGuardService } from './stripe-guard.service';
+import { FaqComponent } from './faq/faq.component';
+import { OverviewComponent } from './overview/overview.component';
+import { ContactComponent } from './contact/contact.component';
+import { PricingComponent } from './pricing/pricing.component';
 
 
 
@@ -113,6 +117,10 @@ const routes: Routes = [
   {path: 'stripe-connect', component: PostConnectComponent},
   {path: 'event-utilities', component: EventUtilitiesComponent},
   {path: 'ticket-scanner', component: TicketScannerComponent},
+  {path: 'overview', component: OverviewComponent},
+  {path: 'faq', component: FaqComponent},
+  {path: 'pricing', component: PricingComponent},
+  {path: 'contact', component: ContactComponent}
 ]
 
 @NgModule({
@@ -173,6 +181,10 @@ const routes: Routes = [
     NearEventsComponent,
     EventHorizontalScrollComponent,
     StripeSignUpComponent,
+    FaqComponent,
+    OverviewComponent,
+    ContactComponent,
+    PricingComponent,
   ],
   // Google Places API Key 
 

@@ -26,24 +26,28 @@ export class StripeSignUpComponent implements OnInit {
   }
 
   getStripeConnectedAccount(){
-    this.stripeService.getStripeConnectedAccount().subscribe(
-      res => {
-        if(res.hasOwnProperty('connected_account')){
-          if(res['connected_account'].length > 0){
-            this.connectedAccount = res['connected_account']
-            this.stripeService._stripeActivated.next(true)
-            this.router.navigate(['creator'])
-          }else{
-            this.message = 'No Connected Account Found'
-          }          
-        }      
-        
-      },
-      err => {
-        console.log(err)
-        this.message = 'An Error Occurred'
-      }
-    )
+    if(this.authService._loggedIn.value == true){
+      this.stripeService.getStripeConnectedAccount().subscribe(
+        res => {
+          if(res.hasOwnProperty('connected_account')){
+            if(res['connected_account'].length > 0){
+              this.connectedAccount = res['connected_account']
+              this.stripeService._stripeActivated.next(true)
+              this.router.navigate(['creator'])
+            }else{
+              this.message = 'No Connected Account Found'
+            }          
+          }      
+          
+        },
+        err => {
+          console.log(err)
+          this.message = 'An Error Occurred'
+        }
+      )
+    }else{
+      this.router.navigate(['sign-up'])
+    }
   }
 
 }

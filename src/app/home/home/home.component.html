@@ -41,7 +41,7 @@
           <button type="button" (click)="goToEventCreator()" class="b3 btn btn-secondary btn-sm"><h2>+</h2>&#43;<span>Create Event</span></button>
         </div>
       </div>
-      <app-near-events [events]="eventsNearBy"></app-near-events>
+      <app-near-events [events]="events?.results"></app-near-events>
       
     </div>
   </div>

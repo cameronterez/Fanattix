@@ -12,6 +12,7 @@ import { FilterServiceService } from '../filter-service.service';
 export class SearchTitleComponent implements OnInit {
   results: any
   queryString = 'hello'
+  initialParams = {}
 
   constructor(
     private eventService: EventService, 
@@ -27,13 +28,6 @@ export class SearchTitleComponent implements OnInit {
   searchEventsByName(ev, eventName){
     ev.preventDefault()
     this.updateQueryParams(eventName)
-    /*this.eventService.searchEventsByName(eventName).subscribe(
-      res => {
-        this.results = res
-        console.log(this.results)
-      },
-      err => console.log(err)
-    )*/
   }  
 
   goToEventDetail(id){
@@ -42,24 +36,26 @@ export class SearchTitleComponent implements OnInit {
   }
 
   initWithQueryParams(){
+    //initializes previous search state from query params
     this.queryString = this.route.snapshot.queryParamMap.get('searchTerm')
 
     let params = {
       lat : parseFloat(this.route.snapshot.queryParamMap.get('lat')),
       lng : parseFloat(this.route.snapshot.queryParamMap.get('lng')),
+      locationString : this.route.snapshot.queryParamMap.get('locationString'),
       category_name : this.route.snapshot.queryParamMap.get('category_name'),
       type_name : this.route.snapshot.queryParamMap.get('type_name'),
       price : this.route.snapshot.queryParamMap.get('price'),
       searchTerm : this.route.snapshot.queryParamMap.get('searchTerm'),
-    }   
-
-    console.log(params)
+    }
     
+    this.initialParams = params
+    console.log(params)    
     this.filter(params)
   }
 
-  updateQueryParams(eventName){
-      this.router.navigate([], {
+  async updateQueryParams(eventName){
+    await this.router.navigate([], {
         relativeTo: this.route,
         queryParams: {
           searchTerm: eventName,
@@ -78,6 +74,9 @@ export class SearchTitleComponent implements OnInit {
 
   filter(queryParams){
     console.log(queryParams)
+    if(this.route.snapshot.paramMap.has('searchTerm')){
+      queryParams['searchTerm'] = this.route.snapshot.paramMap.get('searchTerm')
+    }
     this.filterService.filter(queryParams).subscribe(
       res => {
         console.log(res)
