@@ -15,7 +15,7 @@
   <div id="events">
     <div class="frame">
       <div class="bit-1" #eventList>
-        <h2 style="font-size: 32px;"><span style="font-weight:400;">Upcoming</span> Events</h2>
+        <h2>Upcoming <span style="font-weight:600;">Events</span></h2>
         <div class="event-buttons">
           <button type="button" class="b3 btn btn-primary btn-sm">Popular</button>
           <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>
@@ -23,8 +23,9 @@
           <button type="button" (click)="goToEventCreator()" class="b3 btn btn-secondary btn-sm"><h2>+</h2>&#43;<span>Create Event</span></button>
         </div>
       </div>
-      <app-event-list [events]="events?.results"></app-event-list>
-      <button (click)="goToSearch()">Browse</button>
+      <app-event-list [events]="events"></app-event-list>
+      <button id="browse-events" class="btn b6" (click)="goToSearch()">Browse</button>
+      
     </div>
   </div>
 
@@ -33,7 +34,7 @@
   <div id="events">
     <div class="frame">
       <div class="bit-1" #eventList>
-        <h2 style="font-size: 32px;"><span style="font-weight:400;">Events Near</span>You</h2>
+        <h2>Events Near <span style="font-weight:400;">You</span></h2>
         <div class="event-buttons">
           <button type="button" class="b3 btn btn-primary btn-sm">Popular</button>
           <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>

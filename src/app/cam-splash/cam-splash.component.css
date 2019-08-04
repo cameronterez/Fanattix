@@ -62,8 +62,8 @@
 /*! Body */
 .preload {
 height: 100%;
-background-color: #563d7c;
-background-image: linear-gradient(to bottom, #563d7c 20%,#007bff);
+background-color: #ffc107;
+background-image: linear-gradient(to bottom, #ffc107 20%,#373737);
 
 margin:0px !important;
 position: relative;
