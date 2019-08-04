@@ -8,8 +8,10 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 
 /* Colors */
 :root {
-	--purple: #8a52d6;
-	--purple2: #1e0a3c;
+	/* --purple: #8a52d6;
+	--purple2: #1e0a3c; */
+	--purple: #ffc107;
+	--purple2: #916D00;
 	--secondary: #color;
 	--black: #373737;
 	--gray: #eeeeee;
@@ -94,8 +96,11 @@ h1 {
 }
 h2 {
 	font-family: 'Hind', sans-serif;
-	font-weight: 600;
-	font-size: 48px;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 48px;
+	position: relative;
+	top: 10px;
 	color: var(--black);
 	margin-bottom: 15px;
 }
@@ -103,7 +108,7 @@ h3 {
 	font-family: 'Hind', sans-serif;
 	font-weight: 600;
 	font-size: 18px;
-	color: var(--purple2);
+	color: var(--black);
 	margin-top: -5px;
 	text-transform: capitalize;
 }
@@ -218,9 +223,15 @@ textarea { height: auto; }
 	font-family: 'Hind', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
-	color: var(--gray2);
+	color: var(--black);
 	line-height: 60px;
 	margin-left: 30px;
+}
+@media (max-width: 550px) {
+	#navigation-right li {
+		margin-left: 15px;
+		font-size: 14px;
+	}
 }
 #navigation-right li i {
 	font-size: 24px;
@@ -230,8 +241,8 @@ textarea { height: auto; }
 #navigation-right li a, #navigation-right li a:link, #navigation-right li a:visited {
 	color: var(--gray2);
 }
-#navigation-right li a.create-event {
-	color: var(--purple);
+#navigation-right li a:hover {
+	color: var(--black);
 }
 
 .list-group-item { margin-left: 0 !important; }
@@ -243,7 +254,8 @@ textarea { height: auto; }
 	width: 200px;
 	background-color: var(--white);
 }
-#user-menu h3, #user-menu h4 { padding: 0 10px; }
+#user-menu h3 { padding: 0 10px; }
+#user-menu h4 { padding: 0 10px; position: relative;top: -20px; }
 #user-menu li {
 	height: 40px;
 	line-height: 40px;
@@ -282,7 +294,7 @@ textarea { height: auto; }
 
 .form-check { position: relative; }
 /* Hide the browser's default checkbox */
-#account-settings input[type="checkbox"] {
+#account-settings input[type="checkbox"], #edit-event input[type="checkbox"] {
   position: absolute;
   left: 0;
   top: 0;
@@ -321,12 +333,12 @@ textarea { height: auto; }
 }
 
 /* Show the checkmark when checked */
-#account-settings input[type="checkbox"]:checked ~ .checkmark:after {
+#account-settings input[type="checkbox"]:checked ~ .checkmark:after, #edit-event input[type="checkbox"]:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-#account-settings .checkmark:after {
+#account-settings .checkmark:after, #edit-event .checkmark:after {
   left: 7px;
   top: 5px;
   width: 5px;
@@ -430,7 +442,7 @@ textarea { height: auto; }
 	transition: background-color 0.2s ease-in-out;
 	cursor: pointer;
 }
-.b2:hover { background-color: var(--purple2) }
+.b2:hover { background-color: var(--black) }
 
 #search-home .b2 {
 	width: 25%;
@@ -511,25 +523,26 @@ textarea { height: auto; }
 	font-family: 'Hind', sans-serif;
 	font-size: 14px;
 	font-weight: 600;
-	color: var(--purple) !important;
-	background-color: var(--gray) !important;
+	color: var(--white) !important;
+	background-color: var(--purple) !important;
 	text-transform: uppercase;
 	text-shadow: none;
 	transition: all 0.2s linear;
 	margin-left: 15px;
 }
 .b3:nth-of-type(4) {
-	background-color: var(--purple) !important;
+	background-color: var(--black) !important;
 	position: relative;
 	margin-right: 0;
 }
 .b3:nth-of-type(4) h2 {
 	position: absolute;
 	left: 50%;
+	top: 0;
 	transform: translateX(-50%);
 	line-height: 44px;
 	font-weight: 400;
-	color: white !important;
+	color: var(--purple) !important;
 	font-size: 30px;
 	transition: opacity 0.2s linear;
 	transition-delay: 0.1s; 
@@ -542,7 +555,7 @@ textarea { height: auto; }
 	display: inline-block;
 	vertical-align: top;
 	overflow: hidden;
-	color: var(--white) !important;
+	color: var(--purple) !important;
 	position: relative;
 	left: -5px;
 }
@@ -563,17 +576,60 @@ textarea { height: auto; }
 	font-family: 'Hind', sans-serif;
 	font-size: 14px;
 	font-weight: 600;
-	color: var(--purple);
-	background-color: var(--gray);
+	color: var(--white);
+	background-color: var(--purple);
 	text-transform: uppercase;
 	transition: background-color 0.2s ease-in-out;
 	cursor: pointer;
 }
-.b4:hover { background-color: var(--purple2); color: var(--white); }
+.b4:hover { background-color: var(--black); }
+
+.b5 {
+	border: 0; 
+	background: 0;
+	text-align: center;
+	font-family: 'Hind', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	width: 33.333%;
+	margin: 0!important;
+}
+.b5 i {
+	width: 50px;
+	height: 50px;
+	font-size: 14px;
+	color: var(--black);
+	background-color: var(--gray);
+	border-radius: 25px;
+	border: 0;
+	line-height: 50px;
+	margin-bottom: 5px;
+}
 
 #events .frame .bit-1 {
 	position: relative;
 }
+/*My events Editor */
+.event-button-container {
+	display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 1250px) {
+	.event-button-container {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1100px) {
+	#my-events .frame .bit-3 {
+		width: 50% !important;
+	}
+}
+
 .event-buttons {
 	position: absolute;
 	right: 15px;
@@ -687,6 +743,7 @@ textarea { height: auto; }
 	padding: 60px 0;
 	position: relative;
 }
+/*
 #categories:before {
 	content: "";
 	background-color: var(--black);
@@ -716,18 +773,16 @@ textarea { height: auto; }
 	right: 0;
 	position: absolute;
 	z-index: -1;
-}
-#categories h2 {
-	font-weight: 400;
-	color: var(--white);
-}
+}*/
+
 .category-container {
 	padding: 0 15px;
+	width: 100%;
 }
 .category-button {
 	position: relative;
-	height: 120px;
-	width: 190px;
+	height: 250px;
+	width: 200px;
 	padding: 15px;
 	margin-right: 15px;
 	margin-bottom: 15px;
@@ -735,27 +790,17 @@ textarea { height: auto; }
 	box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.12);
   	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   	background-color: var(--purple);
-  	background-size: 80px;
   	background-repeat: no-repeat;
-  	background-position: 110% 5px; 
+  	background-position: 100% 0; 
   	overflow: hidden;
   	float: left;
 }
 
 /* Category Button Icons */
-.Auto\/Boat\/Air { background-image: url('../svg/auto.svg'); }
-.Business\/Professional { background-image: url('../svg/business.svg'); }
-.Charity\/Cause { background-image: url('../svg/charity.svg'); background-position: 110% -30px; }
+.Auto\/Boat\/Air { background-image: url('../imgs/test.png'); }
+.Business\/Professional { background-image: url('../imgs/test.png'); }
+.Charity\/Cause { background-image: url(''); }
 
-@media (max-width: 860px) {
-	.category-button {
-		width: calc(50% - 7.5px);
-		padding-bottom: 63.157%;
-	}
-	.category-container:nth-child(2n + 1) .category-button {
-		margin-right: 0;
-	}
-}
 
 .category-button:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.15);transform: translateY(-5px); }
 
@@ -764,7 +809,7 @@ textarea { height: auto; }
 	bottom: 10px;
 	z-index: 2;
 }
-.category-button h3 { font-weight: 400; color: var(--white); margin-bottom: -4px; }
+.category-button h3 { font-weight: 600; font-size: 14px;  margin-bottom: -4px; }
 .category-button h4 { color: var(--gray3); }
 .category-button i {
 	position: absolute;
@@ -817,7 +862,6 @@ textarea { height: auto; }
 .event-name {
 	margin-right: 20px;
 }
-#create-event-single h2 { text-align: center; }
 #create-event-single label {
 	font-family: 'Hind', sans-serif;
 	font-weight: 600;
@@ -827,15 +871,23 @@ textarea { height: auto; }
 	text-transform: capitalize;
 	display: block;
 }
-#create-event-single .image-container {
+#create-event-single .image-container, #edit-event .image-container {
+	position: relative;
 	margin-bottom: 30px;
 }
-#create-event-single .image-container img {
+#create-event-single .image-container img, #edit-event .image-container img {
 	display: inline; margin-right: 15px;
 	width: 150px;
 	height: auto;
 }
-input[type="file"] { border: 0 !important; }
+.image-container input[type="file"] { 
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	border: 0 !important;
+	opacity: 0;
+	cursor: pointer !important;
+}
 #event-creator-card {
 	width: calc(80% - 60px);
 	border-radius: 5px;
@@ -848,7 +900,7 @@ input[type="file"] { border: 0 !important; }
 /* Event Details */
 #event-detail {
 	padding: 60px 0 30vh;
-	background-color: var(--purple2);
+	background-color: var(--purple);
 }
 
 #event-detail-card {
@@ -919,7 +971,7 @@ input[type="file"] { border: 0 !important; }
 
 /* Ticket Purchase */
 #ticket-purchase {
-	background-color: var(--purple2);
+	background-color: var(--purple);
 }
 #ticket-purchase h2 {
 	font-size: 24px;
@@ -952,3 +1004,15 @@ input[type="file"] { border: 0 !important; }
     width: 100%;
     }
 }
+
+/* Event Utilities */
+#event-utilities li {
+	line-height: 40px;
+	font-family: 'Hind', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	color: var(--gray2);
+	display: block;
+	text-align: center;
+}
+#event-utilities li a { color: var(--black) }
