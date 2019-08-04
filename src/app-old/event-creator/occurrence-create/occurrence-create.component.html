@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>When Is Your Event?</h3>
+      <form *ngIf="occurrenceForm" [formGroup]="occurrenceForm" (submit)="submitForm()">
+        <h5>Start</h5>
+        <div class="form-group">
+          
+          <label for="exampleInputPassword1">Date</label>
+          <app-error-display [errorMessage]="formErrors['start']" *ngIf="formErrors['start']"></app-error-display>
+          <input formControlName="startDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+
+          <label for="exampleInputPassword1">Time</label>
+          <app-error-display [errorMessage]="formErrors['start']" *ngIf="formErrors['start']"></app-error-display>
+          <input formControlName="startTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+        </div>
+
+        <h5>End</h5>
+        <div class="form-group">          
+          <label for="exampleInputPassword1">Date</label>
+          <app-error-display [errorMessage]="formErrors['end']" *ngIf="formErrors['end']"></app-error-display>
+          <input formControlName="endDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+
+          <label for="exampleInputPassword1">Time</label>
+          <app-error-display [errorMessage]="formErrors['end']" *ngIf="formErrors['end']"></app-error-display>
+          <input formControlName="endTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+        </div>
+        <button type="submit">Save</button>
+      </form>
+
+    </div>
+  </div>
+</div>

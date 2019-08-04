@@ -1,0 +1,25 @@
+.filters{
+    /*display: flex;
+    flex-direction: column;
+    border: 1px solid black;*/
+    background: whitesmoke;
+    width: 300px;
+    padding-top: 40px;
+    height: 100%;
+}
+.filters-list{
+    display: flex;
+    flex-direction: column;
+}
+.filter{
+    position: relative !important;
+}
+.full-input{
+    width: 100% !important;
+}
+select{
+    width: 100%;
+}
+p{
+    margin-bottom: 4px;
+}

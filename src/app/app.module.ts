@@ -69,13 +69,6 @@ import { UserMessagingComponent } from './shared/user-messaging/user-messaging.c
 import { PostCreateComponent } from './event-creator/post-create/post-create.component';
 import { SaveButtonComponent } from './event-creator/save-button/save-button.component';
 import { NearEventsComponent } from './near-events/near-events.component';
-import { EventHorizontalScrollComponent } from './event-horizontal-scroll/event-horizontal-scroll.component';
-import { StripeSignUpComponent } from './stripe/stripe-sign-up/stripe-sign-up.component';
-import { StripeGuardService } from './stripe-guard.service';
-import { FaqComponent } from './faq/faq.component';
-import { OverviewComponent } from './overview/overview.component';
-import { ContactComponent } from './contact/contact.component';
-import { PricingComponent } from './pricing/pricing.component';
 
 
 
@@ -91,7 +84,6 @@ const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'search', component: SearchComponent},
   {path: 'category-events/:id', component: CategoryEventsComponent},
-  {path: 'activate-stripe-account', component: StripeSignUpComponent},
   /*{path: 'creator', component: CreatorComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
@@ -102,7 +94,7 @@ const routes: Routes = [
       {path: 'actions/:id', component: AnalyticsComponent}
     ]
   },*/
-  {path: 'creator', component: CreatorMenuComponent, canActivate: [StripeGuardService],
+  {path: 'creator', component: CreatorMenuComponent,
     children: [
       {path: '', component: EventCreatorHomeComponent},
       {path: 'single', component: EventCreatorSingleComponent},
@@ -117,10 +109,6 @@ const routes: Routes = [
   {path: 'stripe-connect', component: PostConnectComponent},
   {path: 'event-utilities', component: EventUtilitiesComponent},
   {path: 'ticket-scanner', component: TicketScannerComponent},
-  {path: 'overview', component: OverviewComponent},
-  {path: 'faq', component: FaqComponent},
-  {path: 'pricing', component: PricingComponent},
-  {path: 'contact', component: ContactComponent}
 ]
 
 @NgModule({
@@ -179,12 +167,6 @@ const routes: Routes = [
     PostCreateComponent,
     SaveButtonComponent,
     NearEventsComponent,
-    EventHorizontalScrollComponent,
-    StripeSignUpComponent,
-    FaqComponent,
-    OverviewComponent,
-    ContactComponent,
-    PricingComponent,
   ],
   // Google Places API Key 
 

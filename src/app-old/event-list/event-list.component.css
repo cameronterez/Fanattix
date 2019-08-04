@@ -1,0 +1,14 @@
+/*.horizontal-scroll{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
+    width: 100%;
+}
+.horizontal-scroll .bit-3{
+    margin-right: 8px !important;
+    width: 380px;
+    height: 380px;
+    min-height: 380px;
+    min-width: 380px;
+    
+}*/

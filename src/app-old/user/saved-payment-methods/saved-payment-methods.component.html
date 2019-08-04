@@ -1,0 +1,10 @@
+<div class="body-padding">
+  <div class="frame">
+  	<div class="bit-1">
+    <div class="col-md-12" *ngFor="let method of paymentMethods">
+      <p>Card Ending In <strong>{{method.last4}}</strong></p>
+      <button class="btn btn-small btn-danger">Remove</button>
+    </div>
+	</div>
+  </div>
+</div>

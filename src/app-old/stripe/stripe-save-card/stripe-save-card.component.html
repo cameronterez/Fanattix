@@ -1,0 +1,7 @@
+<form id="stripe-save" novalidate (ngSubmit)="saveCard()" [formGroup]="stripeTest">
+    <input type="text" class="form-control" formControlName="name" placeholder="Name On Card">
+    <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+    <button type="submit" class="b4 btn btn-primary" style="margin-bottom: 30px;">
+      Save
+    </button>
+  </form>

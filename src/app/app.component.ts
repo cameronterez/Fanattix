@@ -43,13 +43,13 @@ export class AppComponent implements OnInit{
       loc => {
         this.authService.location = loc
         console.log(loc.coords)
-        /*this.eventService.getEventsNearby(loc.coords).subscribe(
+        this.eventService.getEventsNearby(loc.coords).subscribe(
           res => {
             console.log(res)
             this.eventService.eventsNearBy.next(res['events'])
           },
           err => console.log(err)
-        )*/
+        )
       },
       err => {
         this.messageService.displayMessage("Could not get Your Location")
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe(
       event => {
         if(event instanceof NavigationEnd){
-          //console.log(this.router.url)
+          console.log(this.router.url)
           this.currentUrl = this.router.url
           this.util.currentUrl.next(this.router.url)
         }

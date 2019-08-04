@@ -1,0 +1,15 @@
+<form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest" *ngIf="user && ticketPrice > 0">
+  <input type="text" class="form-control" formControlName="name" placeholder="Name On Card">
+  <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+  <button type="submit" class="b4 btn btn-primary">
+    BUY
+  </button>
+</form>
+
+<div *ngIf="user && ticketPrice <= 0">
+  <button (click)="buyFree()">Get Ticket</button>
+</div>
+
+<div *ngIf="!user">
+  <app-sign-up></app-sign-up>
+</div>

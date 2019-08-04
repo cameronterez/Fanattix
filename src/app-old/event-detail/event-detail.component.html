@@ -1,0 +1,49 @@
+<div id="event-detail">
+    <div class="frame">
+      <div class="bit-60">
+        <div class="event-card-image">
+          <img class="object-fit" [src]="event.image" alt="Event Image" *ngIf="event.image!=undefined && event.image!=null"/>
+        </div>
+      </div>
+      <div style="float:right" class="bit-40">
+        <div id="event-detail-card">
+          <h2>{{event.name}}</h2>
+          <h4 class="event-title">by {{event.organizers}}</h4>
+          <div class="event-card-item">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 16 20" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M14.5,15h-13C1.224,15,1,14.776,1,14.5v-11C1,3.224,1.224,3,1.5,3h13C14.776,3,15,3.224,15,3.5v11    C15,14.776,14.776,15,14.5,15z M2,14h12V4H2V14z"/><path d="M14.5,7h-13C1.224,7,1,6.776,1,6.5S1.224,6,1.5,6h13C14.776,6,15,6.224,15,6.5S14.776,7,14.5,7z"/><path d="M5.5,4C5.224,4,5,3.776,5,3.5V2H4v1.5C4,3.776,3.776,4,3.5,4S3,3.776,3,3.5v-2C3,1.224,3.224,1,3.5,1h2    C5.776,1,6,1.224,6,1.5v2C6,3.776,5.776,4,5.5,4z"/><path d="M12.5,4C12.224,4,12,3.776,12,3.5V2h-1v1.5C11,3.776,10.776,4,10.5,4S10,3.776,10,3.5v-2C10,1.224,10.224,1,10.5,1h2    C12.776,1,13,1.224,13,1.5v2C13,3.776,12.776,4,12.5,4z"/></g><path d="M14.5,11h-13C1.224,11,1,10.776,1,10.5S1.224,10,1.5,10h13c0.276,0,0.5,0.224,0.5,0.5S14.776,11,14.5,11z"/><path d="M5.5,15C5.224,15,5,14.776,5,14.5v-8C5,6.224,5.224,6,5.5,6S6,6.224,6,6.5v8C6,14.776,5.776,15,5.5,15z"/><path d="M10.5,15c-0.276,0-0.5-0.224-0.5-0.5v-8C10,6.224,10.224,6,10.5,6S11,6.224,11,6.5v8C11,14.776,10.776,15,10.5,15z"/></g></svg>
+            <h5>Date</h5>
+            <h4>{{event.occurrences[0]?.start | date: 'medium'}}</h4>
+          </div>
+          <div class="event-card-item">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 16 20" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><path d="M3.5,15C3.224,15,3,14.776,3,14.5v-13C3,1.224,3.224,1,3.5,1S4,1.224,4,1.5v13C4,14.776,3.776,15,3.5,15z"/><path d="M3.5,10c-0.198,0-0.386-0.119-0.464-0.314C2.933,9.43,3.058,9.139,3.314,9.036L12.153,5.5L3.314,1.964   c-0.256-0.103-0.381-0.394-0.279-0.65c0.102-0.257,0.396-0.383,0.65-0.279l10,4C13.876,5.112,14,5.295,14,5.5   s-0.124,0.388-0.314,0.464l-10,4C3.625,9.988,3.562,10,3.5,10z"/></g></svg>
+            <h5>Location</h5>
+            <h4>{{event.location}}</h4>
+          </div>
+          <div class="event-card-item">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 16 20" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><path d="M7.5,15c-0.128,0-0.256-0.049-0.354-0.146l-6-6C1.053,8.76,1,8.633,1,8.5v-5C1,3.224,1.224,3,1.5,3h5   c0.133,0,0.26,0.053,0.354,0.146l6,6c0.195,0.195,0.195,0.512,0,0.707l-5,5C7.756,14.951,7.628,15,7.5,15z M2,8.293l5.5,5.5   L11.793,9.5L6.293,4H2V8.293z"/><path d="M13.5,8c-0.128,0-0.256-0.049-0.354-0.146L7.293,2H2.5C2.224,2,2,1.776,2,1.5S2.224,1,2.5,1h5   c0.133,0,0.26,0.053,0.354,0.146l6,6c0.195,0.195,0.195,0.512,0,0.707C13.756,7.951,13.628,8,13.5,8z"/><path d="M4.5,8C3.673,8,3,7.327,3,6.5S3.673,5,4.5,5S6,5.673,6,6.5S5.327,8,4.5,8z M4.5,6C4.224,6,4,6.224,4,6.5S4.224,7,4.5,7   S5,6.776,5,6.5S4.776,6,4.5,6z"/></g></svg>
+            <h5>Category</h5>
+            <h4>{{event.category_detail.name}}</h4>
+          </div>
+          <div class="event-card-item" *ngIf="event.ticket_options.length > 0">
+            <div class="ticket-box" *ngFor="let option of event.ticket_options">
+              <button (click)="goToPurchase(option.id)" class="b2 btn">Purchase</button>
+              <h3>{{option.name}}</h3>
+              <h4>${{option.price}} &bull; {{option.number_total}} Tickets Left</h4>
+            </div>
+          </div>
+          <div class="event-card-item" *ngIf="event.ticket_options.length <= 0">
+            <div class="ticket-box">
+              <h3>Tickets</h3>
+              <h4>No Tickets available for purchase at this time.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bit-60">
+        <div class="event-detail-desc">
+          <h3>Description</h3>
+          <p>{{event.description}}</p>
+        </div>
+      </div>
+    </div>
+</div>

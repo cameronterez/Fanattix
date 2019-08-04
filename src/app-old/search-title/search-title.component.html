@@ -1,0 +1,14 @@
+<div>
+  <form class="form-inline my-2 my-lg-0 w-100" (submit)="searchEventsByName($event, eventName.value)">
+      <input class="search-title form-control mr-sm-2 w-25" type="search" #eventName placeholder="Search By Title" [(ngModel)]="queryString" name="queryString" aria-label="Search">
+      <button class="b2 btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+<div class="filters">
+    <app-search-filter (filtersUpdated)="filter($event)" [selectedFilters]="initialParams"></app-search-filter>
+</div>
+  
+<div class="">
+  <app-event-list [events]="results"></app-event-list>
+</div>
+

@@ -10,12 +10,11 @@
     left: 0;
     bottom: 0;
     width: 300px;
-    border: 1px solid black;
     display: fixed;
     bottom: 0px;
     width: 300px;
     height: calc(100vh - 60px);
-    background: #563D7C !important;
+    background: var(--purple);
     color: white;
     padding: 16px;
 }
@@ -29,7 +28,6 @@
 }
 .c-menu-inner li:hover{
     background: white;
-    background: #563D55;
     padding-left: 8px;
     padding-right: 8px;
     cursor: pointer;
@@ -43,4 +41,14 @@
 .inner-content{
     width: calc(100vw - 300px); /* width to properly layout beside .c-menu-inner */
     /*border: 1px solid black;*/
+}
+
+@media (max-width: 900px) {
+    .c-menu-inner {
+        transform: translateX(-300px);
+    }
+    .inner-content{
+    width: 100vw; /* width to properly layout beside .c-menu-inner */
+    /*border: 1px solid black;*/
+}
 }

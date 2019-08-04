@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12" *ngIf="connectedAccount?.length <= 0">
+    <p>Activate your account by connecting with Stripe.</p>
+      <a href="https://connect.stripe.com/express/oauth/authorize?redirect_uri=http://localhost:4200/stripe-connect/&client_id=ca_EznEo94DHXgBpOYVsmdY9My6WsAyz38o&state={STATE_VALUE}">
+        <button class="b4 btn btn-primary" style="margin-bottom: 30px;">Connect With Stripe</button>
+        </a>
+  </div>
+
+  <div class="col-md-12" *ngIf="connectedAccount?.length >= 1">
+    <p>Your Account is connected With Stripe. <a href="https://dashboard.stripe.com/">Go To Stripe Dashboard</a></p>
+  </div>
+</div>

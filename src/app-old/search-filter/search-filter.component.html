@@ -1,0 +1,33 @@
+<div class="filters">
+    <h3 style="margin-bottom: 16px;">Filters</h3>
+    <div class="filters-list">
+      <div class="filter">
+        <p>Near Location</p>
+        <!--<input type="text" style="width: 100%;"><button>Select</button>-->
+        <input class="full-input" ngx-google-places-autocomplete [(ngModel)]="location['locationString']" [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
+      </div>
+      <div class="filter">
+        <p>Category</p>
+        <select style="width: 100%;" [(ngModel)]="selectedCategory">
+          <option value="null" [selected]="true">Any</option>
+          <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+        </select>
+      </div>
+      <div class="filter">
+        <p>Price</p>
+        <select style="width: 100%;" [(ngModel)]="selectedPrice">
+          <option value="null" [selected]="true">Any</option>
+          <option value="free">Free</option>
+          <option value="paid">Paid</option>
+        </select>
+      </div>
+      <div class="filter">
+        <p>Type</p>
+        <select style="width: 100%;" [(ngModel)]="selectedType">
+          <option value="null" [selected]="true">Any</option>
+          <option *ngFor="let type of types"  value="{{type.name}}">{{type.name}}</option>
+        </select>
+      </div>
+    </div>
+    <button (click)="applyFilters()">Apply Filters</button>
+</div>

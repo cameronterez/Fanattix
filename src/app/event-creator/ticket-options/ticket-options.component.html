@@ -1,4 +1,4 @@
-<h4>Tickets</h4>
+<h2>Tickets</h2>
 <p *ngIf="createdTicketOptions">This Event has {{ticketOptions.length + createdTicketOptions.length}} Ticket(s) available</p>
 <div *ngIf="createdTicketOptions">
   <div *ngFor="let ticket of createdTicketOptions;index as i">
@@ -28,8 +28,8 @@
         <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
     </div>
 
-    <button class="btn btn-danger">Delete</button>
-    <button class="btn btn-success ml-1" (click)="editTicketOption(ticket)">Save</button>
+    <button class="b4 btn btn-danger">Delete</button>
+    <button class="b4 btn btn-success ml-1" (click)="editTicketOption(ticket)">Save</button>
     <hr/>
   </div>
 </div>
@@ -62,10 +62,10 @@
         <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
     </div>
 
-    <button class="btn btn-danger">Delete</button>
-    <button class="btn btn-success ml-1" (click)="saveTicketOption(ticket)">Save</button>
+    <button class="b4 btn btn-danger">Delete</button>
+    <button class="b4 btn btn-success ml-1" (click)="saveTicketOption(ticket)">Save</button>
     <hr/>
   </div>
 
-  <button class="btn btn-primary" (click)="addTicketOption()">Add Ticket</button>
+  <button class="b4 btn btn-primary" (click)="addTicketOption()">Add Ticket</button>
 </div>

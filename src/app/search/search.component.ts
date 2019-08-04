@@ -13,7 +13,7 @@ import { API_URL, IMAGE_URL } from '../../environments/environment';
 export class SearchComponent implements OnInit {
   results: FxEvent[]
   IMAGE_URL = IMAGE_URL
-  search = 'title'
+  search = 'cld'
 
   constructor(private http: HttpClient, private eventService: EventService, private router: Router) { }
 

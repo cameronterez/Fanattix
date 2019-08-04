@@ -6,7 +6,6 @@ import { StripeService } from '../../stripe.service';
 import { AuthGuardService } from '../../auth-guard.service';
 import { AuthService } from '../../auth.service';
 import { User } from '../../models/user';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stripe-ticket-purchase',
@@ -48,8 +47,7 @@ export class StripeTicketPurchaseComponent implements OnInit {
     private fb: FormBuilder,
     private ngxstripeService: NgxStripeService,
     private stripeService: StripeService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {}
  
   ngOnInit() {
@@ -60,7 +58,7 @@ export class StripeTicketPurchaseComponent implements OnInit {
     this.getUser()
   }
  
-  buy() { //for paid tickets, generate token to send card to server
+  buy() {
     const name = this.stripeTest.get('name').value;
     this.ngxstripeService.stripe
       .createToken(this.card.getCard(), { name })
@@ -81,11 +79,6 @@ export class StripeTicketPurchaseComponent implements OnInit {
           this.stripeService.sendToken(data).subscribe(
             res => {
               console.log(res)
-              if(res.hasOwnProperty('error')){
-                console.log(res['error'])
-              }else{
-                this.router.navigate(['purchase-complete'])
-              }
             },
             err => console.log(err)
           )
@@ -94,29 +87,6 @@ export class StripeTicketPurchaseComponent implements OnInit {
           console.log(result.error.message);
         }
       });
-  }
-
-  buyFree(){  //When purchasing free ticket, do not generate stripe token
-    let data = {
-      source_token : null,
-      amount : this.ticketPrice, //convert ticket price to cents for Stripe
-      creatorId : this.creatorId,
-      ticket_option_id: this.ticketOptionId,
-      quantity: this.quantity,
-      user_id: this.authService._userId.value
-    }
-
-    this.stripeService.sendToken(data).subscribe(
-      res => {
-        console.log(res)
-        if(res.hasOwnProperty('error')){
-          console.log(res['error'])
-        }else{
-          this.router.navigate(['purchase-complete'])
-        }
-      },
-      err => console.log(err)
-    )
   }
 
   getUser(){

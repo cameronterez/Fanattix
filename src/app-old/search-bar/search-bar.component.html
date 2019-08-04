@@ -1,0 +1,23 @@
+
+      <form class="form-inline my-2 my-lg-0 w-100" *ngIf="searchForm" [formGroup]="searchForm" (submit)="searchCLD()">
+          <select class="form-control mr-sm-2 w-25" id="inputGroupSelect01" formControlName="category">
+              <option value="" selected>Any Category</option>
+              <option *ngFor="let category of categories" placeholder="Category" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"> 
+          <div class="form-control mr-sm-2 w-25" type="search" formControlName="location" placeholder="Location" aria-label="Search">
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="date">
+            <option value="" selected>Any Date</option>
+            <option *ngFor="let date of dates" value="{{date.value}}">{{date.name}}</option>
+            <!--<option value="tomorrow">Tomorrow</option>
+            <option value="thisWeek">This Week</option>
+            <option value="thisMonth">This Month</option>  -->    
+          </select>
+          </div>
+        <button class="b2 btn-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <div class="">
+        <app-event-list [events]="results"></app-event-list>
+      </div>
+    
