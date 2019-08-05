@@ -2,7 +2,7 @@
     <div class="row" *ngIf="loggedIn==true">
       <div class="col-md-12">
         <h3>{{user.first_name}} {{user.last_name}}</h3>
-        <h4><small>{{user.email}}</small></h4>
+        <h4 style="top: -20px;"><small>{{user.email}}</small></h4>
         <ul class="list-group">
           <li class="list-group-item"><a routerLink="my-tickets">Tickets</a></li>
           <li class="list-group-item"><a routerLink="creator/my-events">My Events</a></li>
