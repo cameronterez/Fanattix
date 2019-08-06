@@ -76,6 +76,7 @@ import { FaqComponent } from './faq/faq.component';
 import { OverviewComponent } from './overview/overview.component';
 import { ContactComponent } from './contact/contact.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { EventListNestedComponent } from './event-list-nested/event-list-nested.component';
 
 
 
@@ -185,6 +186,7 @@ const routes: Routes = [
     OverviewComponent,
     ContactComponent,
     PricingComponent,
+    EventListNestedComponent,
   ],
   // Google Places API Key 
 

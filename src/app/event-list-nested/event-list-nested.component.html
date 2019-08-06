@@ -1,0 +1,22 @@
+<div class="horizontal-scroll">
+    <div class="bit-3 " *ngFor="let event of events" (click)="goToEventDetail(event.id)">
+            <div class="event-card">
+              <div class="event-card-image">              
+                <!--<img class="object-fit" src="{{event.image}}" *ngIf="event.image?.indexOf(API_URL) != -1"/>-->
+                <img class="object-fit" src="{{IMAGE_URL}}{{event.image}}"/>
+                <!--<div class="event-card-category">{{event.category_detail.name}}</div>-->
+              </div>
+              <div class="event-card-text">
+                <div class="event-card-date">
+                  <h4>{{event.occurrences[0]?.start | date: 'MMM'}}</h4>
+                  <h3>{{event.occurrences[0]?.start | date: 'dd'}}</h3>
+                </div>
+                <div><h3>{{event.name}}</h3></div>
+                <h4><i class="fas fa-map-marker-alt"></i>&nbsp;{{event.location}}</h4>
+                <h4><i class="fas fa-clock"></i>&nbsp;{{event.occurrences[0]?.start | date: 'h:mma'}}&emsp;<i class="fas fa-ticket-alt"></i><span *ngFor="let to of event.ticket_options">&nbsp;${{to.price}}</span></h4>
+                <!--<hr>
+                <p>Lorem ipsum dolor sit amet, voluptua iracundia an pri, his utinam principes dignissim ad. Ne nec dolore oblique nusquam, cu luptatum volutpat delicatissimi has.</p>-->
+              </div>
+            </div>
+    </div>
+  </div>
