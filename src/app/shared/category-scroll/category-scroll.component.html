@@ -6,7 +6,7 @@
 
     <div class="category-container" *ngFor="let category of categories">
         <a class="category-button" href="">
-          <div class="category-image {{category.name}}"></div>
+          <div class="category-image"><img class="object-fit" src="{{category.image}}"/></div>
           <div class="category-text">
             <h3>{{category.name}}</h3>
           </div>

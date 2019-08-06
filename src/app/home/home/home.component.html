@@ -2,10 +2,7 @@
   <img class="object-fit" src="https://images.unsplash.com/photo-1458891216473-4f26bb4eb40e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"/>
     <div class="center">
       <div class="frame">
-        <div class="event-card-category">Business</div>
-        <h1>Fanattix Conference</h1>
-        <h4><i class="far fa-calendar-check"></i>&nbsp;Feb 5, 2018&emsp;<i class="fas fa-map-marker-alt"></i>&nbsp;3552 Cahaba Valley Rd, Birmingham, AL&emsp;<i class="fas fa-clock"></i>&nbsp;8:15 PM</h4>
-        <a class="b1" href="">Buy Tickets</a>
+        <h1 style="font-size: 72px;">Discover & Create Events</h1>
       </div>
     </div>
 </div>
@@ -17,7 +14,6 @@
       <div class="bit-1" #eventList>
         <h2>Upcoming <span style="font-weight:600;">Events</span></h2>
         <div class="event-buttons">
-       <!--<button type="button" class="b3 btn btn-primary btn-sm">Popular</button>-->
           <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>
           <button type="button" (click)="getFreeEvents(eventList)" class="b3 btn btn-primary btn-sm">Free</button>
           <button type="button" (click)="goToEventCreator()" class="b3 btn btn-secondary btn-sm"><h2>+</h2>&#43;<span>Create Event</span></button>
@@ -35,12 +31,6 @@
     <div class="frame">
       <div class="bit-1" #eventList>
         <h2>Events Near <span style="font-weight:400;">You</span></h2>
-        <!--<div class="event-buttons">
-          <button type="button" class="b3 btn btn-primary btn-sm">Popular</button>
-          <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>
-          <button type="button" (click)="getFreeEvents(eventList)" class="b3 btn btn-primary btn-sm">Free</button>
-          <button type="button" (click)="goToEventCreator()" class="b3 btn btn-secondary btn-sm"><h2>+</h2>&#43;<span>Create Event</span></button>
-        </div>-->
       </div>
       <app-event-list [events]="events?.results"></app-event-list>
       
