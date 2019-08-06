@@ -85,6 +85,18 @@ export class SearchTitleComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  toggleSlide(){
+    // Implement slider
+    console.log('toggle slide')
+    let slider = document.getElementById('filters-panel')
+    if(slider.classList.contains('closed')){
+      slider.classList.remove('closed')
+    }else{
+      slider.classList.add('closed')
+    }
+    
+  }
   
 
 }

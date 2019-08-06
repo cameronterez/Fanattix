@@ -8,6 +8,10 @@
           <li><a routerLink="/">Home</a></li>
           <li><a class="create-event" routerLink="creator">Event Creator</a></li>
           <li><a class="create-event" routerLink="search">Search Events</a></li>
+          <li><a routerLink="overview">Overview</a></li>
+          <li><a routerLink="faq">FAQs</a></li>
+          <li><a routerLink="pricing">Pricing</a></li>
+          <li><a routerLink="contact">Contact</a></li>
           <li (click)="toggleAccountMenu()"><i class="fas fa-user-circle"></i></li>
           <div class="account-menu" *ngIf="accountMenu==true"><app-user-menu></app-user-menu></div>
         </ul>

@@ -538,13 +538,13 @@ textarea { height: auto; }
 	transition: all 0.2s linear;
 	margin-left: 15px;
 }
-.b3:nth-of-type(4) {
+.b3:nth-of-type(3) {
 	background-color: var(--black) !important;
 	position: relative;
 	margin-right: 0;
 	color: var(--black) !important;
 }
-.b3:nth-of-type(4) h2 {
+.b3:nth-of-type(3) h2 {
 	position: absolute;
 	left: 50%;
 	top: 0;
@@ -556,7 +556,7 @@ textarea { height: auto; }
 	transition: opacity 0.2s linear;
 	transition-delay: 0.1s; 
 }
-.b3:nth-of-type(4) span {
+.b3:nth-of-type(3) span {
 	max-width: 0;
 	opacity: 0;
 	-webkit-transition: max-width 0.1s, opacity 0.3s;
@@ -568,12 +568,12 @@ textarea { height: auto; }
 	position: relative;
 	left: -5px;
 }
-.b3:nth-of-type(4):hover span {
+.b3:nth-of-type(3):hover span {
 	transition: max-width 0.5s, opacity 0.2s linear 0.3s;
 	max-width: 7rem;
 	opacity: 1;
 }
-.b3:nth-of-type(4):hover h2 { opacity: 0; transition-delay: 0s !important; }
+.b3:nth-of-type(3):hover h2 { opacity: 0; transition-delay: 0s !important; }
 
 .b4 {
 	width: 200px;
@@ -675,18 +675,18 @@ textarea { height: auto; }
 		margin-bottom: 30px;
 		padding-right: 30px;
 	}
-	.event-buttons .b3:nth-of-type(4) {
+	.event-buttons .b3:nth-of-type(3) {
 		margin-right: -15px;
 	}
-	.b3:nth-of-type(4) span {
+	.b3:nth-of-type(3) span {
 		display: none;
 	}
-	.b3:nth-of-type(4):hover span {
+	.b3:nth-of-type(3):hover span {
 		transition: none;
 		max-width: none !important;
 		opacity: 0;
 	}
-	.b3:nth-of-type(4):hover h2 { opacity: 1; }
+	.b3:nth-of-type(3):hover h2 { opacity: 1; }
 }
 
 /* Event Cards */

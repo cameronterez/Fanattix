@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Input } from '@angular/core';
 import { Router } from '@angular/router'
+import { API_URL } from '../../environments/environment';
 
 @Component({
   selector: 'app-event-list',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router'
 })
 export class EventListComponent implements OnInit, OnChanges {
   @Input() events
+  API_URL = API_URL
 
   constructor(private router: Router) { }
 
