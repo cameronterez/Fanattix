@@ -4,12 +4,22 @@
         <ul id="navigation-left">
           <a routerLink="/"><h5>Fanattix</h5></a>
         </ul>
+        <input type="checkbox" id="mobile-menu" name="mobile-menu"> 
+        <label for="mobile-menu">&#9776;</label>
+        <li id="user-circle" (click)="toggleAccountMenu()"><i class="fas fa-user-circle"></i></li>
+        <div class="account-menu" *ngIf="accountMenu==true"><app-user-menu></app-user-menu></div>
         <ul id="navigation-right">
           <li><a routerLink="/">Home</a></li>
           <li><a class="create-event" routerLink="creator">Event Creator</a></li>
           <li><a class="create-event" routerLink="search">Search Events</a></li>
-          <li (click)="toggleAccountMenu()"><i class="fas fa-user-circle"></i></li>
-          <div class="account-menu" *ngIf="accountMenu==true"><app-user-menu></app-user-menu></div>
+          <div id="dropdown">
+            <li id="dropbtn"><a href="/overview">Overview<span id="dropdown-arrow">&nbsp;&#8964;</span></a></li>
+            <div class="dropdown-content">
+              <a href="/pricing">Pricing</a>
+              <a href="/faq">FAQ</a>
+            </div>
+          </div>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
     </div>
