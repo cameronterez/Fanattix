@@ -11,11 +11,10 @@
         <app-search-bar *ngIf="search == 'cld'"></app-search-bar>
         <app-search-title *ngIf="search == 'title'"></app-search-title>
       </div>
+       <div class="bit-1">
+        <app-event-list [events]="results"></app-event-list>
+      </div>
     </div>
-  </div>
-
-  <div class="">
-    <app-event-list [events]="results"></app-event-list>
   </div>
 
 
