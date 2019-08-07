@@ -22,4 +22,5 @@ export interface FxEvent{
     is_inactive: boolean,
     occurrences: any[],
     total_tickets_sold: any,
+    results: any,
 }

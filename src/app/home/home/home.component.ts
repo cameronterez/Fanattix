@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     console.log(element)
     this.util.scrollToElement(element)    
     this.eventService.getEvents().subscribe(
-      res => this.events = res,
+      res => this.events = res['results'],
       err => console.log(err)
     )
   }
