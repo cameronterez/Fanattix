@@ -4,7 +4,7 @@
       <div class="filter">
         <p>Near Location</p>
         <!--<input type="text" style="width: 100%;"><button>Select</button>-->
-        <input class="full-input" ngx-google-places-autocomplete [(ngModel)]="location['locationString']" [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
+        <input class="full-input" ngx-google-places-autocomplete [(ngModel)]="location['locationString']" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
       </div>
       <div class="filter">
         <p>Category</p>
