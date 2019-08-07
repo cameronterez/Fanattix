@@ -1,11 +1,16 @@
-.filters{
+.search-filters{
     /*display: flex;
     flex-direction: column;
     border: 1px solid black;*/
     background: whitesmoke;
     width: 300px;
-    padding-top: 40px;
-    height: 100%;
+    height: calc(100% - 60px);
+    position: fixed;
+    padding: 15px;
+    left: 0;
+    bottom: 0;
+    z-index: -4;
+    transition: all 0.2s ease-in-out;
 }
 .filters-list{
     display: flex;

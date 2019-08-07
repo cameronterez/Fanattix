@@ -93,4 +93,15 @@ export class SearchFilterComponent implements OnInit {
     this.filtersUpdated.emit(qp)
   }
 
+  toggleSlide(){
+    // Implement slider
+    console.log('toggle slide')
+    let slider = document.getElementById('filters-panel')
+    if(slider.classList.contains('closed')){
+      slider.classList.remove('closed')
+    }else{
+      slider.classList.add('closed')
+    }
+  }
+
 }

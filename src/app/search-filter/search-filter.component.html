@@ -1,4 +1,5 @@
-<div class="filters">
+<div class="search-filters">
+    <button class="filter-close" (click)="toggleSlide()"><i class="fas fa-times"></i></button>
     <h3 style="margin-bottom: 16px;">Filters</h3>
     <div class="filters-list">
       <div class="filter">
@@ -29,5 +30,5 @@
         </select>
       </div>
     </div>
-    <button (click)="applyFilters()">Apply Filters</button>
+    <button class="btn b4" style="margin-top: 20px" (click)="applyFilters()">Apply Filters</button>
 </div>
