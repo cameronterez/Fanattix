@@ -75,7 +75,7 @@ body {
 height: 100%;
 background-color: #ffffff;
 margin:0px !important;
-overflow-x: hidden;
+overflow-x: hidden !important;
 }
 
 .preload * {
@@ -464,6 +464,19 @@ textarea { height: auto; }
 	background-color: var(--gray);
 	margin-bottom: 100px;
 }
+.filter-button { border: 0; outline:none; background: transparent; position: absolute; left: 15px; top: -23px;font-family: 'Hind', sans-serif; font-size: 14px; font-weight: 400; }
+.filter-close { border: 0; outline:none; background: transparent; position: absolute; right: 15px; top: 15px; font-size: 16px;transition: all 0.2s ease-in-out; }
+.filter-close:hover { transform: rotateZ(90deg); }
+.creator-button {
+	border: 0; outline:none; font-family: 'Hind', sans-serif; font-size: 14px; font-weight: 400;
+	position: absolute;
+	top: 75px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 10;
+}
+.creator-close { border: 0; outline:none; background: transparent; position: absolute; right: 15px; top: 15px; font-size: 16px;transition: all 0.2s ease-in-out;z-index: 5; }
+.creator-close:hover { transform: rotateZ(90deg); }
 #search-home h5 { margin-top: -10px; margin-bottom: 10px; }
 #search-home form { position: relative; top: 34px; }
 #search-home input {
@@ -1124,6 +1137,11 @@ textarea { height: auto; }
 
 
 /* Static Pages */
+
+#contact-body {
+	padding: 100px 0 50vh;
+	background-color: var(--white);
+}
 
 #faq-header {
 	background-color: var(--purple);
