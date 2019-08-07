@@ -1,6 +1,7 @@
 <div id="search-home">
     <div class="frame">
       <div class="bit-5" style="position: relative;">
+      <button class="filter-button" (click)="toggleSlide()"><i class="fas fa-sliders-h"></i> Filters</button>
         <h5>Event Search</h5>
         <div class="search-filter-container">
           <button class="search-filter sf-left btn-primary btn" (click)="changeSearch('title')">By Title</button>
@@ -11,11 +12,10 @@
         <app-search-bar *ngIf="search == 'cld'"></app-search-bar>
         <app-search-title *ngIf="search == 'title'"></app-search-title>
       </div>
+       <div class="bit-1">
+        <app-event-list [events]="results"></app-event-list>
+      </div>
     </div>
-  </div>
-
-  <div class="">
-    <app-event-list [events]="results"></app-event-list>
   </div>
 
 

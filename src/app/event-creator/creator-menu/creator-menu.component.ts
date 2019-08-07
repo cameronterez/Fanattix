@@ -40,4 +40,15 @@ export class CreatorMenuComponent implements OnInit {
       err => console.log('Creator Menu could not get currentUrl')
     )
   }
+
+  toggleSlide(){
+    // Implement slider
+    console.log('toggle slide')
+    let slider = document.getElementById('creator-panel')
+    if(slider.classList.contains('closed')){
+      slider.classList.remove('closed')
+    }else{
+      slider.classList.add('closed')
+    }
+  }
 }

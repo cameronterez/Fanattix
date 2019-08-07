@@ -1,39 +1,29 @@
-*{
-    font-family: 'Hind', sans-serif;
-}
+
 .c-menu{
-    display: flex;
-    justify-content: flex-end;    
-}
-.c-menu-inner{
     position: fixed;
+    font-family: 'Hind', sans-serif;
     left: 0;
     bottom: 0;
-    width: 300px;
-    border: 1px solid black;
-    display: fixed;
-    bottom: 0px;
-    width: 300px;
     height: calc(100vh - 60px);
-    background: #563D7C !important;
+    overflow-x: hidden;
+    background: var(--purple);
     color: white;
-    padding: 16px;
+    z-index: 100;
+    transition: all 0.2s ease-in-out;
+    width: 300px;
+    transform: translateX(-300px);
+}
+.c-menu-inner{
 }
 .c-menu-inner ul{
     list-style: none;
     margin-bottom: 24px;
 }
-@keyframes hoverAnim{
-    0%{padding-left: 0;}
-    100%{padding-left: 8px;}
-}
+.c-menu-inner li { padding: 15px; background:rgba(255,255,255,0); transition: all 0.2s ease-in-out; }
 .c-menu-inner li:hover{
-    background: white;
-    background: #563D55;
-    padding-left: 8px;
-    padding-right: 8px;
+    background: rgba(255,255,255,0.5);
+    color: var(--black);
     cursor: pointer;
-    animation: hoverAnim .3s ease-in-out;
 }
 .c-menu-inner p{
     color: white;
@@ -44,3 +34,4 @@
     width: calc(100vw - 300px); /* width to properly layout beside .c-menu-inner */
     /*border: 1px solid black;*/
 }
+.closed { transform: translateX(0px); }
