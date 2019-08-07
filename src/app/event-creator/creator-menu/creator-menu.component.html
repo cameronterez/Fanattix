@@ -1,6 +1,7 @@
-<div class="c-menu">
+<div class="c-menu" id="creator-panel">
   <div class="c-menu-inner">
     <div class="menu-item">
+      <button class="creator-close" (click)="toggleSlide()"><i class="fas fa-times"></i></button>
       <ul *ngIf="this.currentUrl == '/creator/single'">
         <li class="menu-item-header"><p>CREATE EVENT</p></li>
         <!--scrollToElement uses the Ids set in eventcreatorsingle to scroll to elements-->
@@ -23,9 +24,7 @@
         </ul>
       </div>
   </div>
-
-  <div class="inner-content">
-    <router-outlet></router-outlet>
-  </div>
   
 </div>
+<button class="creator-button" (click)="toggleSlide()"><i class="fas fa-th-list"></i> Panel</button>
+<router-outlet></router-outlet>
