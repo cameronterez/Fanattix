@@ -1,41 +1,24 @@
 <h4>Tickets</h4>
 <p *ngIf="createdTicketOptions">This Event has {{ticketOptions.length + createdTicketOptions.length}} Ticket(s) available</p>
-<div *ngIf="createdTicketOptions">
+<div *ngIf="createdTicketOptions" class="created-tickets">
   <div *ngFor="let ticket of createdTicketOptions;index as i">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Ticket Name</label>
-      <app-error-display [errorMessage]="formErrors['name']" *ngIf="formErrors['name']"></app-error-display>
-      <input [(ngModel)]="createdTicketOptions[i].name" type="text" (change)="logTicket(ticket)" class="form-control" aria-describedby="emailHelp" placeholder="Name Your ticket">
-      <small class="form-text text-muted">Max Length 60 characters</small>
-    </div>
+      <div class="created-ticket">
+          <h4>{{ticket.name}}</h4>
+          <div class="ticket-meta">
+            <p>{{ticket.price}}</p>
+            <p>{{ticket.description}}</p>
+            <p>{{ticket.number_total}}</p>
+          </div>
+        </div>
+    
+    <button class="btn btn-danger" (click)="deleteTicket(ticket)">Delete</button>
 
-    <div class="form-group">
-      <label for="exampleInputEmail1">Ticket Description</label>
-      <input [(ngModel)]="createdTicketOptions[i].description" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Describe your ticket">
-      <small class="form-text text-muted">Be Sure to include a thorough description of your ticket Do your patrons know which ticket option to choose.</small>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleInputEmail1">Price</label>
-      <app-error-display [errorMessage]="formErrors['price']" *ngIf="formErrors['price']"></app-error-display>
-      <input [(ngModel)]="createdTicketOptions[i].price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="0.00">
-      <small class="form-text text-muted">Enter Price in USD</small>
-    </div>
-
-    <div class="form-group">
-        <label for="exampleInputEmail1">Number Available</label>
-        <input [(ngModel)]="createdTicketOptions[i].number_total" type="text" class="form-control" aria-describedby="emailHelp">
-        <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
-    </div>
-
-    <button class="btn btn-danger">Delete</button>
-    <button class="btn btn-success ml-1" (click)="editTicketOption(ticket)">Save</button>
     <hr/>
   </div>
 </div>
 
 <div>
-  <div *ngFor="let ticket of ticketOptions;index as i">
+  <div *ngFor="let ticket of ticketOptions;index as i" class="new-tickets">
     <div class="form-group">
       <label for="exampleInputEmail1">Ticket Name</label>
       <app-error-display [errorMessage]="formErrors['name']" *ngIf="formErrors['name']"></app-error-display>
@@ -62,10 +45,16 @@
         <small class="form-text text-muted">Enter Max number of Tickets available for this product</small>
     </div>
 
-    <button class="btn btn-danger">Delete</button>
-    <button class="btn btn-success ml-1" (click)="saveTicketOption(ticket)">Save</button>
+    <button class="btn btn-danger" (click)="deleteTicket(ticket)">Delete</button>
+    <button class="btn btn-success ml-1 save-btn" (click)="saveTicketOption($event, ticket)">Save</button>
     <hr/>
+
   </div>
 
   <button class="btn b4" (click)="addTicketOption()">Add Ticket</button>
 </div>
+
+<!--<div class="confirm-delete-container">
+  <app-confirm-delete-ticket-option [id]="deleteTicketId"></app-confirm-delete-ticket-option>
+</div>-->
+

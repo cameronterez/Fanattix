@@ -11,5 +11,8 @@
     left: 0;
     width: 100%;
     z-index: 200;
-    background: rgba(254,254,254,0.9);
+    background: white;
+}
+#navigation-right{
+    display: flex;
 }

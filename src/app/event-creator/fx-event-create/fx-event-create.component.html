@@ -2,20 +2,8 @@
   <div class="frame">
     <div class="bit-1">
       <h2 id="basic-info" style="text-align: center;">Create Event</h2>
-        <!--<button class="btn btn-primary inline mx-2">Hide This Event</button>
-        <button class="btn btn-danger inline mx-2" (click)="confirmDelete()">Delete This Event</button>-->
       <div id="event-creator-card">
-      <!--<div class="p-1">
-        <button class="btn btn-primary inline mx-2">Hide This Event</button>
-        <button class="btn btn-danger inline mx-2" (click)="confirmDelete()">Delete This Event</button>
-      </div>
-      -->
       <form [formGroup]="eventForm" *ngIf="eventForm" (submit)="createEvent()">
-        <!--<div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" value="true" formControlName="is_inactive">
-          <label class="form-check-label" for="exampleCheck1">Save as Inactive</label>
-        </div>-->
-
         <div class="form-group event-name">
           <label for="exampleInputEmail1">Event Name</label>
           <app-error-display [errorMessage]="formErrors['name']" *ngIf="formErrors['name']"></app-error-display>
@@ -79,53 +67,45 @@
         <div class="input-group mt-4">
           <input #imageInput type="file" (change)="processFile(imageInput)"> <!--accept="image/*"-->
         </div>
-
-        <!--<div class="form-group">
-          <label for="exampleInputPassword1">Organizers</label>
-          <app-error-display [errorMessage]="formErrors['organizers']" *ngIf="formErrors['organizers']"></app-error-display>
-          <input type="text" formControlName="organizers" class="form-control">
-        </div>-->
-       
-
-        <!--<h3 class="mt-5 mb-4">Describe Your Event</h3>
-          
-        <div class="input-group">
-          <app-error-display [errorMessage]="formErrors['description']" *ngIf="formErrors['description']"></app-error-display>
-          <textarea formControlName="description" class="form-control w-100" aria-label="With textarea" cols="20" placeholder="Enter Description"></textarea>
-        </div>-->
-
-        <!--<h3 class="mt-5">Image</h3>
-        <app-error-display [errorMessage]="formErrors['image']" *ngIf="formErrors['image']"></app-error-display>
-        <p>Upload An Image to use as your event Thumbnail</p>
-        <p *ngIf="errors.hasOwnProperty('image')" class="text-danger">{{errors.image[0]}}</p>
-        <small class="mb-4 text-secondary">Tip: Use a High Quality Image.</small>
-
-        <div class="image-container">
-          <img class="w-50 ml-auto mr-auto" src="../assets/svg/picture.svg" *ngIf="selectedFile == undefined" alt="#">
-          <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
-        </div>
-
-        <div class="input-group mt-4">
-            <input #imageInput type="file" (change)="processFile(imageInput)"> 
-        </div>-->
           
 
-        <button type="submit" class="b4 btn btn-primary">Submit</button>
+        
       </form>
 
-      <div class="col-md-8 offset-md-2 mt-5" id="occurrence-create">
-        <app-occurrence-create [event]="createdEvent" (validEmitter)="setOccurrenceValid($event)"></app-occurrence-create>
+      <div class="col-md-8 offset-md-2 mt-5" id="occurrence-create">        
+          <h3>When Is Your Event?</h3>
+          <form *ngIf="occurrenceForm" [formGroup]="occurrenceForm">
+            <h5>Start</h5>
+            <div class="form-group">
+              
+              <label for="exampleInputPassword1">Date</label>
+              <app-error-display [errorMessage]="formErrors['start']" *ngIf="formErrors['start']"></app-error-display>
+              <input formControlName="startDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+    
+              <label for="exampleInputPassword1">Time</label>
+              <app-error-display [errorMessage]="formErrors['start']" *ngIf="formErrors['start']"></app-error-display>
+              <input formControlName="startTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+            </div>
+    
+            <h5>End</h5>
+            <div class="form-group">          
+              <label for="exampleInputPassword1">Date</label>
+              <app-error-display [errorMessage]="formErrors['end']" *ngIf="formErrors['end']"></app-error-display>
+              <input formControlName="endDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+    
+              <label for="exampleInputPassword1">Time</label>
+              <app-error-display [errorMessage]="formErrors['end']" *ngIf="formErrors['end']"></app-error-display>
+              <input formControlName="endTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+            </div>
+          </form>        
       </div>
 
-      <div class="col-md-8 offset-md-2 mt-5" id="ticket-create">
-        <app-ticket-options [event]="createdEvent"></app-ticket-options>
-      </div> 
+      <button type="submit" (click)="createEvent()" [disabled]="!eventForm.valid || !occurrenceForm.valid" class="b4 btn btn-primary">Save</button>
+      {{occurrenceForm.valid}}
     </div>
       
+    
   </div>
 
-  <div class="save-button" id="save-event">
-      <app-save-button [valid]="occurrenceValid"></app-save-button>
-  </div>
   
 </div>

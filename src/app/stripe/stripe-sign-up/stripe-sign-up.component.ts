@@ -50,4 +50,8 @@ export class StripeSignUpComponent implements OnInit {
     }
   }
 
+  goToStripeOauth(){
+    this.router.navigate(['account-settings'])
+  }
+
 }

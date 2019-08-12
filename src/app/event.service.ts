@@ -20,6 +20,10 @@ export class EventService {
 
   constructor(private http: HttpClient, private authService: AuthService) {  }
 
+  getFees(){
+    return this.http.get(API_URL + `/get-fees/`)
+  }
+
   getCategories(){
     return this.http.get<any[]>(API_URL + `/categories/`)    
   }
@@ -116,6 +120,10 @@ export class EventService {
 
   checkTicket(ticket_id){
     return this.http.get(API_URL + `/check-ticket/${ticket_id}/`)
+  }
+
+  deleteTicketOption(ticket_id){
+    return this.http.delete(API_URL + `/ticket-options/${ticket_id}`)
   }
 
   //////Email///////

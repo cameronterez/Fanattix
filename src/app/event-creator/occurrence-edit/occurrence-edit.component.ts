@@ -24,7 +24,7 @@ export class OccurrenceEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.event)
+    console.log(` the event is ${this.event.occurrences}`)
     this.initForm()    
   }
 

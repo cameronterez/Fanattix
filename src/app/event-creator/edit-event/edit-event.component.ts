@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../auth.service';
 import { EventService } from '../../event.service';
@@ -34,6 +34,7 @@ export class EditEventComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private modal: NgbModal,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -87,19 +88,6 @@ export class EditEventComponent implements OnInit {
   }
 
   editEvent(eventId){
-
-    /*let eventData = {
-      name: this.editForm.get('name').value,
-      description: this.editForm.get('description').value,
-      type: this.editForm.get('type').value,
-      category: this.editForm.get('category').value,
-      location: this.editForm.get('location').value,
-      venue : this.editForm.get('venue').value,
-      creator: this.editForm.get('creator').value,
-      image: this.selectedFileSource,
-      date: new Date('December 17, 1995 03:24:00')
-    }*/
-
     this.eventService.editEvent(eventId, this.editForm.value).subscribe(
       res => {
         console.log(res)
@@ -121,8 +109,19 @@ export class EditEventComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  confirmDelete(){
-    this.modal.open(EventDeleteModalComponent)
+  deleteEvent(){
+    let confirmVal = confirm(`Are You Sure You want to Delete Event '${this.event.name}'?`)
+
+    if(confirmVal == true){
+      this.eventService.deleteEvent(this.event.id).subscribe(
+        res => {console.log(res)},
+        err => console.log(err)
+      )
+      this.router.navigate(['creator/my-events'])
+    }else{
+      return false
+    }
+
   }
 
 }

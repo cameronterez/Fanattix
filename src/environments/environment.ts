@@ -8,6 +8,8 @@ export const environment = {
 
 export const API_URL = 'http://localhost:8000/api'
 export const IMAGE_URL = 'http://localhost:8000' //Needed if image is in a nested object b/c django does not give full url if image is nested
+
+export const STRIPE_REDIRECT_URI = 'http://localhost:4200/stripe-connect/'
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

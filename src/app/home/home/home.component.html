@@ -1,13 +1,13 @@
 <div id="hero" style="text-align: left;">
-  <img class="object-fit" src="https://images.unsplash.com/photo-1458891216473-4f26bb4eb40e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"/>
+  <img class="object-fit" [src]="featuredEvent.image"/>
     <div class="center">
-      <div class="frame">
-        <h1 style="font-size: 72px;">Discover & Create Events</h1>
+      <div class="frame" >
+        <h1 style="font-size: 72px;">{{featuredEvent.name}}</h1>
+        <p style="color: white !important;">{{featuredEvent.location}}</p>
+        <p style="color: white !important;">{{featuredEvent.occurrences[0]?.start | date: 'medium'}}</p>
       </div>
     </div>
 </div>
-
-<!--<app-search></app-search>-->
 
   <div id="events">
     <div class="frame">
@@ -21,21 +21,7 @@
       </div>
       <app-event-list [events]="events"></app-event-list>
       <button id="browse-events" class="btn b6" (click)="goToSearch()">Browse</button>
-      </div>
-      
     </div>
   </div>
-
-  
-
-  <!--<div id="events">
-    <div class="frame">
-      <div class="bit-1" #eventList>
-        <h2>Events Near <span style="font-weight:400;">You</span></h2>
-      </div>
-      <app-event-list [events]="events"></app-event-list>
-      
-    </div>
-  </div>-->
 
   <app-category-scroll></app-category-scroll>

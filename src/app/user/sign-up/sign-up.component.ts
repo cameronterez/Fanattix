@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { MessageService } from '../../message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,13 @@ export class SignUpComponent implements OnInit {
   errors = []
   validationErrors = {}
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private msgService: MessageService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private auth: AuthService, 
+    private msgService: MessageService, 
+    private router: Router, 
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
     this.initForm()
@@ -50,12 +57,21 @@ export class SignUpComponent implements OnInit {
           console.log(credentials)
           this.auth.get_auth_token(credentials).subscribe( //then get token
             res => {
-              console.log(res)
-              this.auth._userId.next(res['id'])
-              this.auth.auth_token = res['token']
-              this.auth.store_user(res['token'], res['id'])
-              this.auth._loggedIn.next(true)
-              console.log('Done')
+              if(res['error']){
+                if(res['error']['non_field_errors']){
+                  this.messageService.displayMessage(res['error']['non_field_errors'][0])
+                }else if(res['error']['field_errors']){
+                  this.errors = res['error']['field_errors']
+                }
+              }else{
+                console.log(res)
+                this.auth._userId.next(res['id'])
+                this.auth.auth_token = res['token']
+                this.auth.store_user(res['token'], res['id'])
+                this.auth._loggedIn.next(true)
+                console.log('Done')
+                this.router.navigate(['account-settings'])
+              }
             },
             err => {
               console.log(err)

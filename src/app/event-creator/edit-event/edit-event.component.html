@@ -2,10 +2,6 @@
 
 <div class="container">
   <div class="row">
-    <div class="p-1">
-        <button class="btn btn-primary inline mx-2">Hide This Event</button>
-        <button class="btn btn-danger inline mx-2" (click)="confirmDelete()">Delete This Event</button>
-    </div>
     <div class="col-md-8 offset-md-2 mt-5">
       <form [formGroup]="editForm" *ngIf="editForm" (submit)="createEvent()">
         <div class="form-check">
@@ -83,85 +79,14 @@
       </form>
     </div>
 
-    <!--<div class="col-md-8 offset-md-2 mt-5">
-      <app-occurrence-create [event]="createdEvent"></app-occurrence-create>
-    </div>-->
-
     <div class="col-md-8 offset-md-2 mt-5" *ngIf="event">
       <app-occurrence-edit [event]="event"></app-occurrence-edit>
     </div>
 
-    <div class="col-md-8 offset-md-2 mt-5" *ngIf="event">
-        <p>Ticket Options</p>
-        <app-ticket-options [event]="event"></app-ticket-options>
-    </div> 
+    <div class="delete-event">
+        <button class="btn btn-danger inline mx-2" (click)="deleteEvent()">Delete This Event</button>
+    </div>
     
   </div>
   
 </div>
-
-<!--<app-event-creator-single [passedEvent]="event"></app-event-creator-single>-->
-
-<!--<div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2 mt-5">
-        <form [formGroup]="editForm" *ngIf="editForm" (submit)="editEvent(event.id)">
-          <h3 class="mb-4">Edit {{event.name}}</h3>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Event Name</label>
-            <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Your Event">
-            <small id="emailHelp" class="form-text text-muted">Maximum length 70 Characters</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Date</label>
-            <input formControlName="date" type="text" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
-          </div>
-  
-          <div class="input-group mb-3">
-              <label for="exampleInputPassword1">Event Type</label>
-              <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-          </div>
-  
-          <div class="form-group">
-              <label for="exampleInputPassword1">Organizers</label>
-              <input type="text" class="form-control">
-            </div>
-  
-          <h3 class="mt-5 mb-4">Describe Your Event</h3>
-            
-          <div class="input-group">
-            <textarea formControlName="description" class="form-control w-100" aria-label="With textarea" cols="20" placeholder="Enter Description"></textarea>
-          </div>
-  
-          <h3 class="mt-5">Image</h3>
-          <p>Upload An Image to use as your event Thumbnail</p>
-          <small class="mb-4 text-secondary">Tip: Use a High Quality Image.</small>
-  
-          <div class="image-container">
-            <img class="w-50 ml-auto mr-auto" src="../assets/svg/picture.svg" *ngIf="selectedFile == undefined" alt="#">
-            <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
-          </div>
-          <div class="input-group mt-4">
-              <input #imageInput type="file" (change)="processFile(imageInput)"> 
-          </div>
-            
-  
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-        </form>
-      </div>
-
-      <!--<div class="col-md-8 offset-md-2 mt-5">
-        <app-occurrence-create [eventId]="createdEventId"></app-occurrence-create>
-      </div>
-  
-      <div class="col-md-8 offset-md-2 mt-5">
-        <app-ticket-options [eventId]="createdEventId"></app-ticket-options>
-      </div>
-
-    </div>
-  </div>-->

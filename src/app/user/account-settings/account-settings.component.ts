@@ -43,13 +43,6 @@ export class AccountSettingsComponent implements OnInit {
     console.log(this.profileForm.value)
   }
 
-  /*initCardForm(){
-    this.cardForm() = this.fb.group({
-      name : ['', Validators.required],
-      card : ['']
-    })
-  }*/
-
   saveProfile(){
     let content = this.profileForm.value
     this.authService.saveProfile(content).subscribe(

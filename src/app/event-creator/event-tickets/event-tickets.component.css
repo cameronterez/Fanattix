@@ -1,0 +1,27 @@
+*{
+    position: relative;
+    box-sizing: border-box;
+}
+.event-ticket-container{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.event-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.event-identity{
+    display: flex;
+}
+.event-meta{
+    border-bottom: 1px solid whitesmoke;
+    display: flex;
+    justify-content: space-between;
+}
+.event-img img{
+    height: 60px;
+    max-width: 120px;
+}

@@ -9,5 +9,24 @@
     box-shadow: 3px 3px 32px #563D7C;
 }
 
+/*** New Style ****/
+*{
+    font-family: 'Red Hat Display', sans-serif;
+}
+input, textarea{
+    border-radius: 0;
+}
+/**
+body, html{
+    margin: 0px;
+    padding: 0px;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}**/
+
 /* todo add Xitauri */
 

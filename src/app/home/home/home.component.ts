@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('eventResults') eventResults: ElementRef
   eventsNearBy = this.eventService.eventsNearBy
 
+  featuredEvent
+
   constructor(
     private eventService: EventService,
     private router: Router,
@@ -33,7 +35,10 @@ export class HomeComponent implements OnInit {
     console.log(element)
     this.util.scrollToElement(element)    
     this.eventService.getEvents().subscribe(
-      res => this.events = res['results'],
+      res => {
+        this.events = res['results']
+        this.featureAnEvent(this.events)
+      },
       err => console.log(err)
     )
   }
@@ -69,6 +74,11 @@ export class HomeComponent implements OnInit {
 
   goToSearch(){
     this.router.navigate(['search'])
+  }
+
+  featureAnEvent(events: any[]){
+    var item = events[Math.floor(Math.random()*events.length)]
+    this.featuredEvent = item
   }
 
 }

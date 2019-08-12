@@ -31,7 +31,7 @@ export class OccurrenceCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.initForm()
+    this.initForm()
   }
 
   ngOnChanges(){
@@ -41,8 +41,8 @@ export class OccurrenceCreateComponent implements OnInit {
   }
 
   initForm(){
-    if(this.event){
-      if(this.event.occurrences.length > 1){ //If occurence is set, this is an edit
+    //if(this.event){
+      if(this.event != undefined && this.event.hasOwnProperty('occurrences') && this.event.occurrences.length > 0){ //If occurence is set, this is an edit
         console.log(this.event.occurrences)
 
         this.occurrenceForm = this.fb.group({
@@ -56,15 +56,18 @@ export class OccurrenceCreateComponent implements OnInit {
       }else{        
         this.occurrenceForm = this.fb.group({
           creator: this.auth._userId.value,
-          event: this.event['id'],
+          event: this.event == undefined ? undefined : this.event['id'],
           startDate: ['', Validators.required],
           startTime: ['', Validators.required],
           endDate: ['', Validators.required],
           endTime: ['', Validators.required]
         })
       }
-    }
+
+      console.log(this.occurrenceForm)
+    //}
   }
+
 
   submitForm(){
 
@@ -80,10 +83,6 @@ export class OccurrenceCreateComponent implements OnInit {
         start: start,
         end: end,
       }
-      /*console.log(this.event['id'])
-      console.log(occurrenceData)
-      console.log(occurrenceData.start)
-      console.log(occurrenceData.event)*/
 
       if(this.createdOccurrence){  //If this is an edit created occurrence will be set, so edit
         this.eventService.editEventOccurrence(occurrenceData).subscribe(
@@ -93,7 +92,7 @@ export class OccurrenceCreateComponent implements OnInit {
           },
           err => console.log(err)
         )
-      }else{ //If not set, then create new occurrence
+      }else{//If not set, then create new occurrence
         this.eventService.createEventOccurrence(occurrenceData).subscribe(
           res => {
             if(res.hasOwnProperty('errors')){

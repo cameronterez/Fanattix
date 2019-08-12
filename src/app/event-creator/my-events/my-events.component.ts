@@ -41,4 +41,8 @@ export class MyEventsComponent implements OnInit {
     this.router.navigate(['creator/actions', id])
   }
 
+  goToTickets(id){
+    this.router.navigate(['creator/event-tickets', id])
+  }
+
 }

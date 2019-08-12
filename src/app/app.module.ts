@@ -77,12 +77,15 @@ import { OverviewComponent } from './overview/overview.component';
 import { ContactComponent } from './contact/contact.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { EventListNestedComponent } from './event-list-nested/event-list-nested.component';
+import { FxEventCreateComponent } from './event-creator/fx-event-create/fx-event-create.component';
+import { EventTicketsComponent } from './event-creator/event-tickets/event-tickets.component';
+import { ConfirmDeleteTicketOptionComponent } from './event-creator/confirm-delete-ticket-option/confirm-delete-ticket-option.component';
 
 
 
 const routes: Routes = [
-  {path: '', component: CamSplashComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'splash', component: CamSplashComponent},
+  {path: '', component: HomeComponent},
   {path: 'event/:id', component: EventDetailComponent},
   {path: 'purchase-ticket/:id', component: TicketPurchaseComponent},
   {path: 'my-tickets', component: PurchasedTicketsComponent},
@@ -93,23 +96,15 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'category-events/:id', component: CategoryEventsComponent},
   {path: 'activate-stripe-account', component: StripeSignUpComponent},
-  /*{path: 'creator', component: CreatorComponent,
-    children: [
-      {path: '', component: EventCreatorHomeComponent},
-      {path: 'single', component: EventCreatorSingleComponent},
-      {path: 'my-events', component: MyEventsComponent},
-      {path: 'edit-event/:id', component: EditEventComponent},
-      {path: 'double', component: EventCreatorSingleComponent},
-      {path: 'actions/:id', component: AnalyticsComponent}
-    ]
-  },*/
   {path: 'creator', component: CreatorMenuComponent, canActivate: [StripeGuardService],
     children: [
       {path: '', component: EventCreatorHomeComponent},
-      {path: 'single', component: EventCreatorSingleComponent},
+      {path: 'single', component: FxEventCreateComponent},
       {path: 'my-events', component: MyEventsComponent},
       {path: 'edit-event/:id', component: EditEventComponent},
-      {path: 'double', component: EventCreatorSingleComponent},
+      {path: 'event-tickets/:id', component: EventTicketsComponent},
+      {path: 'double', component: FxEventCreateComponent},
+      {path: 'post-create/:id', component: PostCreateComponent},
       {path: 'actions/:id', component: AnalyticsComponent},
       {path: 'event-created', component: PostCreateComponent},
       {path: 'my-tickets', component: PurchasedTicketsComponent},
@@ -187,6 +182,9 @@ const routes: Routes = [
     ContactComponent,
     PricingComponent,
     EventListNestedComponent,
+    FxEventCreateComponent,
+    EventTicketsComponent,
+    ConfirmDeleteTicketOptionComponent,
   ],
   // Google Places API Key 
 

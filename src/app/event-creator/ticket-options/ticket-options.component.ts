@@ -10,19 +10,23 @@ import { MessageService } from '../../message.service';
 })
 export class TicketOptionsComponent implements OnInit {
   @Input() event
-  createdTicketOptions: TicketOption[]
+  @Input() createdTicketOptions: TicketOption[]
   ticketOptions: TicketOption[] = []
   errors = []
   formErrors = []
+  fees
 
   constructor(private eventService: EventService, private messageService: MessageService) { }
 
   ngOnInit(){
-    try{
-      this.createdTicketOptions = this.event.ticket_options
-    }catch{
-      console.log('no ticket options')
-    }
+    this.eventService.getFees().subscribe(
+      res => {
+        console.log(res)
+        this.fees = res
+      },
+      err => console.log(err)
+    )
+
   }
 
   addTicketOption(){
@@ -40,9 +44,10 @@ export class TicketOptionsComponent implements OnInit {
     console.log(ticket)
   }
 
-  saveTicketOption(ticketOption: TicketOption){
+  saveTicketOption($event, ticketOption: TicketOption){
     let valid = this.validateTicketOption(ticketOption)
     console.log(valid)
+    console.log(ticketOption)
 
     if(valid){
 
@@ -56,6 +61,18 @@ export class TicketOptionsComponent implements OnInit {
             }else{
               console.log(res)
               this.messageService.displayMessage('Ticket created!')
+              console.log($event)
+              /*let button = $event.target as HTMLInputElement
+              button.value = 'Saved'
+              button.innerHTML = 'Saved'
+              button.innerText = 'Saved'
+              button.disabled = true*/
+              //$event.srcElement.color = 'white'
+              //$event.srcElement.css.backgroundColor = 'forestGreen'
+              let parent = $event.target.closest('.new-tickets') as HTMLDivElement
+              parent.classList.add('saved')
+              parent.style.display = 'none'
+              this.event['ticket_options'].push(res)
             }
           },
           err => {
@@ -109,11 +126,29 @@ export class TicketOptionsComponent implements OnInit {
     }else{
       this.formErrors['name'] = 'You must enter a name'
       return false
-    }
-
-    
+    }    
   }
 
-  
+  deleteTicket(ticketOption){
+    let confirmVal = confirm(`Are you sure you want to delete Ticket "${ticketOption.name}"`)
+
+    if(confirmVal == true){
+      this.eventService.deleteTicketOption(ticketOption['id']).subscribe(
+        res => {
+          console.log(res)
+
+          let to = this.event['ticket_options'].find(to =>{ 
+              to.id == ticketOption.id
+            }
+          )
+          
+          this.event['ticket_options'].splice(this.event['ticket_options'].indexOf(ticketOption), 1)
+        },
+        err => console.log(err)
+      )
+    }else{
+      return false
+    }
+  }
 
 }

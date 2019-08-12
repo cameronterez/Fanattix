@@ -1,0 +1,19 @@
+<div class="event-ticket-container" style="margin-top: 90px;">
+  <div class="event-identity" *ngIf="event">
+      <div class="event-img">
+          <img class="object-fit" [src]="event.image" alt="Event Image" *ngIf="event.image!=undefined && event.image!=null"/>
+      </div>
+      <h3>{{event.name}}</h3>
+  </div>
+  <div class="event-meta">
+    <p>Start {{event?.occurrences[0]?.start | date: 'medium'}}</p>
+    <p>End {{event?.occurrences[0]?.end | date: 'medium'}}</p>
+
+    <p>Location {{event.location}}</p>
+  </div>
+
+  <div class="col-md-8 offset-md-2 mt-5" id="ticket-create" *ngIf="event">
+      <app-ticket-options [event]="event" [createdTicketOptions]="event.ticket_options"></app-ticket-options>
+  </div>
+  
+</div>

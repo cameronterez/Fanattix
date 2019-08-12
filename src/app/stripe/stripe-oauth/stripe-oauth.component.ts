@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StripeService } from '../../stripe.service';
+import { STRIPE_REDIRECT_URI } from '../../../environments/environment';
 
 @Component({
   selector: 'app-stripe-oauth',
@@ -8,6 +9,7 @@ import { StripeService } from '../../stripe.service';
 })
 export class StripeOAuthComponent implements OnInit {
   connectedAccount: any
+  STRIPE_REDIRECT_URI = STRIPE_REDIRECT_URI
 
   constructor(private stripeService: StripeService) { }
 

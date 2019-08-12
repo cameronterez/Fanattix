@@ -2,7 +2,7 @@
 	<div class="frame">
 		<div class="bit-1">
 		  <p>{{message}}</p>
-		  <button class="btn b4" *ngIf="!hasConnectedAccount">Connect Your Stripe Account</button>
+		  <button class="btn b4" *ngIf="!hasConnectedAccount" (click)="goToStripeOauth()">Connect Your Stripe Account</button>
 		</div>
 	</div>
 </div>
