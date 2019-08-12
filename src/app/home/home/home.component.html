@@ -13,11 +13,11 @@
     <div class="frame">
       <div class="bit-1" #eventList>
         <h2>Upcoming <span style="font-weight:600;">Events</span></h2>
-        <div class="event-buttons">
+       <!-- <div class="event-buttons">
           <button type="button" (click)="getEvents(eventList)" class="b3 btn btn-secondary btn-sm">All Events</button>
           <button type="button" (click)="getFreeEvents(eventList)" class="b3 btn btn-primary btn-sm">Free</button>
           <button type="button" (click)="goToEventCreator()" class="b3 btn btn-secondary btn-sm"><h2>+</h2>&#43;<span>Create Event</span></button>
-        </div>
+        </div>-->
       </div>
       <app-event-list [events]="events"></app-event-list>
       <button id="browse-events" class="btn b6" (click)="goToSearch()">Browse</button>

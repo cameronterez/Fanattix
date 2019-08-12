@@ -2,14 +2,14 @@
     <div class="frame">
       <div class="bit-5" style="position: relative;">
       <button class="filter-button" (click)="toggleSlide()"><i class="fas fa-sliders-h"></i> Filters</button>
-        <h5>Event Search</h5>
+        <!--<h5>Event Search</h5>
         <div class="search-filter-container">
           <button class="search-filter sf-left btn-primary btn" (click)="changeSearch('title')">By Title</button>
           <button class="search-filter sf-right btn-primary btn" (click)="changeSearch('cld')">By Nearby & Times</button>
-        </div>
+        </div>-->
       </div>
-      <div class="bit-80">
-        <app-search-bar *ngIf="search == 'cld'"></app-search-bar>
+      <div class="bit-1">
+        <!--<app-search-bar *ngIf="search == 'cld'"></app-search-bar>-->
         <app-search-title *ngIf="search == 'title'"></app-search-title>
       </div>
        <div class="bit-1">
