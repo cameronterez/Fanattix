@@ -305,6 +305,7 @@ textarea { height: auto; }
 	padding: 0 10px;
 	display: block;
 }
+#user-menu li a { color: var(--black); }
 #user-menu li:hover {
 	background-color: var(--gray);
 }
@@ -1143,6 +1144,7 @@ textarea { height: auto; }
 
 /* Post Purchase */
 #post-purchase {
+	background-color: #FFE599;
 	width: 100%;
 	padding: 20vh 0;
 	text-align: center;
@@ -1208,6 +1210,27 @@ textarea { height: auto; }
 #contact-body {
 	padding: 100px 0 50vh;
 	background-color: var(--white);
+}
+#contact-body p { text-align: center; }
+#contact-form {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+#contact-form input, #contact-form textarea { width: 100%; margin-bottom: 15px; }
+#contact-left, #contact-right {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: calc(50% - 7.5px) !important;
+}
+#contact-left { margin-right: 15px; }
+
+#contact-left input, #contact-right input {
+	display: inline-block;
+}
+#contact-left input:first-of-type, #contact-right input:first-of-type {
+	margin-right: 15px;
 }
 
 #faq-header {
