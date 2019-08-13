@@ -1,5 +1,6 @@
 <div>
   <form class="form-inline my-2 my-lg-0 w-100" (submit)="searchEventsByName($event, eventName.value)">
+      <button class="filter-click" (click)="toggleSlide()"><i class="fas fa-sliders-h"></i> Filters</button>
       <input class="search-title form-control mr-sm-2 w-25" type="search" #eventName placeholder="Search By Title" [(ngModel)]="queryString" name="queryString" aria-label="Search">
       <button class="b2 btn btn-primary my-2 my-sm-0" type="submit">Search</button>
   </form>
@@ -9,7 +10,7 @@
     <app-search-filter (filtersUpdated)="filter($event)" [selectedFilters]="initialParams"></app-search-filter>
 </div>
   
-<div style="margin-top: 100px">
+<div style="margin-top: 100px; margin-bottom: 50px;">
   <app-event-list-nested [events]="results"></app-event-list-nested>
 </div>
 
