@@ -1,19 +1,19 @@
-<h4>Edit Event</h4>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2 mt-5">
+<div id="create-event-single" class="body-padding">
+  <div class="frame">
+    <div class="bit-1">
+      <h2 id="basic-info" style="text-align: center;">Edit Event</h2>
+      <div id="event-creator-card">
       <form [formGroup]="editForm" *ngIf="editForm" (submit)="createEvent()">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" value="true" formControlName="is_inactive">
-          <label class="form-check-label" for="exampleCheck1">Save as Inactive</label>
+        <div class="form-check" style="position: relative;">
+          <input type="checkbox" class="form-check-input inactive-edit" id="exampleCheck1" value="true" formControlName="is_inactive">
+          <label class="form-check-label" for="exampleCheck1" style="margin-bottom: 15px;">Save as Inactive</label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group event-name">
           <label for="exampleInputEmail1">Event Name</label>
           <app-error-display [errorMessage]="formErrors['name']" *ngIf="formErrors['name']"></app-error-display>
           <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Your Event">
-          <small id="emailHelp" class="form-text text-muted">Maximum length 70 Characters</small>
+          <h4><small id="emailHelp" class="form-text text-muted">Maximum length 70 Characters</small></h4>
         </div>
 
         <div class="form-group">
@@ -24,15 +24,41 @@
           />
         </div>
 
+        <app-occurrence-edit [event]="event"></app-occurrence-edit>
+
+        <h3 class="mt-5">Add Images</h3>
+        <app-error-display [errorMessage]="formErrors['image']" *ngIf="formErrors['image']"></app-error-display>
+        <p><small>Upload An Image to use as your event Thumbnail</small></p>
+        <h4><small class="mb-4 text-secondary">Tip: Use a High Quality Image.</small></h4>
+
+        <div class="image-container">
+          <img class="w-50 ml-auto mr-auto" src="assets/svg/picture.svg" *ngIf="selectedFile == undefined" alt="#">
+          <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
+          <input #imageInput type="file" (change)="processFile(imageInput)"> <!--accept="image/*"-->
+        </div>
+          
+        <div class="input-group">
+          <app-error-display [errorMessage]="formErrors['description']" *ngIf="formErrors['description']"></app-error-display>
+          <label for="exampleInputEmail1">Description</label>
+          <textarea formControlName="description" class="form-control w-100" aria-label="With textarea" cols="20" rows="4" placeholder="Enter Description"></textarea>
+        </div>
+
+        <div class="form-group" id="details">
+            <label for="exampleInputPassword1">Organizers</label>
+            <app-error-display [errorMessage]="formErrors['organizers']" *ngIf="formErrors['organizers']"></app-error-display>
+            <input type="text" formControlName="organizers" class="form-control" placeholder="Who is hosting your event?">
+        </div>
+
         <div class="form-group">
           <label for="exampleInputEmail1">Venue</label>
+          <app-error-display [errorMessage]="formErrors['venue']" *ngIf="formErrors['venue']"></app-error-display>
           <input formControlName="venue" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Venue">
         </div>
 
         <div class="input-group mb-3">
           <label for="exampleInputPassword1">Event Type</label>
           <app-error-display [errorMessage]="formErrors['type_obj']" *ngIf="formErrors['type_obj']"></app-error-display>
-          <select class="custom-select" id="inputGroupSelect01" formControlName="type_obj" [value]=event.type_obj>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="type_obj" >
             <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
           </select>
         </div>
@@ -40,53 +66,21 @@
         <div class="input-group mb-3">
           <label for="exampleInputPassword1">Category</label>
           <app-error-display [errorMessage]="formErrors['type_obj']" *ngIf="formErrors['type_obj']"></app-error-display>
-          <select class="custom-select" id="inputGroupSelect01" formControlName="category_obj" [value]=event.category_obj>
+          <select class="custom-select" id="inputGroupSelect01" formControlName="category_obj">
             <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
           </select>
         </div>
-
-        <div class="form-group">
-            <label for="exampleInputPassword1">Organizers</label>
-            <app-error-display [errorMessage]="formErrors['organizers']" *ngIf="formErrors['organizers']"></app-error-display>
-            <input type="text" formControlName="organizers" class="form-control">
-        </div>
-
-        <h3 class="mt-5 mb-4">Describe Your Event</h3>
-          
-        <div class="input-group">
-          <app-error-display [errorMessage]="formErrors['description']" *ngIf="formErrors['description']"></app-error-display>
-
-          <textarea formControlName="description" class="form-control w-100" aria-label="With textarea" cols="20" placeholder="Enter Description"></textarea>
-        </div>
-
-        <h3 class="mt-5">Image</h3>
-        <app-error-display [errorMessage]="formErrors['image']" *ngIf="formErrors['image']"></app-error-display>
-        <p>Upload An Image to use as your event Thumbnail</p>
-        <p *ngIf="errors.hasOwnProperty('image')" class="text-danger">{{errors.image[0]}}</p>
-        <small class="mb-4 text-secondary">Tip: Use a High Quality Image.</small>
-
-        <div class="image-container">
-          <img class="w-50 ml-auto mr-auto" src="../assets/svg/picture.svg" *ngIf="selectedFile == undefined && !event.image" alt="#">
-          <img class="w-100" src="{{selectedFile.src}}" *ngIf="selectedFile != undefined" alt="#">
-          <img class="w-100" src="{{event.image}}" *ngIf="event.image && selectedFile == undefined">
-        </div>
-        <div class="input-group mt-4">
-            <input #imageInput type="file" (change)="processFile(imageInput)"> <!--accept="image/*"-->
-        </div>
           
 
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="submit" class="btn b4 btn-primary">Save Changes</button>
       </form>
-    </div>
 
-    <div class="col-md-8 offset-md-2 mt-5" *ngIf="event">
-      <app-occurrence-edit [event]="event"></app-occurrence-edit>
+      <div class="delete-event">
+          <button style="background-color: orangered;" class="btn b4 btn-danger inline mx-2" (click)="deleteEvent()">Delete This Event</button>
+      </div>
+      </div>
+  
     </div>
-
-    <div class="delete-event">
-        <button class="btn btn-danger inline mx-2" (click)="deleteEvent()">Delete This Event</button>
-    </div>
-    
   </div>
   
 </div>
