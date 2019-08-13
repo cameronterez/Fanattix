@@ -1,5 +1,9 @@
-<div class="container">
-  <p>Your Event Has Been Created!</p>
-  <small>Please View Our Terms & Conditions</small>
-  <a [routerLink]="['/creator/event-tickets', eventId]"><button>Go To Add tickets</button></a>
+<div id="post-purchase">
+  <img src="../assets/svg/tickets.svg" style="width: 30%;max-width: 200px;margin-bottom: 60px;" alt="#" >
+  <h2>Congratulations, you’ve just created your event!</h2>
+  <p>Please View Our Terms & Conditions</p>
+  
+  <a [routerLink]="['/event', eventId]"><button class="btn b4">View Live Event</button></a>
+  <span>&nbsp;or&nbsp;</span>
+  <a [routerLink]="['/creator/event-tickets', eventId]"><button class="btn b4">Add tickets</button></a>
 </div>
