@@ -1,13 +1,12 @@
-<div class="body-padding">
+<div id="my-tickets" class="body-padding">
 	<div class="frame">
 		<div class="bit-1">
 		  <h2 style="text-align: center;">My Tickets</h2>
 		  <div class="row">    
-		    <div class="col-md-6 offset-md-3 " *ngFor="let ticket of tickets">
-		      <h3>{{ticket.event_detail.name}}</h3>
-		      <p><small>location | {{ticket.event_detail.location}}</small></p>
-		      <p><small>venue | {{ticket.event_detail.venue}}</small></p>
+		    <div class="col-md-6 offset-md-3" style="position: relative;" *ngFor="let ticket of tickets">
+		      <h3>EVENT: {{ticket.event_detail.name}}</h3>
 		      <a href="{{API_URL}}/ticket-service/{{ticket.id}}/"><button class="b4 btn btn-sm btn-primary">View Ticket</button></a>
+		      <hr>
 		    </div>
 		  </div>
 		</div>
