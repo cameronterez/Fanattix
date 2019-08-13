@@ -1,29 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h3>When Is Your Event?</h3>
       <form [formGroup]="occurrenceForm" (submit)="submitForm()">
-        <h5>Start</h5>
-        <div class="form-group">
-          
-          <label for="exampleInputPassword1">Date</label>
-          <input formControlName="startDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+            <span id="occurrence-left">
+              <div class="form-group">
+                
+                <label for="exampleInputPassword1">Starts</label>
+                <input formControlName="startDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+      
+                <input formControlName="startTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+              </div>
+            </span>
+            
+            <span id="occurrence-right">
+              <div class="form-group">          
+                <label for="exampleInputPassword1">Ends</label>
+                <input formControlName="endDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
 
-          <label for="exampleInputPassword1">Time</label>
-          <input formControlName="startTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
-        </div>
-
-        <h5>End</h5>
-        <div class="form-group">          
-          <label for="exampleInputPassword1">Date</label>
-          <input formControlName="endDate" type="date" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
-
-          <label for="exampleInputPassword1">Time</label>
-          <input formControlName="endTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
-        </div>
-        
-      </form>
-      <button (click)="submitForm()">Save</button>
-    </div>
-  </div>
-</div>
+                <input formControlName="endTime" type="time" class="form-control" id="exampleInputPassword1" placeholder="Select a Date for your Event">
+              </div>
+            </span>
+          </form>       
+      <button style="margin-bottom: 15px;" class="btn b4" (click)="submitForm()">Save</button>
